@@ -1,38 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package data.model.common;
 
-/**
- *
- * @author shreyajaiswal
- */
 public class Contact {
-    private String email;
-    private String phone;
+    public String city;
+    public String state;
+    public String zip;
+    public String address;
     
-     public Contact(String email, String phone){
-        this.email = email;
-        this.phone = phone;
+    public Contact(String city, String state, String zip, String address) {
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.address = address;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    
-   
-
 }
