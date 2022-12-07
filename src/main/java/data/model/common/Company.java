@@ -13,6 +13,11 @@ public class Company {
     private String companyName;
     private String companyType;
     private String registeredDate;
+    
+    
+    public Company(String companyType){
+        this.companyType = companyType;
+    }
 
     public String getCompanyName() {
         return companyName;
@@ -38,8 +43,6 @@ public class Company {
         this.registeredDate = registeredDate;
     }
     
-    public Company(String companyType){
-        this.companyType = companyType;
-    }
+
     
 }
