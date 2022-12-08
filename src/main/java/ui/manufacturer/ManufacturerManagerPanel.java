@@ -8,12 +8,12 @@ package ui.manufacturer;
  *
  * @author alank
  */
-public class ManufacturerPanel extends javax.swing.JPanel {
+public class ManufacturerManagerPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManufacturerPanel
      */
-    public ManufacturerPanel() {
+    public ManufacturerManagerPanel() {
         initComponents();
     }
 
