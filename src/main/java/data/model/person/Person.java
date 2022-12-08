@@ -3,57 +3,47 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package data.model.person;
-
 import data.model.common.Contact;
+import data.model.common.Date;
+import db.PersonManager;
 
-/**
- *
- * @author shreyajaiswal
- */
 public class Person {
-     String id;
-     private String personName;
-     private String personType;
-     private String personDob;
-     private String personGender;
-     private Contact personContact;
-     private String username;
-     private String password;
+    private String username;
+    private String personName;
+    private String personRole;
+    private Date personDob;
+    private String personGender;
+    private Contact personContact;
+    private String password;
      
-     public Person(String id) {
-
-        this.id = id;
+    public Person(String username, String personName, String password) {
+        this.username = username;
+        this.personName = personName;
+        this.password = password;
+        this.personContact = new Contact();
     }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    
+    public String getUsername() {
+        return username;
     }
 
     public String getPersonName() {
         return personName;
     }
 
-    public void setPersonName(String personName) {
-        this.personName = personName;
-    }
-
-    public String getPersonType() {
-        return personType;
+    public String getPersonRole() {
+        return personRole;
     }
 
     public void setPersonType(String personType) {
-        this.personType = personType;
+        this.personRole = personType;
     }
 
-    public String getPersonDob() {
+    public Date getPersonDob() {
         return personDob;
     }
 
-    public void setPersonDob(String personDob) {
+    public void setPersonDob(Date personDob) {
         this.personDob = personDob;
     }
 
@@ -69,43 +59,11 @@ public class Person {
         return personContact;
     }
 
-    public void setPersonContact(Contact personContact) {
-        this.personContact = personContact;
-    }
-     
-
- 
-
-    public String getPersonId() {
-        return id;
-    }
-
-    public boolean isMatch(String id) {
-        if (getPersonId().equals(id)) {
-            return true;
-        }
-        return false;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
     
-
-    @Override
-    public String toString() {
-        return getPersonId();
+    public boolean save() throws Exception {
+        return PersonManager.createUser(this);
     }
 }
