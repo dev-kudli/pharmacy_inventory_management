@@ -4,6 +4,9 @@ import data.model.common.Date;
 import data.model.distributor.*;
 import data.model.pharmacy.*;
 import helper.string.StringCustomMethods;
+
+import data.model.distributor.*;
+import data.model.pharmacy.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
