@@ -1240,7 +1240,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         );
         manageDrugsLayout.setVerticalGroup(
             manageDrugsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+            .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 620, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("MANAGE DRUGS", manageDrugs);
@@ -1773,7 +1773,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         );
         storeManagersLayout.setVerticalGroup(
             storeManagersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+            .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 620, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("MANAGE STORE MANAGERS", storeManagers);
@@ -1868,8 +1868,8 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         manufacturerDrugTable.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
         manufacturerDrugTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                { new Integer(1), "crocin", "J&J",  new Integer(10),  new Float(2.0)},
+                { new Integer(2), "paracetamol", "J&J",  new Integer(15),  new Float(3.0)}
             },
             new String [] {
                 "DRUG ID", "DRUG NAME", "MANUFACTURER NAME", "QUANTITY", "UNIT PRICE"
