@@ -45,6 +45,11 @@ public class CompanyLoginPanel extends javax.swing.JPanel {
         jLabel3.setText("USERNAME");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pharmacy_Administrator", "Pharmacy_Store_Manager", "Distributor_Administrator", "Distributor_Transport_Manager", "Manufacturer_Administrator", "Manufacturer_Product_Manager" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("PASSWORD");
 
@@ -103,6 +108,10 @@ public class CompanyLoginPanel extends javax.swing.JPanel {
                 .addGap(0, 88, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

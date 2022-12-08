@@ -2454,7 +2454,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         jPanel45.setLayout(jPanel45Layout);
         jPanel45Layout.setHorizontalGroup(
             jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1171, Short.MAX_VALUE)
+            .addComponent(jTabbedPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1171, Short.MAX_VALUE)
         );
         jPanel45Layout.setVerticalGroup(
             jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
