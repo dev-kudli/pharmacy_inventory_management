@@ -1,5 +1,6 @@
 package db;
 
+import data.model.person.Person;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,15 +8,15 @@ import java.sql.Statement;
 
 public abstract class PersonManager {
     public static java.sql.Connection con = Connection.getConnection();
-    public static boolean createUser() throws Exception {
+    public static boolean createUser(Person p) throws Exception {
         boolean isInserted = true;
         try {
             String query = "INSERT INTO user(username, password, role)"
                             + "values (?, ?, ?)";
             PreparedStatement preparedStmt = con.prepareStatement(query);
-            preparedStmt.setString (1, "Barney Rubble");
-            preparedStmt.setString (2, "password");
-            preparedStmt.setString (3, "pharmacy_admin");
+            preparedStmt.setString (1, p.getUsername());
+            preparedStmt.setString (2, p.getPassword());
+            preparedStmt.setString (3, p.getPersonRole());
             preparedStmt.execute();
             return isInserted;
         } catch (SQLException e) {
