@@ -12,7 +12,7 @@ public class Company {
     
     private String companyName;
     private String companyType;
-    private String registeredDate;
+    private Date registeredDate;
     
     
     public Company(String companyType){
@@ -35,11 +35,11 @@ public class Company {
         this.companyType = companyType;
     }
 
-    public String getRegisteredDate() {
+    public Date getRegisteredDate() {
         return registeredDate;
     }
 
-    public void setRegisteredDate(String registeredDate) {
+    public void setRegisteredDate(Date registeredDate) {
         this.registeredDate = registeredDate;
     }
     

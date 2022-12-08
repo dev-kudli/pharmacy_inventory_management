@@ -19,6 +19,7 @@ public abstract class DistributorManager {
             preparedStmt1.setInt (2, order.getDistributorId());
             preparedStmt1.setInt (3, order.getManufacturerId());
             preparedStmt1.execute();
+            
             String query = String.format("SELECT order_id FROM distributor_order WHERE order_id=LAST_INSERT_ID()");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
