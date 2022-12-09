@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PharmacyPurchaseOrder {
-    private int orderId;
     private final int pharmacyCompanyId;
     private final int manufactureId;
     private final Date purchaseOrderDate;
@@ -16,7 +15,7 @@ public class PharmacyPurchaseOrder {
         this.manufactureId = manufactureId;
         this.purchaseOrderDate = purchaseOrderDate;
     }
-  
+    
     public int getOrderId() {
         return orderId;
     }

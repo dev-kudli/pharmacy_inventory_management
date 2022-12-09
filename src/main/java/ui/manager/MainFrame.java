@@ -1,7 +1,9 @@
 package ui.frame;
 
 import java.awt.FlowLayout;
+import ui.manufacturer.ManufacturerProductManager;
 import ui.pharmacy.PharmacyAdministratorPanel;
+package ui.manager;
 
 public class MainFrame extends javax.swing.JFrame {
 
@@ -12,6 +14,14 @@ public class MainFrame extends javax.swing.JFrame {
     public void showPharmacyAdminPanel() {
 //        getContentPane.removeAll();
         add(new PharmacyAdministratorPanel());
+        setLayout(new FlowLayout());
+        repaint();
+        revalidate();
+    }
+    
+        public void showProductManagerPanel() {
+//        getContentPane.removeAll();
+        add(new ManufacturerProductManager());
         setLayout(new FlowLayout());
         repaint();
         revalidate();
