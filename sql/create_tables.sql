@@ -12,6 +12,7 @@ person_country VARCHAR(20),
 person_state VARCHAR(20)
 );
 
+DROP TABLE master_drug_table;
 CREATE TABLE master_drug_table(
 drug_id INT PRIMARY KEY AUTO_INCREMENT,
 drug_name VARCHAR(100) NOT NULL
@@ -45,6 +46,7 @@ quantity INT NOT NULL,
 foreign key (order_id) references pharmacy_order(order_id)
 );
 
+DROP TABLE pharmacy_inventory;
 CREATE TABLE pharmacy_inventory(
 pharmacy_id INT,
 drug_id INT,

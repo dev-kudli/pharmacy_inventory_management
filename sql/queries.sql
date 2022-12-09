@@ -10,7 +10,7 @@ FROM pharmacy_order po
 join company c on c.company_id=po.pharmacy_id
 WHERE po.manufacturer_id=1;
 
-32.View All Orders of a Pharmacy
+#3.View All Orders of a Pharmacy
 SELECT po.order_id, po.manufacturer_id, c.company_name as manufacturer_name, po.order_date, po.order_status
 FROM pharmacy_order po
 join company c on c.company_id=po.manufacturer_id
