@@ -23,7 +23,7 @@ public abstract class Connection {
                 Database.getPassword()
             );
         } catch (SQLException e) {
-            System.out.println("Unable to connect to MySql");
+            System.out.println("Unable to connect to MySql: " + e);
         }
     }
     

@@ -1,94 +1,100 @@
 package db;
 
-import data.model.common.Date;
 import data.model.pharmacy.*;
-import helper.string.StringCustomMethods;
+import static db.ManufacturerManager.con;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
-public class PharmacyManager {
+public abstract class PharmacyManager {
+    private final static String FILENAME = "PharmacyManager";
     public static java.sql.Connection con = Connection.getConnection();
+    /**
+     * @param order - Order data of Pharmacy
+     * @return true if operation succeeds
+     * @throws java.lang.Exception
+     */
     public static boolean createOrder(PharmacyPurchaseOrder order) throws Exception {
         boolean isCreated = true;
         int orderId = -1;
         try {
-            order.setOrderStatus("placed");
-            String query1 = "INSERT INTO pharmacy_order(order_date, distributor_id, pharmacy_id)"
-                            + "values (?, ?, ?)";
-            PreparedStatement preparedStmt1 = con.prepareStatement(query1);
-            preparedStmt1.setString (1, order.getPurchaseOrderDate().getFormattedDate());
-            preparedStmt1.setInt (2, order.getPharmacymanufactureId());
-            preparedStmt1.setInt (3, order.getPharmacyCompanyId());
-            preparedStmt1.execute();
+            try {
+                //Query to insert Order
+                order.setOrderStatus("placed");
+                String queryToInsertOrder = "INSERT INTO pharmacy_order(order_date, manufacturer_id, pharmacy_id)"
+                                + "values (?, ?, ?)";
+                PreparedStatement preparedStmt1 = con.prepareStatement(queryToInsertOrder);
+                preparedStmt1.setString (1, order.getPurchaseOrderDate().getFormattedDate());
+                preparedStmt1.setInt (2, order.getPharmacymanufactureId());
+                preparedStmt1.setInt (3, order.getPharmacyCompanyId());
+                preparedStmt1.execute();
+            } catch (SQLException e) {
+                throw new Exception("Error inserting order: " + e);
+            }
             
-            String query = String.format("SELECT order_id FROM pharmacy_order WHERE order_id=LAST_INSERT_ID()");
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            if (rs.next()) {
-                orderId = rs.getInt("order_id");
+            try {
+                //Query to get Order ID
+                String queryToGetOrderId = String.format("SELECT order_id FROM pharmacy_order WHERE order_id=LAST_INSERT_ID()");
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(queryToGetOrderId);
+                if (rs.next()) {
+                    orderId = rs.getInt("order_id");
+                } else {
+                    throw new Error("Cannot find ID");
+                }
+            } catch (SQLException e) {
+                throw new Exception("Error fetching order ID: " + e);
             }
-
-            String query2 = "INSERT INTO pharmacy_order_item(item_id, quantity, order_id)"
-                            + "values (?, ?, ?)";
-            PreparedStatement preparedStmt2 = con.prepareStatement(query2);
-            for (PharmacyOrderItem item : order.getOrderItems()) {
-                preparedStmt2.setInt (1, item.getItemId());
-                preparedStmt2.setInt (2, item.getQuantity());
-                preparedStmt2.setInt (3, orderId);
-                preparedStmt2.addBatch();
+            
+            try {
+                //Query to insert Order Items
+                String queryToInsertOrderItems = "INSERT INTO pharmacy_order_item(item_id, quantity, order_id)"
+                                + "values (?, ?, ?)";
+                PreparedStatement preparedStmt2 = con.prepareStatement(queryToInsertOrderItems);
+                for (PharmacyOrderItem item : order.getOrderItems()) {
+                    preparedStmt2.setInt (1, item.getItemId());
+                    preparedStmt2.setInt (2, item.getQuantity());
+                    preparedStmt2.setInt (3, orderId);
+                    preparedStmt2.addBatch();
+                }
+                preparedStmt2.executeBatch();
+            } catch (SQLException e) {
+                throw new Exception("Error inserting order items: " + e);
             }
-
-            preparedStmt2.executeBatch();
             return isCreated;
         } catch (SQLException e) {
-            throw e;
+            throw new Exception(FILENAME + "->" + "createOrder" + "->" + e);
         }
     }
     
-    public static ArrayList<PharmacyPurchaseOrder> fetchAllOrders(int pharmacyCompanyId) throws Exception {
+    /**
+     * @param pharmacyCompanyId - ID of Pharmacy
+     * @return ResultSet if operation succeeds
+     * @throws java.lang.Exception
+     */
+    public static ResultSet fetchAllOrders(int pharmacyCompanyId) throws Exception {
         try {
-            String query = String.format("SELECT * FROM pharmacy_order WHERE pharmacy_id=%s", pharmacyCompanyId);
+            //Build Query
+            String query = """
+                           SELECT po.order_id, po.manufacturer_id, c.company_name as manufacturer_name, po.order_date, po.order_status
+                           FROM pharmacy_order po
+                           join company c on c.company_id=po.manufacturer_id
+                           WHERE po.pharmacy_id=%s""";
+            query = String.format(query, pharmacyCompanyId);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            
-            ArrayList<PharmacyPurchaseOrder> pharmacyOrderList = new ArrayList<>();
-            while (rs.next()) {
-                int orderId = rs.getInt("order_id");
-                int pharmacyId = rs.getInt("pharmacy_id");
-                Date date = StringCustomMethods.stringToDate(rs.getString("order_date"));
-                PharmacyPurchaseOrder pharmacyPurchaseOrder = new PharmacyPurchaseOrder(orderId, pharmacyId, date);
-                pharmacyOrderList.add(pharmacyPurchaseOrder);
-            }
-            return pharmacyOrderList;
+            return rs;
         } catch (SQLException e) {
-            throw e;
+            throw new Exception(FILENAME + "->" + "fetchAllOrders" + "->" + e);
         } 
     }
     
-    public static ArrayList<PharmacyPurchaseOrder> fetchAllOrdersByManufacturerId(int pharmacyCompanyId) throws Exception {
-        try {
-            String query = String.format("SELECT * FROM pharmacy_order WHERE pharmacy_id=%s", pharmacyCompanyId);
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            
-            ArrayList<PharmacyPurchaseOrder> pharmacyOrderList = new ArrayList<>();
-            while (rs.next()) {
-                int orderId = rs.getInt("order_id");
-                int pharmacyId = rs.getInt("pharmacy_id");
-                Date date = StringCustomMethods.stringToDate(rs.getString("order_date"));
-                PharmacyPurchaseOrder pharmacyPurchaseOrder = new PharmacyPurchaseOrder(orderId, pharmacyId, date);
-                pharmacyOrderList.add(pharmacyPurchaseOrder);
-            }
-            return pharmacyOrderList;
-        } catch (SQLException e) {
-            throw e;
-        } 
-    }
-    
+    /**
+     * @return ResultSet if operation succeeds
+     * @throws java.lang.Exception
+     */
     public static ResultSet displayManufacturerInventory() throws Exception {
         try {
             String query = """
@@ -98,10 +104,39 @@ public class PharmacyManager {
                 JOIN company c on m.manufacturer_id = c.company_id;""";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            
             return rs;
         } catch (SQLException e) {
-            throw e;
+            throw new Exception(FILENAME + "->" + "displayManufacturerInventory" + "->" + e);
         } 
+    }
+    
+    /**
+     * @param drugId - ID of an Drug
+     * @param pharmacyId - ID of the Manufacturer
+     * @param quantity - Quantity to add/subtract
+     * @param operation - Takes "add" or "subtract" values
+     * @return true if operation succeeds
+     * @throws java.lang.Exception
+     */
+    public static boolean updateStock(int drugId, int pharmacyId, int quantity, String operation) throws Exception {
+        boolean isUpdated = false;
+        String op = null;
+        switch (operation) {
+            case "add" -> op = "+";
+            case "sub" -> op = "-";
+            default -> throw new Exception("Invalid operand");
+        }
+        try {
+            String queryToUpdateOrder = """
+                UPDATE pharmacy_inventory
+                SET quantity=quantity%s%s
+                WHERE drug_id=%s AND pharmacy_id=%s""";
+            queryToUpdateOrder = String.format(queryToUpdateOrder, op, quantity, drugId, pharmacyId);
+            PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
+            preparedStmt.execute();
+            return !isUpdated;
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "updateStock" + "->" + e);
+        }
     }
 }

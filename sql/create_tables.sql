@@ -1,65 +1,89 @@
-drop table user;
-create table user(
-user_id INT primary key auto_increment,
-username VARCHAR(50) not null,
-password VARCHAR(50) not null,
-role VARCHAR(20) not null
+DROP TABLE person;
+CREATE TABLE person(
+username VARCHAR(10) PRIMARY KEY,
+person_name VARCHAR(50) NOT NULL,
+password VARCHAR(50) NOT NULL,
+person_dob Date,
+person_gender CHAR(6),
+person_role VARCHAR(20) NOT NULL,
+person_address VARCHAR(100),
+person_city VARCHAR(20),
+person_country VARCHAR(20),
+person_state VARCHAR(20)
 );
 
-drop table distributor_order;
-create table distributor_order(
-order_id INT primary key auto_increment,
-distributor_id INT not null,
-manufacturer_id INT not null,
-order_date DATE not null
+CREATE TABLE master_drug_table(
+drug_id INT PRIMARY KEY AUTO_INCREMENT,
+drug_name VARCHAR(100) NOT NULL
 );
 
-drop table distributor_order_item;
-create table distributor_order_item(
-order_item_id INT primary key auto_increment,
-order_id INT not null,
-item_id INT not null,
-quantity INT not null
+DROP TABLE company;
+CREATE TABLE company(
+company_id INT PRIMARY KEY AUTO_INCREMENT,
+company_name VARCHAR(100) NOT NULL,
+company_type VARCHAR(20) NOT NULL,
+registered_date DATE,
+company_owner VARCHAR(10),
+foreign key (company_owner) references person(username)
 );
 
-drop table pharmacy_order;
-create table pharmacy_order(
-order_id INT primary key auto_increment,
-pharmacy_id INT not null,
-distributor_id INT not null,
-order_date DATE
+DROP TABLE pharmacy_order;
+CREATE TABLE pharmacy_order(
+order_id INT PRIMARY KEY AUTO_INCREMENT,
+pharmacy_id INT NOT NULL,
+manufacturer_id INT NOT NULL,
+order_date DATE,
+order_status varchar(10)
 );
 
-drop table pharmacy_order_item;
-create table pharmacy_order_item(
-order_item_id INT primary key auto_increment,
-order_id INT not null,
-item_id INT not null,
-quantity INT not null
+DROP TABLE pharmacy_order_item;
+CREATE TABLE pharmacy_order_item(
+order_item_id INT PRIMARY KEY AUTO_INCREMENT,
+order_id INT NOT NULL,
+item_id INT NOT NULL,
+quantity INT NOT NULL,
+foreign key (order_id) references pharmacy_order(order_id)
 );
 
-drop table company;
-create table company(
-company_id INT primary key auto_increment,
-company_name VARCHAR(100) not null,
-company_type VARCHAR(20) not null,
-registered_date Date
-);
-
-create table master_drug_table(
-drug_id INT primary key auto_increment,
-drug_name VARCHAR(100) not null
-);
-
-drop table manufacturer_inventory;
-create table manufacturer_inventory(
-manufacturer_id INT,
+CREATE TABLE pharmacy_inventory(
+pharmacy_id INT,
 drug_id INT,
-quantity BIGINT not null,
+quantity BIGINT NOT NULL,
 cost_price BIGINT,
 selling_price BIGINT,
-primary key(manufacturer_id, drug_id),
-foreign key (drug_id) references master_drug_table(drug_id),
-foreign key (manufacturer_id) references company(company_id)
+PRIMARY KEY(pharmacy_id, drug_id),
+FOREIGN KEY (drug_id) REFERENCES master_drug_table(drug_id),
+FOREIGN KEY (pharmacy_id) REFERENCES company(company_id)
+);
+
+DROP TABLE manufacturer_inventory;
+CREATE TABLE manufacturer_inventory(
+manufacturer_id INT,
+drug_id INT,
+quantity BIGINT NOT NULL,
+cost_price BIGINT,
+selling_price BIGINT,
+PRIMARY KEY(manufacturer_id, drug_id),
+FOREIGN KEY (drug_id) REFERENCES master_drug_table(drug_id),
+FOREIGN KEY (manufacturer_id) REFERENCES company(company_id)
+);
+
+DROP TABLE distributor_order;
+CREATE TABLE distributor_order(
+order_id INT PRIMARY KEY AUTO_INCREMENT,
+distributor_id INT NOT NULL,
+manufacturer_id INT NOT NULL,
+order_date DATE NOT NULL,
+order_status VARCHAR(10),
+FOREIGN KEY (distributor_id) REFERENCES company(company_id),
+FOREIGN KEY (manufacturer_id) REFERENCES company(company_id)
+);
+
+DROP TABLE distributor_order_item;
+CREATE TABLE distributor_order_item(
+order_item_id INT PRIMARY KEY AUTO_INCREMENT,
+order_id INT NOT NULL,
+item_id INT NOT NULL,
+quantity INT NOT NULL
 );
 

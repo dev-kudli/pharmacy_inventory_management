@@ -3,6 +3,7 @@ package ui.frame;
 import java.awt.FlowLayout;
 import ui.manufacturer.ManufacturerProductManager;
 import ui.pharmacy.PharmacyAdministratorPanel;
+package ui.manager;
 
 public class MainFrame extends javax.swing.JFrame {
 
