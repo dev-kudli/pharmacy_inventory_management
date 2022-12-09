@@ -16,6 +16,14 @@ public class PharmacyPurchaseOrder {
         this.purchaseOrderDate = purchaseOrderDate;
     }
     
+    public int getOrderId() {
+        return orderId;
+    }
+    
+    public void setOrderId(int id) {
+        this.orderId = id;
+    }
+    
     public String getOrderStatus() {
         return orderStatus;
     }
