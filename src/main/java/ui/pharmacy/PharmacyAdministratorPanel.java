@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
  * @author shreyajaiswal
  */
 import data.model.common.Date;
+import helper.ui.UiDesignFunctions;
 import java.time.LocalDateTime;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -2187,7 +2188,8 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField36ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-    
+ UiDesignFunctions.AlignTableContents(manufacturerDrugTable);
+ UiDesignFunctions.AlignTableContents(purchaseOrderTable);
  DefaultTableModel manufactureTable= (DefaultTableModel)manufacturerDrugTable.getModel();
  DefaultTableModel purchaseTable= (DefaultTableModel)purchaseOrderTable.getModel();
          int selectedIdx = manufacturerDrugTable.getSelectedRow();
@@ -2227,59 +2229,11 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                 
         
         
-        
-//SELECT m.manufacturer_id, c.company_name AS manufacturer_name, d.drug_id, d.drug_name, m.quantity, m.selling_price
-//                FROM manufacturer_inventory m
-   
-        
-//        int idx = manufacturerDrugTable.getSelectedRow();
-//        if(idx<0){
-//            JOptionPane.showMessageDialog(this,"Please Select a Patient to Proceed");
-//        }
-//
-//        DefaultTableModel table= (DefaultTableModel)manufacturerDrugTable.getModel();
-//        
-//        
-//        int drugId = Integer.parseInt(table.getValueAt(idx,0).toString());
-//        
-////        SELECT m.manufacturer_id, c.company_name AS manufacturer_name, d.drug_id, d.drug_name, m.quantity, m.selling_price
-////                FROM manufacturer_inventory m
-//        String drugName = table.getValueAt(idx,1).toString();
-////        String manufacturerName = table.getValueAt(idx,2).toString();
-////        int quantity = (int)table.getValueAt(idx,3);
-////        double unitPrice = (double) table.getValueAt(idx,4);
-//        
-//        System.out.println("drugId"+drugId);
-////        System.out.println("drugId"+drugName);
-//        System.out.println("drugId"+manufacturerName);
-//        System.out.println("drugId"+quantity);
-//        System.out.println("drugId"+unitPrice);
-        
-//        for(int i = 1; 1<=quantity; i++){
-//            jCombQuantity.removeAllItems();
-//            jCombQuantity.addItem(String.valueOf(i));
-//        }
-//       
-//        double q = (double)jCombQuantity.getSelectedItem(); 
-//        double totalPrice = q*unitPrice;
-//        
-//        Object[] row = new Object[5];
-//
-//        row[0] = drugId;
-//        row[1] = drugName;
-//        row[2] = manufacturerName;
-//        row[3] = q;
-//        row[4] = unitPrice;
-//        row[5] = totalPrice;
-//
-//        ((DefaultTableModel) purchaseOrderTable.getModel()).addRow(row);
- 
-            
 
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+UiDesignFunctions.AlignTableContents(manufacturerDrugTable);
 DefaultTableModel manufactureTable= (DefaultTableModel)manufacturerDrugTable.getModel();
 manufactureTable.setRowCount(0);
 //SELECT m.manufacturer_id, c.company_name AS manufacturer_name, d.drug_id, d.drug_name, m.quantity, m.selling_price
@@ -2306,12 +2260,7 @@ manufactureTable.setRowCount(0);
         rowData[3] = manufacturerName;
         rowData[4] = quantity;
         rowData[5] = sellingPrice;
-        
-        //CENTER ALIGNMENT
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
-        manufacturerDrugTable.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
-        
+            
         manufactureTable.addRow(rowData);
  
 
@@ -2354,11 +2303,16 @@ manufactureTable.setRowCount(0);
                     orderItems.add(pharmacyOrderItem);
 
                     //QUERY
-                    System.out.println("\nstarting to create order");
-                    PharmacyManager.createOrder(pharmacyPurchaseOrder);
-                    System.out.println("\nORDER CREATED SUCCESFULLY");
-                    jLabelOrderstatus.setVisible(true);
-                    jLabelOrderStatusValue.setVisible(true);
+                    
+                    int response = JOptionPane.showConfirmDialog(null, "Confirm your Order Request?", "Confirm your Order Request?", JOptionPane.YES_NO_OPTION);
+                    if(response == 0)
+                    {
+                        System.out.println("\norder Creation Started");
+                        PharmacyManager.createOrder(pharmacyPurchaseOrder);
+                        System.out.println("\nORDER CREATED SUCCESFULLY");
+                        jLabelOrderstatus.setVisible(true);
+                        jLabelOrderStatusValue.setVisible(true);
+                    }
                 }
                 catch(Exception e)
                 {
