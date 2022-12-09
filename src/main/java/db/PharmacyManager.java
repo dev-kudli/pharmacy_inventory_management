@@ -1,11 +1,14 @@
 package db;
 
-import data.model.distributor.*;
+import data.model.common.Date;
 import data.model.pharmacy.*;
+import helper.string.StringCustomMethods;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class PharmacyManager {
     public static java.sql.Connection con = Connection.getConnection();
@@ -13,11 +16,12 @@ public class PharmacyManager {
         boolean isCreated = true;
         int orderId = -1;
         try {
+            order.setOrderStatus("placed");
             String query1 = "INSERT INTO pharmacy_order(order_date, distributor_id, pharmacy_id)"
                             + "values (?, ?, ?)";
             PreparedStatement preparedStmt1 = con.prepareStatement(query1);
             preparedStmt1.setString (1, order.getPurchaseOrderDate().getFormattedDate());
-            preparedStmt1.setInt (2, order.getPharmacydistributorId());
+            preparedStmt1.setInt (2, order.getPharmacymanufactureId());
             preparedStmt1.setInt (3, order.getPharmacyCompanyId());
             preparedStmt1.execute();
             
@@ -27,7 +31,6 @@ public class PharmacyManager {
             if (rs.next()) {
                 orderId = rs.getInt("order_id");
             }
-            System.out.print(orderId);
 
             String query2 = "INSERT INTO pharmacy_order_item(item_id, quantity, order_id)"
                             + "values (?, ?, ?)";
@@ -44,5 +47,61 @@ public class PharmacyManager {
         } catch (SQLException e) {
             throw e;
         }
+    }
+    
+    public static ArrayList<PharmacyPurchaseOrder> fetchAllOrders(int pharmacyCompanyId) throws Exception {
+        try {
+            String query = String.format("SELECT * FROM pharmacy_order WHERE pharmacy_id=%s", pharmacyCompanyId);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            ArrayList<PharmacyPurchaseOrder> pharmacyOrderList = new ArrayList<>();
+            while (rs.next()) {
+                int orderId = rs.getInt("order_id");
+                int pharmacyId = rs.getInt("pharmacy_id");
+                Date date = StringCustomMethods.stringToDate(rs.getString("order_date"));
+                PharmacyPurchaseOrder pharmacyPurchaseOrder = new PharmacyPurchaseOrder(orderId, pharmacyId, date);
+                pharmacyOrderList.add(pharmacyPurchaseOrder);
+            }
+            return pharmacyOrderList;
+        } catch (SQLException e) {
+            throw e;
+        } 
+    }
+    
+    public static ArrayList<PharmacyPurchaseOrder> fetchAllOrdersByManufacturerId(int pharmacyCompanyId) throws Exception {
+        try {
+            String query = String.format("SELECT * FROM pharmacy_order WHERE pharmacy_id=%s", pharmacyCompanyId);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            ArrayList<PharmacyPurchaseOrder> pharmacyOrderList = new ArrayList<>();
+            while (rs.next()) {
+                int orderId = rs.getInt("order_id");
+                int pharmacyId = rs.getInt("pharmacy_id");
+                Date date = StringCustomMethods.stringToDate(rs.getString("order_date"));
+                PharmacyPurchaseOrder pharmacyPurchaseOrder = new PharmacyPurchaseOrder(orderId, pharmacyId, date);
+                pharmacyOrderList.add(pharmacyPurchaseOrder);
+            }
+            return pharmacyOrderList;
+        } catch (SQLException e) {
+            throw e;
+        } 
+    }
+    
+    public static ResultSet displayManufacturerInventory() throws Exception {
+        try {
+            String query = """
+                SELECT m.manufacturer_id, c.company_name AS manufacturer_name, d.drug_id, d.drug_name, m.quantity, m.selling_price
+                FROM manufacturer_inventory m
+                JOIN master_drug_table d on m.drug_id = d.drug_id
+                JOIN company c on m.manufacturer_id = c.company_id;""";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            return rs;
+        } catch (SQLException e) {
+            throw e;
+        } 
     }
 }
