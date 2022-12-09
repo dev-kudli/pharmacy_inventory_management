@@ -112,11 +112,12 @@ public abstract class PharmacyManager {
     public static ResultSet fetchInventory(int pharmacyId) throws Exception {
         try {
             String query = """
-                select p.pharmacy_id, c.company_name, p.drug_id, p.quantity, p.cost_price, p.selling_price
-                from pharmacy_inventory p
-                join master_drug_table m on m.drug_id = p.drug_id
-                join company c on p.pharmacy_id = c.company_id
-                where pharmacy_id=%s""";
+                SELECT poi.item_id, md.drug_name, poi.quantity,  po.order_id, po.manufacturer_id, c.company_name as manufacturer_name, po.order_date, po.order_status
+                FROM pharmacy_order po
+                JOIN company c ON c.company_id=po.manufacturer_id
+                JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+                JOIN master_drug_table md ON md.drug_id=poi.item_id
+                WHERE po.pharmacy_id=1;""";
             query = String.format(query, pharmacyId);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
