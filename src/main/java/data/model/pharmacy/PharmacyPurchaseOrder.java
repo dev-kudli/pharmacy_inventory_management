@@ -16,7 +16,7 @@ public class PharmacyPurchaseOrder {
         this.manufactureId = manufactureId;
         this.purchaseOrderDate = purchaseOrderDate;
     }
-    
+  
     public int getOrderId() {
         return orderId;
     }

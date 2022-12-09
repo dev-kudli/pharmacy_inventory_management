@@ -4,11 +4,18 @@
  */
 package ui.pharmacy;
 
+import data.model.pharmacy.PharmacyOrderItem;
+import data.model.pharmacy.PharmacyPurchaseOrder;
+import data.model.pharmacy.PharmacyPurchaseOrderItem;
 import db.PharmacyManager;
 import static db.PharmacyManager.displayManufacturerInventory;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.Date;
 
 /**
  *
@@ -320,7 +327,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         );
         homeLayout.setVerticalGroup(
             homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+            .addGap(0, 622, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("HOME", home);
@@ -376,7 +383,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                 .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -469,7 +476,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 127, Short.MAX_VALUE))
+                .addGap(0, 129, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("ADD STORE", jPanel8);
@@ -601,7 +608,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 589, Short.MAX_VALUE)
+            .addGap(0, 591, Short.MAX_VALUE)
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel9Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -662,7 +669,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                     .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
@@ -1871,14 +1878,14 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         manufacturerDrugTable.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
         manufacturerDrugTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(1), "crocin", "J&J",  new Integer(10),  new Float(2.0)}
+                { new Integer(1), "crocin", null, "J&J",  new Integer(10),  new Float(2.0)}
             },
             new String [] {
-                "DRUG ID", "DRUG NAME", "MANUFACTURER NAME", "QUANTITY", "UNIT PRICE"
+                "DRUG ID", "DRUG NAME", "MANUFACTURE ID", "MANUFACTURER NAME", "QUANTITY", "UNIT PRICE"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1904,17 +1911,17 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         purchaseOrderTable.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
         purchaseOrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "DRUG ID", "DRUG NAME", "MANUFACTURER NAME", "QUANTITY", "UNIT PRICE", "TOTAL"
+                "DRUG ID", "DRUG NAME", "MANUACTURE ID", "MANUFACTURER NAME", "QUANTITY", "UNIT PRICE", "TOTAL"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2063,7 +2070,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel34Layout.createSequentialGroup()
                         .addComponent(jLabel54)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                         .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13))
                     .addGroup(jPanel34Layout.createSequentialGroup()
@@ -2083,7 +2090,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                     .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("PURCHASE STOCK", jPanel34);
@@ -2303,7 +2310,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         );
         jPanel46Layout.setVerticalGroup(
             jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 589, Short.MAX_VALUE)
+            .addGap(0, 591, Short.MAX_VALUE)
             .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel46Layout.createSequentialGroup()
                     .addComponent(jPanel50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2408,7 +2415,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                     .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
@@ -2424,7 +2431,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         );
         jPanel47Layout.setVerticalGroup(
             jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 589, Short.MAX_VALUE)
+            .addGap(0, 591, Short.MAX_VALUE)
             .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel47Layout.createSequentialGroup()
                     .addContainerGap()
@@ -2525,7 +2532,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                     .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel48Layout = new javax.swing.GroupLayout(jPanel48);
@@ -2541,7 +2548,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         );
         jPanel48Layout.setVerticalGroup(
             jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 589, Short.MAX_VALUE)
+            .addGap(0, 591, Short.MAX_VALUE)
             .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel48Layout.createSequentialGroup()
                     .addContainerGap()
@@ -2708,9 +2715,10 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
 
         int drugid = Integer.parseInt(manufacturerDrugTable.getValueAt(selectedIdx, 0).toString());
         String drugName = manufacturerDrugTable.getValueAt(selectedIdx, 1).toString();
-        String manufacturerName = manufacturerDrugTable.getValueAt(selectedIdx, 2).toString();
-        int quantity = Integer.parseInt(manufacturerDrugTable.getValueAt(selectedIdx, 3).toString());
-        float sellingPrice = Float.parseFloat(manufacturerDrugTable.getValueAt(selectedIdx, 4).toString());
+        int manufacturerId = Integer.parseInt(manufacturerDrugTable.getValueAt(selectedIdx, 2).toString());
+        String manufacturerName = manufacturerDrugTable.getValueAt(selectedIdx, 3).toString();
+        int quantity = Integer.parseInt(manufacturerDrugTable.getValueAt(selectedIdx, 4).toString());
+        float sellingPrice = Float.parseFloat(manufacturerDrugTable.getValueAt(selectedIdx, 5).toString());
 
                 
         float orderQuantity = Float.parseFloat(jCombQuantity.getSelectedItem().toString()); 
@@ -2721,10 +2729,11 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
 
         rowData[0] = drugid;
         rowData[1] = drugName;
-        rowData[2] = manufacturerName;
-        rowData[3] = quantity;
-        rowData[4] = sellingPrice;
-        rowData[5] = totalPrice;
+        rowData[2] = manufacturerId;
+        rowData[3] = manufacturerName;
+        rowData[4] = quantity;
+        rowData[5] = sellingPrice;
+        rowData[6] = totalPrice;
         
         purchaseTable.addRow(rowData);
         
@@ -2796,7 +2805,6 @@ DefaultTableModel manufactureTable= (DefaultTableModel)manufacturerDrugTable.get
     while(rs.next())
     {
         int manufacturerId = rs.getInt("manufacturer_id");
-        String companyName = rs.getString("company_name");
         String manufacturerName = rs.getString("manufacturer_name");
         int drugid = rs.getInt("drug_id");
         String drugName = rs.getString("drug_name");
@@ -2808,9 +2816,10 @@ DefaultTableModel manufactureTable= (DefaultTableModel)manufacturerDrugTable.get
 
         rowData[0] = drugid;
         rowData[1] = drugName;
-        rowData[2] = manufacturerName;
-        rowData[3] = quantity;
-        rowData[4] = sellingPrice;
+        rowData[2] = manufacturerId;
+        rowData[3] = manufacturerName;
+        rowData[4] = quantity;
+        rowData[5] = sellingPrice;
         
         manufactureTable.addRow(rowData);
  
@@ -2827,16 +2836,44 @@ DefaultTableModel manufactureTable= (DefaultTableModel)manufacturerDrugTable.get
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+DefaultTableModel purchaseTable= (DefaultTableModel)purchaseOrderTable.getModel();
+int companyId = 1;
+
+for (int count = 0; count < purchaseTable.getRowCount(); count++)
+{
+        int drugid = Integer.parseInt(purchaseOrderTable.getValueAt(count, 0).toString());
+        String drugName = purchaseOrderTable.getValueAt(count, 1).toString();
+         int manufacturerId = Integer.parseInt(purchaseOrderTable.getValueAt(count, 2).toString());
+        String manufacturerName = purchaseOrderTable.getValueAt(count, 3).toString();
+        int quantity = Integer.parseInt(purchaseOrderTable.getValueAt(count, 4).toString());
+        float sellingPrice = Float.parseFloat(purchaseOrderTable.getValueAt(count, 5).toString());
+        Date orderdate = new Date();
+
+        PharmacyPurchaseOrder pharmacyPurchaseOrder = new PharmacyPurchaseOrder(companyId,manufacturerId,orderDate);
+        
+        PharmacyOrderItem  pharmacyOrderItem = new PharmacyOrderItem(drugid,quantity);
+        
+        List<PharmacyOrderItem> orderItems = pharmacyPurchaseOrder.getOrderItems();
+        orderItems.add(pharmacyOrderItem);
+        
+        //QUERY
+        
+        
+
+}       
+
+
 //PharmacyPurchaseOrder;
-//    private int orderId;
+
 //    private final int pharmacyCompanyId;
 //    private final int manufactureId;
 //    private final Date purchaseOrderDate;
-//    private String orderStatus;
 //    private final List<PharmacyOrderItem> orderItems = new ArrayList<>();
 //    
-//        private int pharmacyPurchaseOrderId;
-//    private int pharmacyDrugId;
+List<PharmacyOrderItem> orderItems = new ArrayList<>();
+
+
+//    private int DrugId;
 //    private int quantity;
 //    private int unitPrice;
 
