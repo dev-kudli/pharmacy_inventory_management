@@ -1,34 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package data.model.pharmacy;
 import data.model.common.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author shreyajaiswal
- */
 public class PharmacyPurchaseOrder {
+    private int orderId;
     private final int pharmacyCompanyId;
-    private final int pharmacydistributorId;
+    private final int manufactureId;
     private final Date purchaseOrderDate;
+    private String orderStatus;
     private final List<PharmacyOrderItem> orderItems = new ArrayList<>();
 
-    public PharmacyPurchaseOrder(int pharmacyCompanyId, int pharmacydistributorId, Date purchaseOrderDate) {
+    public PharmacyPurchaseOrder(int pharmacyCompanyId, int manufactureId, Date purchaseOrderDate) {
         this.pharmacyCompanyId = pharmacyCompanyId;
-        this.pharmacydistributorId = pharmacydistributorId;
+        this.manufactureId = manufactureId;
         this.purchaseOrderDate = purchaseOrderDate;
+    }
+    
+    public int getOrderId() {
+        return orderId;
+    }
+    
+    public void setOrderId(int id) {
+        this.orderId = id;
+    }
+    
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+    
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public int getPharmacyCompanyId() {
         return pharmacyCompanyId;
     }
 
-    public int getPharmacydistributorId() {
-        return pharmacydistributorId;
+    public int getPharmacymanufactureId() {
+        return manufactureId;
     }
 
     public Date getPurchaseOrderDate() {
