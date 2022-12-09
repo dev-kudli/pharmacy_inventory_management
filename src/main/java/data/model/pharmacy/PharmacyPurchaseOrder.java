@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PharmacyPurchaseOrder {
-    private final int pharmacyCompanyId;
+    private int orderId;
+    private final int pharmacyId;
     private final int manufactureId;
     private final Date purchaseOrderDate;
     private String orderStatus;
-    private final List<PharmacyOrderItem> orderItems = new ArrayList<>();
+    private final List<PharmacyPurchaseOrderItem> orderItems = new ArrayList<>();
 
-    public PharmacyPurchaseOrder(int pharmacyCompanyId, int manufactureId, Date purchaseOrderDate) {
-        this.pharmacyCompanyId = pharmacyCompanyId;
+    public PharmacyPurchaseOrder(int pharmacyId, int manufactureId, Date purchaseOrderDate) {
+        this.pharmacyId = pharmacyId;
         this.manufactureId = manufactureId;
         this.purchaseOrderDate = purchaseOrderDate;
     }
@@ -20,10 +21,10 @@ public class PharmacyPurchaseOrder {
         return orderId;
     }
     
-    public void setOrderId(int id) {
-        this.orderId = id;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
-    
+        
     public String getOrderStatus() {
         return orderStatus;
     }
@@ -32,8 +33,8 @@ public class PharmacyPurchaseOrder {
         this.orderStatus = orderStatus;
     }
 
-    public int getPharmacyCompanyId() {
-        return pharmacyCompanyId;
+    public int getPharmacyId() {
+        return pharmacyId;
     }
 
     public int getPharmacymanufactureId() {
@@ -44,7 +45,7 @@ public class PharmacyPurchaseOrder {
         return purchaseOrderDate;
     }
     
-    public List<PharmacyOrderItem> getOrderItems() {
+    public List<PharmacyPurchaseOrderItem> getOrderItems() {
         return orderItems;
     }
 }
