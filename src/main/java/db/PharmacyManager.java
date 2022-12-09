@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class PharmacyManager {
+public abstract class PharmacyManager {
     public static java.sql.Connection con = Connection.getConnection();
     public static boolean createOrder(PharmacyPurchaseOrder order) throws Exception {
         boolean isCreated = true;
