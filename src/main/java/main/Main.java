@@ -11,7 +11,7 @@ public class Main {
         //frame.showPharmacyAdminPanel();
         
         //frame.setVisible(false);
-        frame.showProductManagerPanel();
+//        frame.showProductManagerPanel();
     } catch (Exception e) {
         System.out.println(e);
     }
