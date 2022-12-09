@@ -1,4 +1,4 @@
-package data.model.pharmacy;
+  package data.model.pharmacy;
 
 import data.model.common.Date;
 

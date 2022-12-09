@@ -8,7 +8,10 @@ public class Main {
         System.out.println("Welcome to Pharma Inventory Management");
         MainFrame frame = new MainFrame();
         frame.setVisible(true);
-        frame.showPharmacyAdminPanel();
+        //frame.showPharmacyAdminPanel();
+        
+        //frame.setVisible(false);
+        frame.showProductManagerPanel();
     } catch (Exception e) {
         System.out.println(e);
     }
