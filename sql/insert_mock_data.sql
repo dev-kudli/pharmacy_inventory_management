@@ -19,3 +19,5 @@ insert into pharmacy_order_item(order_item_id, order_id, item_id, quantity) valu
 insert into pharmacy_order_item(order_item_id, order_id, item_id, quantity) values(2, 1, 1, 5);
 insert into pharmacy_order_item(order_item_id, order_id, item_id, quantity) values(3, 1, 1, 6);
 insert into pharmacy_order_item(order_item_id, order_id, item_id, quantity) values(4, 2, 1, 1);
+
+insert into pharmacy_inventory(pharmacy_id, drug_id, quantity, cost_price, selling_price) values(1, 1, 5, 10, 12);

@@ -1,13 +1,22 @@
 package data.model.pharmacy;
 
-public class PharmacyPurchaseOrderItem {
-    public int drugId;
-    public int quantity;
-    public float unitPrice;
+import data.model.common.Drug;
 
-    public PharmacyPurchaseOrderItem(int drugId, int quantity, float unitPrice) {
-        this.drugId = drugId;
+
+public class PharmacyPurchaseOrderItem {
+    private final Drug drug;
+    private final int quantity;
+
+    public PharmacyPurchaseOrderItem(Drug drug, int quantity) {
+        this.drug = drug;
         this.quantity = quantity;
-        this.unitPrice = unitPrice;
-    }   
+    }
+
+    public Drug getDrug() {
+        return drug;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
 }

@@ -48,12 +48,12 @@ foreign key (order_id) references pharmacy_order(order_id)
 
 DROP TABLE pharmacy_inventory;
 CREATE TABLE pharmacy_inventory(
+inventory_id INT primary key auto_increment,
 pharmacy_id INT,
 drug_id INT,
 quantity BIGINT NOT NULL,
 cost_price BIGINT,
 selling_price BIGINT,
-PRIMARY KEY(pharmacy_id, drug_id),
 FOREIGN KEY (drug_id) REFERENCES master_drug_table(drug_id),
 FOREIGN KEY (pharmacy_id) REFERENCES company(company_id)
 );

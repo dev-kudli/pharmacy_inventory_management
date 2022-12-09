@@ -1,6 +1,6 @@
 package db;
 
-import static db.PharmacyManager.con;
+import data.model.pharmacy.PharmacyPurchaseOrder;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,17 +10,18 @@ public abstract class ManufacturerManager {
     private final static String FILENAME = "ManufacturerManager";
     public static java.sql.Connection con = Connection.getConnection();
     /**
-     * @param orderId - ID of an Order
+     * @param order - Order Class
      * @param status - Status of the order (Refer constants file to read values)
      * @return true if operation succeeds
      * @throws java.lang.Exception
      */
-    public static boolean updateOrder(int orderId, String status) throws Exception {
+    public static boolean updateOrder(PharmacyPurchaseOrder order, String status) throws Exception {
         boolean isUpdated = false;
         try {
-            String queryToUpdateOrder = String.format("UPDATE distributor_order SET order_status=\"%s\" WHERE order_id=%s", status, orderId);
+            String queryToUpdateOrder = String.format("UPDATE distributor_order SET order_status=\"%s\" WHERE order_id=%s", status, order.getOrderId());
             PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
             preparedStmt.execute();
+            PharmacyManager.updateStockAndQuantity(order);
             return !isUpdated;
         } catch (SQLException e) {
             throw new Exception(FILENAME + "->" + "updateOrder" + "->" + e);
