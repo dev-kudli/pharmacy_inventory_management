@@ -4,6 +4,10 @@
  */
 package ui.pharmacy;
 
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author shreyajaiswal
@@ -148,7 +152,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
         jPanel48 = new javax.swing.JPanel();
         jPanel52 = new javax.swing.JPanel();
         jScrollPane19 = new javax.swing.JScrollPane();
-        jTable19 = new javax.swing.JTable();
+        table1 = new javax.swing.JTable();
         jPanel53 = new javax.swing.JPanel();
         jCheckBox68 = new javax.swing.JCheckBox();
         jCheckBox69 = new javax.swing.JCheckBox();
@@ -171,7 +175,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
         home.setLayout(homeLayout);
         homeLayout.setHorizontalGroup(
             homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1209, Short.MAX_VALUE)
+            .addGap(0, 1199, Short.MAX_VALUE)
         );
         homeLayout.setVerticalGroup(
             homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +225,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField18, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE))
+                .addComponent(jTextField18, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE))
         );
         jPanel25Layout.setVerticalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,7 +250,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1191, Short.MAX_VALUE))
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1181, Short.MAX_VALUE))
                     .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -300,7 +304,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(jCheckBox34)
                 .addGap(138, 138, 138)
-                .addComponent(jTextField22, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
+                .addComponent(jTextField22, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
                 .addGap(114, 114, 114))
         );
         jPanel27Layout.setVerticalGroup(
@@ -360,7 +364,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1209, Short.MAX_VALUE)
+            .addGap(0, 1199, Short.MAX_VALUE)
             .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel20Layout.createSequentialGroup()
                     .addContainerGap()
@@ -688,7 +692,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -752,7 +756,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(jCheckBox35)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField23, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+                .addComponent(jTextField23, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
                 .addGap(234, 234, 234))
         );
         jPanel28Layout.setVerticalGroup(
@@ -856,7 +860,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox43)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField32, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
+                .addComponent(jTextField32, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE))
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -882,7 +886,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
                     .addComponent(jPanel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel33Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 1191, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 1181, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel33Layout.setVerticalGroup(
@@ -962,7 +966,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox48)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField33, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE))
+                .addComponent(jTextField33, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE))
         );
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1069,7 +1073,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(jCheckBox56)
                 .addGap(138, 138, 138)
-                .addComponent(jTextField42, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+                .addComponent(jTextField42, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
                 .addGap(114, 114, 114))
         );
         jPanel41Layout.setVerticalGroup(
@@ -1140,9 +1144,13 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("MANAGE STOCK", manageStock);
 
-        jTable19.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
-        jTable19.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {"102", "133", "22-12-2022", "vicks", "2", "98"},
+                {"101", "122", "22-15-2001", "paracetomol", "1", "36"},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -1152,7 +1160,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
                 "STORE ID", "SALES ORDER ID", "ORDER DATE", "DRUG NAME", "QUANTITY", "UNIT PRICE"
             }
         ));
-        jScrollPane19.setViewportView(jTable19);
+        jScrollPane19.setViewportView(table1);
 
         jPanel53.setBorder(javax.swing.BorderFactory.createTitledBorder("FILTER SALES ORDER BY"));
 
@@ -1167,6 +1175,17 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
 
         jCheckBox70.setText("DRUG NAME");
 
+        jTextField46.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField46ActionPerformed(evt);
+            }
+        });
+        jTextField46.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField46KeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel53Layout = new javax.swing.GroupLayout(jPanel53);
         jPanel53.setLayout(jPanel53Layout);
         jPanel53Layout.setHorizontalGroup(
@@ -1178,7 +1197,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(jCheckBox70)
                 .addGap(138, 138, 138)
-                .addComponent(jTextField46, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
+                .addComponent(jTextField46, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
                 .addGap(114, 114, 114))
         );
         jPanel53Layout.setVerticalGroup(
@@ -1238,7 +1257,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
         jPanel48.setLayout(jPanel48Layout);
         jPanel48Layout.setHorizontalGroup(
             jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1209, Short.MAX_VALUE)
+            .addGap(0, 1199, Short.MAX_VALUE)
             .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel48Layout.createSequentialGroup()
                     .addContainerGap()
@@ -1392,6 +1411,19 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox36ActionPerformed
 
+    private void jTextField46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField46ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField46ActionPerformed
+
+    private void jTextField46KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField46KeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel table = (DefaultTableModel)table1.getModel();
+        String search = jTextField46.getText().toLowerCase();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(table);
+        table1.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search)) ;
+    }//GEN-LAST:event_jTextField46KeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CompanyName;
@@ -1506,7 +1538,6 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
     private javax.swing.JTable jTable13;
     private javax.swing.JTable jTable14;
     private javax.swing.JTable jTable16;
-    private javax.swing.JTable jTable19;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable8;
@@ -1532,5 +1563,6 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
     private javax.swing.JLabel pharmacyAdminName;
     private javax.swing.JLabel pharmacyLogo;
     private javax.swing.JPanel storeManagers;
+    private javax.swing.JTable table1;
     // End of variables declaration//GEN-END:variables
 }

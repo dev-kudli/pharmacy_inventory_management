@@ -73,8 +73,8 @@ public class ManufacturerManagerPanel extends javax.swing.JPanel {
                 .addGap(234, 234, 234))
             .addGroup(PharmacyControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PharmacyControlPanelLayout.createSequentialGroup()
-                    .addGap(85, 85, 85)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(89, 89, 89)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(418, Short.MAX_VALUE)))
         );
 
