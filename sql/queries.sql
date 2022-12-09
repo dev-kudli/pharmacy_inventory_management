@@ -11,7 +11,16 @@ join company c on c.company_id=po.pharmacy_id
 WHERE po.manufacturer_id=1;
 
 #3.View All Orders of a Pharmacy
-SELECT po.order_id, po.manufacturer_id, c.company_name as manufacturer_name, po.order_date, po.order_status
+SELECT poi.item_id, md.drug_name, poi.quantity,  po.order_id, po.manufacturer_id, c.company_name as manufacturer_name, po.order_date, po.order_status
 FROM pharmacy_order po
 join company c on c.company_id=po.manufacturer_id
+join pharmacy_order_item poi on poi.order_id = po.order_id
+join master_drug_table md on md.drug_id=poi.item_id
 WHERE po.pharmacy_id=1;
+
+#4.View Pharmacy Inventory
+select p.pharmacy_id, c.company_name, p.drug_id, p.quantity, p.cost_price, p.selling_price
+from pharmacy_inventory p
+join master_drug_table m on m.drug_id = p.drug_id
+join company c on p.pharmacy_id = c.company_id
+where pharmacy_id=1;
