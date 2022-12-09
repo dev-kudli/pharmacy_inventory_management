@@ -37,6 +37,8 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         initComponents();
         jLabelOrderstatus.setVisible(false);
         jLabelOrderStatusValue.setVisible(false);
+       
+        jButtonInvoice.setVisible(false);
     }
 
     /**
@@ -197,7 +199,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         purchaseOrderTable = new javax.swing.JTable();
         jLabel42 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
-        jButton19 = new javax.swing.JButton();
+        jButtonInvoice = new javax.swing.JButton();
         jPanel35 = new javax.swing.JPanel();
         jCheckBox44 = new javax.swing.JCheckBox();
         jCheckBox45 = new javax.swing.JCheckBox();
@@ -641,7 +643,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         );
         manageStoresLayout.setVerticalGroup(
             manageStoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneManageStores, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+            .addComponent(jTabbedPaneManageStores)
         );
 
         jTabbedPane1.addTab("MANAGE STORES", manageStores);
@@ -1156,7 +1158,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         );
         storeManagersLayout.setVerticalGroup(
             storeManagersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+            .addComponent(jTabbedPane4)
         );
 
         jTabbedPane1.addTab("MANAGE STORE MANAGERS", storeManagers);
@@ -1482,7 +1484,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
 
         jLabel44.setText("TOTAL PURCHASE ORDER");
 
-        jButton19.setText("GENERATE INVOICE");
+        jButtonInvoice.setText("GENERATE INVOICE");
 
         jPanel35.setBorder(javax.swing.BorderFactory.createTitledBorder("SEARCH BY"));
 
@@ -1553,10 +1555,12 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         });
 
         jLabelOrderstatus.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabelOrderstatus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelOrderstatus.setText("ORDER STATUS");
 
         jLabelOrderStatusValue.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabelOrderStatusValue.setForeground(new java.awt.Color(204, 0, 0));
+        jLabelOrderStatusValue.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelOrderStatusValue.setText("PROCESSING");
 
         javax.swing.GroupLayout PurchaseStockLayout = new javax.swing.GroupLayout(PurchaseStock);
@@ -1576,7 +1580,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                     .addGroup(PurchaseStockLayout.createSequentialGroup()
                         .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton19)
+                        .addComponent(jButtonInvoice)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1637,7 +1641,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PurchaseStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelTotalOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1731,7 +1735,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         );
         manageInventoryLayout.setVerticalGroup(
             manageInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+            .addComponent(jTabbedPane5)
         );
 
         jTabbedPane1.addTab("MANAGE INVENTORY", manageInventory);
@@ -2077,7 +2081,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         );
         jPanel45Layout.setVerticalGroup(
             jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+            .addComponent(jTabbedPane6)
         );
 
         jTabbedPane1.addTab("SALES REPORT", jPanel45);
@@ -2159,7 +2163,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -2498,7 +2502,6 @@ for (int count = 0; count < jTableViewStock.getRowCount(); count++)
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
@@ -2512,6 +2515,7 @@ for (int count = 0; count < jTableViewStock.getRowCount(); count++)
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButtonInvoice;
     private javax.swing.JCheckBox jCheckBox36;
     private javax.swing.JCheckBox jCheckBox37;
     private javax.swing.JCheckBox jCheckBox38;
