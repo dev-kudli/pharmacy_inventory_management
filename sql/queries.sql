@@ -26,7 +26,7 @@ JOIN company c ON p.pharmacy_id = c.company_id
 WHERE pharmacy_id=1;
 
 #5.Fetch an Order
-SELECT poi.item_id, md.drug_name, poi.quantity,  po.order_id, po.manufacturer_id, c.company_name AS manufacturer_name, po.order_date, po.order_status
+SELECT poi.item_id, md.drug_name, poi.quantity,  po.order_id, po.manufacturer_id, c.company_name as manufacturer_name, po.order_date, po.order_status
 FROM pharmacy_order po
 JOIN company c ON c.company_id=po.manufacturer_id
 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
@@ -38,5 +38,3 @@ SELECT mi.drug_id, mi.quantity, md.drug_name
 FROM manufacturer_inventory mi
 JOIN master_drug_table md ON md.drug_id=mi.drug_id
 WHERE manufacturer_id=1;
-
-SELECT * FROM pharmacy_order po JOIN pharmacy_order_item poi WHERE po.order_id = poi.order_id;
