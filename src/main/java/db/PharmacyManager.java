@@ -240,7 +240,7 @@ public abstract class PharmacyManager {
      * @return INT - Number of Stores deleted
      * @throws java.lang.Exception
      */
-    public static int addStore(PharmacyStore store) throws Exception {
+    public static boolean addStore(PharmacyStore store) throws Exception {
         try {
             String queryToAddStore = "INSERT INTO pharmacy_store(pharmacy_id, store_name, store_address, store_zip, store_city)"
                     + "VALUES(?, ?, ?, ?, ?)";
@@ -251,6 +251,7 @@ public abstract class PharmacyManager {
             preparedStmt.setString (3, store.location.zipcode);
             preparedStmt.setString (3, store.location.city);
             preparedStmt.execute();
+            return true;
         } catch (SQLException e) {
             throw new Exception(FILENAME + "->" + "addStore" + "->" + e);
         }
