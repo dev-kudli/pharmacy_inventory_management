@@ -2291,7 +2291,7 @@ manufactureTable.setRowCount(0);
 
                     PharmacyPurchaseOrder pharmacyPurchaseOrder = new PharmacyPurchaseOrder(companyId,manufacturerId,orderdate);
                     Drug drug = new Drug(drugid,drugName);
-                    PharmacyPurchaseOrderItem  pharmacyOrderItem = new PharmacyPurchaseOrderItem(drug,quantity,sellingPrice);
+                    PharmacyPurchaseOrderItem  pharmacyOrderItem = new PharmacyPurchaseOrderItem(drug,quantity);
 
                     List<PharmacyPurchaseOrderItem> orderItems = pharmacyPurchaseOrder.getOrderItems();
                     orderItems.add(pharmacyOrderItem);
