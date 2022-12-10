@@ -786,6 +786,24 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
 
         jLabel14.setText("SELLING PRICE");
 
+        jTextFieldQuantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldQuantityKeyTyped(evt);
+            }
+        });
+
+        jTextFieldCp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldCpKeyTyped(evt);
+            }
+        });
+
+        jTextFieldSp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldSpKeyTyped(evt);
+            }
+        });
+
         jLabelManDrugId.setText("XXX");
 
         jLabelManDrugName.setText("XXX");
@@ -1554,12 +1572,19 @@ jTextFieldSp.setText(ManufactOrderTable.getValueAt(selectedIndx,4).toString());
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 //VALIDATIONS PENDING
-int drugId = Integer.valueOf(jLabelManDrugId.getText());
-String drugName = jLabelManDrugName.getText();
-int quantity = Integer.parseInt(jTextFieldQuantity.getText());
-float cp = Float.valueOf(jTextFieldCp.getText());
-float sp = Float.valueOf(jTextFieldSp.getText());
+//int drugId = Integer.valueOf(jLabelManDrugId.getText());
+//String drugName = jLabelManDrugName.getText();
+//int quantity = Integer.parseInt(jTextFieldQuantity.getText());
+//float cp = Float.valueOf(jTextFieldCp.getText());
+//float sp = Float.valueOf(jTextFieldSp.getText());
         // TODO add your handling code here:
+        if (jTextFieldQuantity.getText().isEmpty() || jTextFieldCp.getText().isEmpty() || jTextFieldSp.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Enter all the Details", "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }else{
+            
+        }
+        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void manufacturerDrugTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manufacturerDrugTableMouseEntered
@@ -1629,6 +1654,50 @@ UiDesignFunctions.searchEmployeeDetails(keyword, manufacturerDrugTable2);
     private void ManuOrderTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManuOrderTableMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_ManuOrderTableMouseEntered
+
+    private void jTextFieldQuantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldQuantityKeyTyped
+        // TODO add your handling code here:
+        char c = evt. getKeyChar ();
+        if (!Character.isDigit (c)){
+            JOptionPane.showMessageDialog(null, "Please enter Valid Quantity!", "Error", JOptionPane.ERROR_MESSAGE);
+           evt. consume ();
+        }
+    }//GEN-LAST:event_jTextFieldQuantityKeyTyped
+
+    private void jTextFieldCpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCpKeyTyped
+        // TODO add your handling code here:
+         if (Character.isLetter(evt.getKeyChar())) {
+             JOptionPane.showMessageDialog(null, "Please enter Valid Cost-Price", "Error", JOptionPane.ERROR_MESSAGE);
+             evt.consume();
+          } else {
+    // If the character is not a letter, try to parse it as a double
+    try {
+      Double.parseDouble(jTextFieldCp.getText() + evt.getKeyChar());
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Please Enter Valid Cost-Price", "Error", JOptionPane.ERROR_MESSAGE);
+        evt.consume();
+    }
+         }
+        
+    
+    }//GEN-LAST:event_jTextFieldCpKeyTyped
+
+    private void jTextFieldSpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSpKeyTyped
+        // TODO add your handling code here:
+         if (Character.isLetter(evt.getKeyChar())) {
+             JOptionPane.showMessageDialog(null, "Please enter valid Selling Price", "Error", JOptionPane.ERROR_MESSAGE);
+             evt.consume();
+          } else {
+    // If the character is not a letter, try to parse it as a double
+    try {
+      Double.parseDouble(jTextFieldSp.getText() + evt.getKeyChar());
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Please enter Valid Selling Price", "Error", JOptionPane.ERROR_MESSAGE);
+        evt.consume();
+    }
+         }
+        
+    }//GEN-LAST:event_jTextFieldSpKeyTyped
        public void searchEmployeeDetails(String keyword){
         DefaultTableModel tableSearch = (DefaultTableModel)ManuOrderTable.getModel();
         //DefaultTableModel tableEdit = (DefaultTableModel)jTableEdit.getModel();

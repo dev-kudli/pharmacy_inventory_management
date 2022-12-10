@@ -1245,10 +1245,19 @@
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="jTextFieldQuantity">
+                              <Events>
+                                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldQuantityKeyTyped"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JTextField" name="jTextFieldCp">
+                              <Events>
+                                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldCpKeyTyped"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JTextField" name="jTextFieldSp">
+                              <Events>
+                                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSpKeyTyped"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabelManDrugId">
                               <Properties>
