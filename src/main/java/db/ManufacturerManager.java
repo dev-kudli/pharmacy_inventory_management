@@ -44,7 +44,7 @@ public abstract class ManufacturerManager {
                 String drugName = rs.getString("drug_name");
                 int quantity = rs.getInt("quantity");
                 Drug drug = new Drug(drugId, drugName);
-                PharmacyPurchaseOrderItem item = new PharmacyPurchaseOrderItem(drug, quantity);
+                PharmacyPurchaseOrderItem item = new PharmacyPurchaseOrderItem(drug, quantity, 0);
                 PharmacyPurchaseOrder order = new PharmacyPurchaseOrder(pId, mId, new Date(13, 22, 2020));
                 order.setOrderId(oId);
                 List<PharmacyPurchaseOrderItem> orderItems = order.getOrderItems();
@@ -54,7 +54,7 @@ public abstract class ManufacturerManager {
                     String drugName1 = rs.getString("drug_name");
                     int quantity1 = rs.getInt("quantity");
                     Drug drug1 = new Drug(drugId1, drugName1);
-                    PharmacyPurchaseOrderItem item1 = new PharmacyPurchaseOrderItem(drug1, quantity1);
+                    PharmacyPurchaseOrderItem item1 = new PharmacyPurchaseOrderItem(drug1, quantity1, 0);
                     orderItems.add(item1);
                 }
                 PharmacyManager.updateStockAndQuantity(order);
