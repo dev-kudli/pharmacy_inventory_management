@@ -21,3 +21,6 @@ insert into pharmacy_order_item(order_item_id, order_id, item_id, quantity) valu
 insert into pharmacy_order_item(order_item_id, order_id, item_id, quantity) values(4, 2, 1, 1);
 
 insert into pharmacy_inventory(pharmacy_id, drug_id, quantity, cost_price, selling_price) values(1, 1, 5, 10, 12);
+
+INSERT INTO pharmacy_store(pharmacy_id, store_name, store_address, store_zip, store_city)
+VALUES(1, "Boston Center Pharmacy", "25 Fenway Street", "02118", "Boston");
