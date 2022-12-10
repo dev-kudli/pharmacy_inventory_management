@@ -2200,7 +2200,7 @@ int pharmacyId = 1;
         float sellingPrice = Float.parseFloat(manufacturerDrugTable.getValueAt(selectedIdx, 5).toString());
 
                 
-        float orderQuantity = Float.parseFloat(jCombQuantity.getSelectedItem().toString()); 
+        int orderQuantity = Integer.parseInt(jCombQuantity.getSelectedItem().toString()); 
         float totalPrice = orderQuantity*sellingPrice;
         jLabelTotalOrder.setText(Float.toString(totalPrice));
         System.out.println("TOTAL PRICE"+totalPrice );
@@ -2211,7 +2211,7 @@ int pharmacyId = 1;
         rowData[1] = drugName;
         rowData[2] = manufacturerId;
         rowData[3] = manufacturerName;
-        rowData[4] = quantity;
+        rowData[4] = orderQuantity;
         rowData[5] = sellingPrice;
         rowData[6] = totalPrice;
         
