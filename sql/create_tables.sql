@@ -46,6 +46,8 @@ quantity INT NOT NULL,
 foreign key (order_id) references pharmacy_order(order_id)
 );
 
+alter table pharmacy_order_item add column cost_price DECIMAL;
+
 DROP TABLE pharmacy_inventory;
 CREATE TABLE pharmacy_inventory(
 inventory_id INT primary key auto_increment,
