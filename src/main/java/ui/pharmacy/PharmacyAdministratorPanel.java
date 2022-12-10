@@ -219,7 +219,7 @@ int pharmacyId = 1;
         jTextField42 = new javax.swing.JTextField();
         jButton22 = new javax.swing.JButton();
         jScrollPane17 = new javax.swing.JScrollPane();
-        pharmacyOrderItemsTable = new javax.swing.JTable();
+        pharmacyOrderTable = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
         jPanel45 = new javax.swing.JPanel();
         jTabbedPane6 = new javax.swing.JTabbedPane();
@@ -1233,23 +1233,20 @@ int pharmacyId = 1;
                     .addComponent(jButton11)
                     .addGroup(ViewStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane12)
-                        .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(88, 88, 88))
-            .addGroup(ViewStockLayout.createSequentialGroup()
-                .addGap(563, 563, 563)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ViewStockLayout.setVerticalGroup(
             ViewStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ViewStockLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
@@ -1664,24 +1661,24 @@ int pharmacyId = 1;
             }
         });
 
-        pharmacyOrderItemsTable.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
-        pharmacyOrderItemsTable.setModel(new javax.swing.table.DefaultTableModel(
+        pharmacyOrderTable.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
+        pharmacyOrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ORDER ID", "ORDER DATE", "DRUG ID", "DRUG NAME", "MANUACTURE ID", "MANUFACTURER NAME", "QUANTITY", "UNIT PRICE", "TOTAL"
+                "ORDER ID", "ORDER DATE", "MANUACTURE ID", "MANUFACTURER NAME", "TOTAL QUANTITY", "TOTAL PRICE", "ORDER STATUS"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane17.setViewportView(pharmacyOrderItemsTable);
+        jScrollPane17.setViewportView(pharmacyOrderTable);
 
         jButton8.setText("VIEW ORDER PURCHASE HISTORY");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -1695,16 +1692,12 @@ int pharmacyId = 1;
         PurchaseStockHistoryLayout.setHorizontalGroup(
             PurchaseStockHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PurchaseStockHistoryLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addGroup(PurchaseStockHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PurchaseStockHistoryLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(PurchaseStockHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton8)
-                            .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 1290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(PurchaseStockHistoryLayout.createSequentialGroup()
-                        .addGap(555, 555, 555)
-                        .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton8)
+                    .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 1290, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         PurchaseStockHistoryLayout.setVerticalGroup(
@@ -1715,10 +1708,10 @@ int pharmacyId = 1;
                 .addGap(18, 18, 18)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("VIEW STOCK PURCHASE HISTORY", PurchaseStockHistory);
@@ -2478,10 +2471,10 @@ for (int count = 0; count < jTableViewStock.getRowCount(); count++)
 //JOIN master_drug_table md ON md.drug_id=poi.item_id
 //WHERE po.pharmacy_id=1
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-UiDesignFunctions.AlignTableContents(pharmacyOrderItemsTable);
+UiDesignFunctions.AlignTableContents(pharmacyOrderTable);
 
 
-DefaultTableModel purchaseOrderItemTable= (DefaultTableModel)pharmacyOrderItemsTable.getModel();
+DefaultTableModel purchaseOrderItemTable= (DefaultTableModel)pharmacyOrderTable.getModel();
 
 
 purchaseOrderItemTable.setRowCount(0);
@@ -2490,35 +2483,31 @@ purchaseOrderItemTable.setRowCount(0);
 //                FROM manufacturer_inventory m
    try
     {
-    ResultSet rs = PharmacyManager.fetchInventory(pharmacyId);
+    ResultSet rs = PharmacyManager.fetchAllOrders(pharmacyId);
     
     while(rs.next())
     {
         int orderId = rs.getInt("order_id");
-        int drugId = rs.getInt("item_id");
-        String drugName = rs.getString("drug_name");
+        String orderDate = rs.getString("order_date");
         int manufacturerId = rs.getInt("manufacturer_id");
         String manufacturerName = rs.getString("manufacturer_name");
-        int quantity = rs.getInt("quantity");
-        //float unitPrice = rs.getInt("price");
-        String orderDate = rs.getString("order_date");
-
-        //float totalPrice = quantity*unitPrice;
+        int totalQuant = rs.getInt("total_items");
+        String orderStatus = rs.getString("order_status");
+        String totalPrice =rs.getString("total_price");
 
  
         
         
-        Object[] rowData = new Object[9];
+        Object[] rowData = new Object[7];
 
         rowData[0] = orderId;
         rowData[1] = orderDate;
-        rowData[2] = drugId;
-        rowData[3] = drugName;
-        rowData[4] = manufacturerId;
-        rowData[5] = manufacturerName;
-        rowData[6] = quantity;
-        //rowData[7] = unitPrice;
-        //rowData[8] = totalPrice;
+        rowData[2] = manufacturerId;
+        rowData[3] = manufacturerName;
+        rowData[4] = totalQuant;
+        rowData[5] = totalPrice;
+        rowData[6] = orderStatus;
+  
         
         
 
@@ -2800,7 +2789,7 @@ manuOrderTable1.setRowCount(0);
     private javax.swing.JTable manufacturerDrugTable;
     private javax.swing.JLabel pharmacyAdminName;
     private javax.swing.JLabel pharmacyLogo;
-    private javax.swing.JTable pharmacyOrderItemsTable;
+    private javax.swing.JTable pharmacyOrderTable;
     private javax.swing.JTable purchaseOrderTable;
     private javax.swing.JPanel storeManagers;
     // End of variables declaration//GEN-END:variables
