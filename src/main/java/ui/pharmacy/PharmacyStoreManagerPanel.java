@@ -1287,7 +1287,7 @@ public class PharmacyStoreManagerPanel extends javax.swing.JPanel {
             .addComponent(jTabbedPane6)
         );
 
-        jTabbedPane1.addTab("SALES REPORT", jPanel45);
+        jTabbedPane1.addTab(" ", jPanel45);
 
         pharmacyAdminName.setText("CVS ADMIN");
 

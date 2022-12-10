@@ -1,16 +1,20 @@
 package db;
 
-import static db.PharmacyManager.con;
+import data.model.common.Date;
+import data.model.common.Drug;
+import data.model.pharmacy.PharmacyPurchaseOrder;
+import data.model.pharmacy.PharmacyPurchaseOrderItem;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public abstract class ManufacturerManager {
     private final static String FILENAME = "ManufacturerManager";
     public static java.sql.Connection con = Connection.getConnection();
     /**
-     * @param orderId - ID of an Order
+     * @param orderId - ID of the Order
      * @param status - Status of the order (Refer constants file to read values)
      * @return true if operation succeeds
      * @throws java.lang.Exception
@@ -18,9 +22,44 @@ public abstract class ManufacturerManager {
     public static boolean updateOrder(int orderId, String status) throws Exception {
         boolean isUpdated = false;
         try {
-            String queryToUpdateOrder = String.format("UPDATE distributor_order SET order_status=\"%s\" WHERE order_id=%s", status, orderId);
+            String queryToUpdateOrder = "UPDATE pharmacy_order SET order_status=\"%s\" WHERE order_id=%s";
+            queryToUpdateOrder = String.format(queryToUpdateOrder, status, orderId);
             PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
             preparedStmt.execute();
+            
+            String queryToFetchOrder = """
+                SELECT poi.item_id, md.drug_name, poi.quantity,  po.order_id, po.manufacturer_id, c.company_name as manufacturer_name, po.order_date, po.order_status, po.pharmacy_id
+                FROM pharmacy_order po
+                JOIN company c ON c.company_id=po.manufacturer_id
+                JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+                JOIN master_drug_table md ON md.drug_id=poi.item_id
+                WHERE po.order_id=1""";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(queryToFetchOrder);
+            if (rs.next()) {
+                int oId = rs.getInt("order_id");
+                int pId = rs.getInt("pharmacy_id");
+                int mId = rs.getInt("manufacturer_id");
+                int drugId = rs.getInt("item_id");
+                String drugName = rs.getString("drug_name");
+                int quantity = rs.getInt("quantity");
+                Drug drug = new Drug(drugId, drugName);
+                PharmacyPurchaseOrderItem item = new PharmacyPurchaseOrderItem(drug, quantity);
+                PharmacyPurchaseOrder order = new PharmacyPurchaseOrder(pId, mId, new Date(13, 22, 2020));
+                order.setOrderId(oId);
+                List<PharmacyPurchaseOrderItem> orderItems = order.getOrderItems();
+                orderItems.add(item);
+                while(rs.next()) {
+                    int drugId1 = rs.getInt("item_id");
+                    String drugName1 = rs.getString("drug_name");
+                    int quantity1 = rs.getInt("quantity");
+                    Drug drug1 = new Drug(drugId1, drugName1);
+                    PharmacyPurchaseOrderItem item1 = new PharmacyPurchaseOrderItem(drug1, quantity1);
+                    orderItems.add(item1);
+                }
+                PharmacyManager.updateStockAndQuantity(order);
+                ManufacturerManager.updateStock(order);
+            }
             return !isUpdated;
         } catch (SQLException e) {
             throw new Exception(FILENAME + "->" + "updateOrder" + "->" + e);
@@ -35,19 +74,15 @@ public abstract class ManufacturerManager {
      * @return true if operation succeeds
      * @throws java.lang.Exception
      */
-    public static boolean updateStock(int drugId, int manufacturerId, int quantity, String operation) throws Exception {
+    public static boolean updateStock(PharmacyPurchaseOrder order) throws Exception {
         boolean isUpdated = false;
-        String op = null;
-        switch (operation) {
-            case "add" -> op = "+";
-            case "sub" -> op = "-";
-            default -> throw new Exception("Invalid operand");
-        }
         try {
-            String queryToUpdateOrder;
-            queryToUpdateOrder = String.format("UPDATE manufacturer_inventory SET quantity=quantity%s%s WHERE drug_id=%s AND manufacturer_id=%s", op, quantity, drugId, manufacturerId);
-            PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
-            preparedStmt.execute();
+            for (PharmacyPurchaseOrderItem item : order.getOrderItems()) {
+                String queryToUpdateOrder = "UPDATE manufacturer_inventory SET quantity=quantity-%s WHERE drug_id=%s AND manufacturer_id=%s";
+                queryToUpdateOrder = String.format(queryToUpdateOrder, item.getQuantity(), item.getDrug().getDrugId(), order.getPharmacymanufactureId());
+                PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
+                preparedStmt.execute();
+            }
             return !isUpdated;
         } catch (SQLException e) {
             throw new Exception(FILENAME + "->" + "updateStock" + "->" + e);

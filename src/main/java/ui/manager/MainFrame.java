@@ -1,9 +1,14 @@
 package ui.manager;
 
 import java.awt.FlowLayout;
+import javax.swing.JTable;
 import ui.manufacturer.ManufacturerProductManager;
 import ui.pharmacy.PharmacyAdministratorPanel;
+<<<<<<< HEAD
 
+=======
+import ui.pharmacy.PharmacyOrderReport;
+>>>>>>> main
 
 public class MainFrame extends javax.swing.JFrame {
 
@@ -26,6 +31,15 @@ public class MainFrame extends javax.swing.JFrame {
         repaint();
         revalidate();
     }
+//        JTable table = new JTable();
+//        public void showPharmacyReportPabel() {
+//    //        getContentPane.removeAll();
+//        add(new PharmacyOrderReport(table));
+//        setLayout(new FlowLayout());
+//        repaint();
+//        revalidate();
+//    }
+//        
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
