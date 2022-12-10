@@ -98,16 +98,37 @@ public abstract class ManufacturerManager {
         try {
             //Build Query
             String query = """
-                           SELECT po.order_id, po.pharmacy_id, c.company_name as pharmacy_name, po.order_date, po.order_status
-                           FROM pharmacy_order po
-                           join company c on c.company_id=po.pharmacy_id
-                           WHERE po.manufacturer_id=%s""";
+                SELECT po.order_id, po.pharmacy_id, c.company_name as pharmacy_name, po.order_date, po.order_status
+                FROM pharmacy_order po
+                join company c on c.company_id=po.pharmacy_id
+                WHERE po.manufacturer_id=%s""";
             query = String.format(query, manufacturerId);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             return rs;
         } catch (SQLException e) {
             throw e;
-        } 
+        }
+    }
+    
+    /**
+     * @param manufacturerId - ID of the Manufacturer
+     * @return ResultSet if operation succeeds
+     * @throws java.lang.Exception
+     */
+    public static ResultSet fetchStock(int manufacturerId) throws Exception {
+        try {
+            String query = """
+                SELECT mi.drug_id, mi.quantity, md.drug_name
+                FROM manufacturer_inventory mi
+                JOIN master_drug_table md ON md.drug_id=mi.drug_id
+                WHERE manufacturer_id=%s""";
+            query = String.format(query, manufacturerId);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            return rs;
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "fetchStock" + "->" + e);
+        }
     }
 }
