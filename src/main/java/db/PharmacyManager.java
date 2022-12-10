@@ -77,16 +77,43 @@ public abstract class PharmacyManager {
         try {
             //Build Query
             String query = """
-                SELECT po.order_id, po.manufacturer_id, c.company_name as manufacturer_name, po.order_date, po.order_status
+                SELECT po.order_id, po.order_date, po.order_status, COUNT(poi.item_id) as total_items
                 FROM pharmacy_order po
-                join company c on c.company_id=po.manufacturer_id
-                WHERE po.pharmacy_id=%s""";
+                JOIN company c ON c.company_id=po.manufacturer_id
+                JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+                JOIN master_drug_table md ON md.drug_id=poi.item_id
+                WHERE po.pharmacy_id=%s
+                GROUP BY po.order_id, po.order_date, po.order_status""";
             query = String.format(query, pharmacyCompanyId);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             return rs;
         } catch (SQLException e) {
             throw new Exception(FILENAME + "->" + "fetchAllOrders" + "->" + e);
+        } 
+    }
+    
+        /**
+     * @param orderId - Order ID
+     * @return ResultSet if operation succeeds
+     * @throws java.lang.Exception
+     */
+    public static ResultSet fetchAllOrderItems(int orderId) throws Exception {
+        try {
+            //Build Query
+            String query = """
+                SELECT poi.item_id, md.drug_name, poi.quantity
+                FROM pharmacy_order po
+                JOIN company c ON c.company_id=po.manufacturer_id
+                JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+                JOIN master_drug_table md ON md.drug_id=poi.item_id
+                WHERE po.order_id=%s""";
+            query = String.format(query, orderId);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            return rs;
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "fetchAllOrderItems" + "->" + e);
         } 
     }
     
@@ -112,12 +139,11 @@ public abstract class PharmacyManager {
     public static ResultSet fetchInventory(int pharmacyId) throws Exception {
         try {
             String query = """
-                SELECT poi.item_id, md.drug_name, poi.quantity,  po.order_id, po.manufacturer_id, c.company_name as manufacturer_name, po.order_date, po.order_status
-                FROM pharmacy_order po
-                JOIN company c ON c.company_id=po.manufacturer_id
-                JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
-                JOIN master_drug_table md ON md.drug_id=poi.item_id
-                WHERE po.pharmacy_id=1""";
+                SELECT p.inventory_id, p.drug_id, p.quantity, p.cost_price, p.selling_price
+                FROM pharmacy_inventory p
+                JOIN master_drug_table m ON m.drug_id = p.drug_id
+                JOIN company c ON p.pharmacy_id = c.company_id
+                WHERE pharmacy_id=%s""";
             query = String.format(query, pharmacyId);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
