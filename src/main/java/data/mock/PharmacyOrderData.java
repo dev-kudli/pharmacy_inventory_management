@@ -9,7 +9,7 @@ import java.util.List;
 
 public class PharmacyOrderData {
     public static List<PharmacyPurchaseOrder> orders = new ArrayList<>();
-    public static List<PharmacyPurchaseOrder> generatePharmacyOrders() {
+    public static List<PharmacyPurchaseOrder> generatePharmacyOrders() throws Exception {
         Date date = new Date(12, 31, 2022);
         
         Drug crocin = new Drug(1, "Crocin");
@@ -23,7 +23,8 @@ public class PharmacyOrderData {
         order1.getOrderItems().add(item21);
 
         orders.add(order1);
-
+        
+        ManufacturerManager.updateOrder(2, "completed");
         return orders;
     }
     

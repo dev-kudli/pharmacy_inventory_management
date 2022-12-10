@@ -24,3 +24,12 @@ from pharmacy_inventory p
 join master_drug_table m on m.drug_id = p.drug_id
 join company c on p.pharmacy_id = c.company_id
 where pharmacy_id=1;
+
+SELECT poi.item_id, md.drug_name, poi.quantity,  po.order_id, po.manufacturer_id, c.company_name as manufacturer_name, po.order_date, po.order_status
+FROM pharmacy_order po
+JOIN company c ON c.company_id=po.manufacturer_id
+JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+JOIN master_drug_table md ON md.drug_id=poi.item_id
+WHERE po.order_id=1;
+
+select * from pharmacy_order po join pharmacy_order_item poi where po.order_id = poi.order_id;

@@ -117,7 +117,7 @@ public abstract class PharmacyManager {
                 JOIN company c ON c.company_id=po.manufacturer_id
                 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
                 JOIN master_drug_table md ON md.drug_id=poi.item_id
-                WHERE po.pharmacy_id=1;""";
+                WHERE po.pharmacy_id=1""";
             query = String.format(query, pharmacyId);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -135,42 +135,32 @@ public abstract class PharmacyManager {
     public static boolean updateStockAndQuantity(PharmacyPurchaseOrder order) throws Exception {
         boolean isUpdated = false;
         try {
-            //Check if item is present in the inventory
-            String findStockQuery = "SELECT * FROM pharmacy_inventory WHERE pharmacy_id=%s";
-            findStockQuery = String.format(findStockQuery, order.getPharmacyId());
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(findStockQuery);
-            
-            //If not, add the item to inventory
-            String queryToUpdateOrder;
-            if(!rs.next()) {
-                queryToUpdateOrder = """
-                    INSERT into pharmacy_inventory(pharmacy_id, drug_id, quantity)
-                    VALUES (?, ?, ?)""";
-                PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
-                for (PharmacyPurchaseOrderItem orderItem : order.getOrderItems()) {
+            for (PharmacyPurchaseOrderItem item : order.getOrderItems()) {
+                //Check if item is present in the inventory
+                String findStockQuery = "SELECT * FROM pharmacy_inventory WHERE pharmacy_id=%s AND drug_id=%s";
+                findStockQuery = String.format(findStockQuery, order.getPharmacyId(), item.getDrug().getDrugId());
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(findStockQuery);
+                
+                //If not, add the item to inventory
+                String queryToUpdateOrder;
+                if(!rs.next()) {
+                    queryToUpdateOrder = """
+                        INSERT into pharmacy_inventory(pharmacy_id, drug_id, quantity)
+                        VALUES (?, ?, ?)""";
+                    PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
                     preparedStmt.setInt (1, order.getPharmacyId());
-                    preparedStmt.setInt (2, orderItem.getDrug().getDrugId());
-                    preparedStmt.setInt (3, orderItem.getQuantity());
-                    preparedStmt.addBatch();
+                    preparedStmt.setInt (2, item.getDrug().getDrugId());
+                    preparedStmt.setInt (3, item.getQuantity());
+                    preparedStmt.execute();
                 }
-                preparedStmt.executeBatch();
-            }
-            
-            //Else, update the quantity of item
-            else {
-                String op = null;
-                switch (op) {
-                    case "add" -> op = "+";
-                    case "sub" -> op = "-";
-                    default -> throw new Exception("Invalid operand");
-                }
-                queryToUpdateOrder = """
-                    UPDATE pharmacy_inventory
-                    SET quantity=quantity%s%s
-                    WHERE drug_id=%s AND pharmacy_id=%s""";
-                for (PharmacyPurchaseOrderItem orderItem : order.getOrderItems()) {
-                    queryToUpdateOrder = String.format(queryToUpdateOrder, op, orderItem.getQuantity(), orderItem.getDrug().getDrugId(), order.getPharmacyId());
+                //Else, update the quantity of item
+                else {
+                    queryToUpdateOrder = """
+                        UPDATE pharmacy_inventory
+                        SET quantity=quantity+%s
+                        WHERE drug_id=%s AND pharmacy_id=%s""";
+                    queryToUpdateOrder = String.format(queryToUpdateOrder, item.getQuantity(), item.getDrug().getDrugId(), order.getPharmacyId());
                     PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
                     preparedStmt.execute();
                 }
