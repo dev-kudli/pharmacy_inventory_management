@@ -1,38 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package data.model.common;
 
-/**
- *
- * @author shreyajaiswal
- */
 public class Company {
     
     private String companyName;
     private String companyType;
     private Date registeredDate;
+    private Location location;
     
-    
-    public Company(String companyType){
+    public Company(String companyName, String companyType) {
+        this.companyName = companyName;
         this.companyType = companyType;
     }
 
     public String getCompanyName() {
         return companyName;
     }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
+    
     public String getCompanyType() {
         return companyType;
-    }
-
-    public void setCompanyType(String companyType) {
-        this.companyType = companyType;
     }
 
     public Date getRegisteredDate() {
@@ -43,6 +28,11 @@ public class Company {
         this.registeredDate = registeredDate;
     }
     
-
+    public Location getLocation(Location location) {
+        return location;
+    }
     
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 }
