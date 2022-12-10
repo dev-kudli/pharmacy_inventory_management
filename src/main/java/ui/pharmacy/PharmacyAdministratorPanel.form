@@ -1785,9 +1785,9 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
                               <Component id="jPanel26" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1835,19 +1835,137 @@
                                   <Font name="Helvetica Neue" size="10" style="0"/>
                                 </Property>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="9" rowCount="4">
-                                    <Column editable="true" title="DRUG ID" type="java.lang.Object"/>
-                                    <Column editable="true" title="DRUG NAME" type="java.lang.Object"/>
-                                    <Column editable="true" title="DRUG TYPE" type="java.lang.Object"/>
-                                    <Column editable="true" title="MANUFACTURER" type="java.lang.Object"/>
-                                    <Column editable="true" title="AVAILABILITY" type="java.lang.Object"/>
-                                    <Column editable="true" title="QUANTITY" type="java.lang.Object"/>
-                                    <Column editable="true" title="EXPIRATION DATE" type="java.lang.Object"/>
-                                    <Column editable="true" title="MANUFACTURED DATE" type="java.lang.Object"/>
-                                    <Column editable="true" title="UNIT PRICE" type="java.lang.Object"/>
+                                  <Table columnCount="9" rowCount="6">
+                                    <Column editable="true" title="DRUG ID" type="java.lang.Object">
+                                      <Data value="456"/>
+                                      <Data value="1569"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                    </Column>
+                                    <Column editable="true" title="DRUG NAME" type="java.lang.Object">
+                                      <Data value="crocin"/>
+                                      <Data value="meftal"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                    </Column>
+                                    <Column editable="true" title="DRUG TYPE" type="java.lang.Object">
+                                      <Data value="usd"/>
+                                      <Data value="poi"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                    </Column>
+                                    <Column editable="true" title="MANUFACTURER" type="java.lang.Object">
+                                      <Data value="dts"/>
+                                      <Data value="sci"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                    </Column>
+                                    <Column editable="true" title="AVAILABILITY" type="java.lang.Object">
+                                      <Data value="45"/>
+                                      <Data value="15"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                    </Column>
+                                    <Column editable="true" title="QUANTITY" type="java.lang.Object">
+                                      <Data value="12"/>
+                                      <Data value="1"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                    </Column>
+                                    <Column editable="true" title="EXPIRATION DATE" type="java.lang.Object">
+                                      <Data value="6-7-22"/>
+                                      <Data value="6-12-22"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                    </Column>
+                                    <Column editable="true" title="MANUFACTURED DATE" type="java.lang.Object">
+                                      <Data value="6-4-21"/>
+                                      <Data value="6-11-21"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                    </Column>
+                                    <Column editable="true" title="UNIT PRICE" type="java.lang.Object">
+                                      <Data value="23"/>
+                                      <Data value="2"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                      <Data value="null"/>
+                                    </Column>
                                   </Table>
                                 </Property>
+                                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                  <TableColumnModel selectionModel="0">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                  </TableColumnModel>
+                                </Property>
+                                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                                </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable12MouseClicked"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -1866,29 +1984,24 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel43" min="-2" pref="105" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabel70" min="-2" pref="85" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="jTextField47" min="-2" pref="168" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jLabel69" min="-2" pref="68" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="jLabel70" min="-2" pref="85" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                                  </Group>
+                                                  <Component id="jLabel69" min="-2" pref="68" max="-2" attributes="0"/>
+                                                  <Component id="jLabel43" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
                                               </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jTextField48" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
                                                   <Component id="jTextField23" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel64" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
@@ -1916,7 +2029,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="235" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1936,19 +2049,19 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jLabel70" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                                                   <Component id="jTextField48" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel64" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                                                   <Component id="jTextField21" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace pref="16" max="32767" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
                                                   <Component id="jLabel43" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace pref="18" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
                                                   <Component id="jTextField47" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel68" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                                                   <Component id="jTextField43" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel70" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <EmptySpace max="32767" attributes="0"/>
