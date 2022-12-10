@@ -12,6 +12,12 @@ public class PharmacyStore {
         this.pharmacyId = pharmacyId;
         this.location = location;
     }
+    
+        public PharmacyStore(String storeName, int pharmacyId) {
+        this.storeName = storeName;
+        this.pharmacyId = pharmacyId;
+     
+    }
 
     public String getStoreName() {
         return storeName;

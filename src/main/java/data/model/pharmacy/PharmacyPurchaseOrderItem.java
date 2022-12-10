@@ -8,7 +8,7 @@ public class PharmacyPurchaseOrderItem {
     private final float selling_price;
     private final int quantity;
 
-    public PharmacyPurchaseOrderItem(Drug drug, int quantity) {
+    public PharmacyPurchaseOrderItem(Drug drug, int quantity, float selling_price) {
         this.drug = drug;
         this.quantity = quantity;
         this.selling_price = selling_price;

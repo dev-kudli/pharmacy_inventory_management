@@ -5,7 +5,5 @@ public class Contact {
     public String phone;
     public Location location;
     
-    public Contact() {
-        this.location = new Location();
-    }
+  
 }

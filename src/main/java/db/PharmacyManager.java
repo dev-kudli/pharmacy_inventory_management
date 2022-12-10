@@ -248,8 +248,8 @@ public abstract class PharmacyManager {
             preparedStmt.setInt (1, store.getPharmacyId());
             preparedStmt.setString (2, store.getStoreName());
             preparedStmt.setString (3, store.location.address);
-            preparedStmt.setString (3, store.location.zipcode);
-            preparedStmt.setString (3, store.location.city);
+            preparedStmt.setString (4, store.location.zipcode);
+            preparedStmt.setString (5, store.location.city);
             preparedStmt.execute();
             return true;
         } catch (SQLException e) {
