@@ -164,9 +164,9 @@ int pharmacyId = 1;
         jTabbedPane5 = new javax.swing.JTabbedPane();
         ViewStock = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jTableViewStock = new javax.swing.JTable();
+        jTableViewPharmStock = new javax.swing.JTable();
         jPanel33 = new javax.swing.JPanel();
-        jTextField32 = new javax.swing.JTextField();
+        jTextFieldKey = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         EditStock = new javax.swing.JPanel();
@@ -1180,26 +1180,31 @@ int pharmacyId = 1;
 
         jTabbedPane5.setBackground(new java.awt.Color(204, 204, 204));
 
-        jTableViewStock.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
-        jTableViewStock.setModel(new javax.swing.table.DefaultTableModel(
+        jTableViewPharmStock.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
+        jTableViewPharmStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "CROCIN", "A", "AXS", "Y", "1", "2022-12-09", "2020-12-09", "3"},
-                {"2", "PARA", "S", "SSS", "N", "2", "2022-12-09", "2020-12-09", "4"},
-                {"3", "CETRIZENE", "D", "CCC", "N", "6", "2023-12-09", "2020-12-09", "5"},
-                {null, null, null, null, null, null, null, null, null}
+                {"1", "CROCIN", "AXS", "1", "3"},
+                {"2", "PARA", "SSS", "2", "4"},
+                {"3", "CETRIZENE", "CCC", "6", "5"},
+                {null, null, null, null, null}
             },
             new String [] {
-                "DRUG ID", "DRUG NAME", "DRUG TYPE", "MANUFACTURER", "AVAILABILITY", "QUANTITY", "EXPIRATION DATE", "MANUFACTURED DATE", "UNIT PRICE"
+                "DRUG ID", "DRUG NAME", "MANUFACTURER", "QUANTITY", "UNIT PRICE"
             }
         ));
-        jScrollPane12.setViewportView(jTableViewStock);
+        jScrollPane12.setViewportView(jTableViewPharmStock);
 
         jPanel33.setBorder(javax.swing.BorderFactory.createTitledBorder("SEARCH BY"));
 
-        jTextField32.setText("SEARCH BY KEYWORD");
-        jTextField32.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldKey.setText("SEARCH ");
+        jTextFieldKey.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField32ActionPerformed(evt);
+                jTextFieldKeyActionPerformed(evt);
+            }
+        });
+        jTextFieldKey.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyKeyReleased(evt);
             }
         });
 
@@ -1209,14 +1214,14 @@ int pharmacyId = 1;
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addGap(290, 290, 290)
-                .addComponent(jTextField32, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                .addComponent(jTextFieldKey, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
                 .addGap(320, 320, 320))
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldKey, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
 
@@ -1251,8 +1256,8 @@ int pharmacyId = 1;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(248, 248, 248)
                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
@@ -1348,7 +1353,7 @@ int pharmacyId = 1;
             .addGroup(jPanel28Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1427,9 +1432,9 @@ int pharmacyId = 1;
         EditStockLayout.setVerticalGroup(
             EditStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditStockLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane5.addTab("EDIT STOCK", EditStock);
@@ -1636,7 +1641,7 @@ int pharmacyId = 1;
 
         jPanel41.setBorder(javax.swing.BorderFactory.createTitledBorder("SEARCH"));
 
-        jTextField42.setText("SEARCH FOR YOUR ORDER ID");
+        jTextField42.setText("SEARCH ");
         jTextField42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField42ActionPerformed(evt);
@@ -1739,9 +1744,9 @@ int pharmacyId = 1;
                     .addGroup(PurchaseStockHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1256, Short.MAX_VALUE)
                         .addComponent(jScrollPane17, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PurchaseStockHistoryLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(484, Short.MAX_VALUE)
                 .addGroup(PurchaseStockHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PurchaseStockHistoryLayout.createSequentialGroup()
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2439,50 +2444,36 @@ DefaultTableModel manufactureTable= (DefaultTableModel)manufacturerDrugTable.get
     }//GEN-LAST:event_manufacturerDrugTableMouseClicked
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-DefaultTableModel viewStockTable= (DefaultTableModel)jTableViewStock.getModel();
-
-
-
-for (int count = 0; count < jTableViewStock.getRowCount(); count++)
-{
-        int quantity = Integer.parseInt(purchaseOrderTable.getValueAt(count, 5).toString());
-        if(quantity<=5){
-           // jTableViewStock.setCOL
-        }
-            
-
-        
-        
-
-} 
-
-
+UiDesignFunctions.AlignTableContents(jTableViewPharmStock);
+DefaultTableModel pharmInvTable= (DefaultTableModel)jTableViewPharmStock.getModel();
+pharmInvTable.setRowCount(0);
 //SELECT m.manufacturer_id, c.company_name AS manufacturer_name, d.drug_id, d.drug_name, m.quantity, m.selling_price
 //                FROM manufacturer_inventory m
    try
     {
-    ResultSet rs = PharmacyManager.displayManufacturerInventory();
+    ResultSet rs = PharmacyManager.fetchInventory(pharmacyId);
     
     while(rs.next())
     {
-        int manufacturerId = rs.getInt("manufacturer_id");
-        String manufacturerName = rs.getString("manufacturer_name");
         int drugid = rs.getInt("drug_id");
         String drugName = rs.getString("drug_name");
+        String manufacturerName = rs.getString("manufacturer_name");
         int quantity = rs.getInt("quantity");
         float sellingPrice = rs.getFloat("selling_price");
         
+        //int manufacturerId = rs.getInt("manufacturer_id");
         
-        Object[] rowData = new Object[6];
+  
+        Object[] rowData = new Object[5];
 
         rowData[0] = drugid;
         rowData[1] = drugName;
-        rowData[2] = manufacturerId;
-        rowData[3] = manufacturerName;
-        rowData[4] = quantity;
-        rowData[5] = sellingPrice;
-        
-      //??manufactureTable.addRow(rowData);
+        rowData[2] = manufacturerName;
+        rowData[3] = quantity;
+        rowData[4] = sellingPrice;
+   
+            
+        pharmInvTable.addRow(rowData);
  
 
         
@@ -2492,12 +2483,36 @@ for (int count = 0; count < jTableViewStock.getRowCount(); count++)
     catch(Exception e){
         System.out.print(e);
     }
+
+
+
+
+//
+//        
+//    public static ResultSet fetchInventory(int pharmacyId) throws Exception {
+//        try {
+//            String query = """
+//                SELECT p.inventory_id, p.drug_id, p.quantity, p.cost_price, p.selling_price
+//                FROM pharmacy_inventory p
+//                JOIN master_drug_table m ON m.drug_id = p.drug_id
+//                JOIN company c ON p.pharmacy_id = c.company_id
+//                WHERE pharmacy_id=%s""";
+//            query = String.format(query, pharmacyId);
+//            Statement stmt = con.createStatement();
+//            ResultSet rs = stmt.executeQuery(query);
+//            return rs;
+//        } catch (SQLException e) {
+//            throw new Exception(FILENAME + "->" + "displayManufacturerInventory" + "->" + e);
+//        } 
+//    }
+    
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jTextField32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField32ActionPerformed
+    private void jTextFieldKeyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldKeyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField32ActionPerformed
+    }//GEN-LAST:event_jTextFieldKeyActionPerformed
 
     private void jTextField37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField37ActionPerformed
         // TODO add your handling code here:
@@ -2700,6 +2715,13 @@ catch(Exception e)
         // TODO add your handling code here:
     }//GEN-LAST:event_pharmacyOrderTableMouseClicked
 
+    private void jTextFieldKeyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldKeyKeyReleased
+String keyword = jTextFieldKey.getText();
+UiDesignFunctions.searchEmployeeDetails(keyword, jTableViewPharmStock);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldKeyKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddStore;
@@ -2863,7 +2885,7 @@ catch(Exception e)
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTablePharmStore;
-    private javax.swing.JTable jTableViewStock;
+    private javax.swing.JTable jTableViewPharmStock;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField2;
@@ -2878,7 +2900,6 @@ catch(Exception e)
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField30;
     private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField34;
     private javax.swing.JTextField jTextField35;
@@ -2901,6 +2922,7 @@ catch(Exception e)
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextFieldKey;
     private javax.swing.JTextField jTextFieldKeywordPharm1;
     private javax.swing.JPanel manageInventory;
     private javax.swing.JPanel manageStores;
