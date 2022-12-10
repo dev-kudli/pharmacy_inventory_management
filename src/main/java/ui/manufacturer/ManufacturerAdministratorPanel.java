@@ -114,7 +114,7 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
         manufacturerDrugTable = new javax.swing.JTable();
         jButton17 = new javax.swing.JButton();
         jPanel35 = new javax.swing.JPanel();
-        jTextField33 = new javax.swing.JTextField();
+        jTextFieldKeyMan = new javax.swing.JTextField();
         jLabel54 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -177,9 +177,9 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
         jPanel34Layout.setHorizontalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel34Layout.createSequentialGroup()
-                .addGap(292, 292, 292)
-                .addComponent(jTextFieldKeyword, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
-                .addGap(318, 318, 318))
+                .addGap(275, 275, 275)
+                .addComponent(jTextFieldKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(318, Short.MAX_VALUE))
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -741,19 +741,25 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
 
         jPanel35.setBorder(javax.swing.BorderFactory.createTitledBorder("SEARCH DRUGS"));
 
+        jTextFieldKeyMan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyManKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
         jPanel35Layout.setHorizontalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel35Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldKeyMan, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(190, 190, 190))
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
-                .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldKeyMan, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 15, Short.MAX_VALUE))
         );
 
@@ -942,24 +948,24 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
                 .addGroup(AddStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddStockLayout.createSequentialGroup()
                         .addGap(296, 296, 296)
-                        .addComponent(jLabel54)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel54))
                     .addGroup(AddStockLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(AddStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(AddStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(AddStockLayout.createSequentialGroup()
                                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("MANAGE STOCK", AddStock);
@@ -1595,6 +1601,14 @@ float sp = Float.valueOf(jTextFieldSp.getText());
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jTextFieldKeyManKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldKeyManKeyReleased
+String keyword = jTextFieldKeyMan.getText();
+UiDesignFunctions.searchEmployeeDetails(keyword, manufacturerDrugTable);
+UiDesignFunctions.searchEmployeeDetails(keyword, manufacturerDrugTable2);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldKeyManKeyReleased
        public void searchEmployeeDetails(String keyword){
         DefaultTableModel tableSearch = (DefaultTableModel)ManuOrderTable.getModel();
         //DefaultTableModel tableEdit = (DefaultTableModel)jTableEdit.getModel();
@@ -1687,8 +1701,8 @@ float sp = Float.valueOf(jTextFieldSp.getText());
     private javax.swing.JTable jTableDistributor;
     private javax.swing.JTextArea jTextAreaReceipt;
     private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextFieldCp;
+    private javax.swing.JTextField jTextFieldKeyMan;
     private javax.swing.JTextField jTextFieldKeyword;
     private javax.swing.JTextField jTextFieldQuantity;
     private javax.swing.JTextField jTextFieldSp;
