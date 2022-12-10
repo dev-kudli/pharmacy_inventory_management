@@ -1680,13 +1680,15 @@ int pharmacyId = 1;
         PurchaseStockHistoryLayout.setHorizontalGroup(
             PurchaseStockHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PurchaseStockHistoryLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
                 .addGroup(PurchaseStockHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8)
-                    .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 1290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PurchaseStockHistoryLayout.createSequentialGroup()
-                        .addGap(462, 462, 462)
+                        .addGap(33, 33, 33)
+                        .addGroup(PurchaseStockHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton8)
+                            .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 1290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(PurchaseStockHistoryLayout.createSequentialGroup()
+                        .addGap(555, 555, 555)
                         .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -1696,12 +1698,12 @@ int pharmacyId = 1;
                 .addContainerGap()
                 .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("VIEW STOCK PURCHASE HISTORY", PurchaseStockHistory);
@@ -2484,7 +2486,7 @@ purchaseOrderItemTable.setRowCount(0);
         String manufacturerName = rs.getString("manufacturer_name");
         int quantity = rs.getInt("quantity");
         //float unitPrice = rs.getInt("price");
-        //Date d = rs.getObject("order_date", date);
+        String orderDate = rs.getString("order_date");
 
         //float totalPrice = quantity*unitPrice;
 
@@ -2494,7 +2496,7 @@ purchaseOrderItemTable.setRowCount(0);
         Object[] rowData = new Object[9];
 
         rowData[0] = orderId;
-        //rowData[1] = orderDate;
+        rowData[1] = orderDate;
         rowData[2] = drugId;
         rowData[3] = drugName;
         rowData[4] = manufacturerId;
