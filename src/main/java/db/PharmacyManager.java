@@ -79,7 +79,7 @@ public abstract class PharmacyManager {
         try {
             //Build Query
             String query = """
-                SELECT po.order_id, po.order_date, po.manufacturer_id, c.company_name as manufacturer_name, po.order_status, COUNT(poi.item_id) as total_items, SUM(poi.cost_price*poi.quantity) as total_price
+                SELECT po.order_id, po.order_date, po.manufacturer_id, c.company_name AS manufacturer_name, po.order_status, COUNT(poi.item_id) AS total_items, SUM(poi.cost_price*poi.quantity) AS total_price
                 FROM pharmacy_order po
                 JOIN company c ON c.company_id=po.manufacturer_id
                 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
