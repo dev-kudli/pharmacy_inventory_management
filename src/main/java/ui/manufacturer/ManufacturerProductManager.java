@@ -215,12 +215,12 @@ public class ManufacturerProductManager extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "SALES ORDER ID", "ORDER DATE", "DRUG NAME", "QUANTITY", "UNIT PRICE"
+                "ORDER ID", "ORDER DATE", "DRUG NAME", "QUANTITY", "UNIT PRICE"
             }
         ));
         jScrollPane14.setViewportView(jTable14);
 
-        jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder("FILTER SALES ORDER BY"));
+        jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder("FILTER  ORDER BY"));
 
         jTextField22.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -411,7 +411,7 @@ public class ManufacturerProductManager extends javax.swing.JPanel {
 
         jTabbedPane4.addTab("VIEW CUSTOMERS", jPanel3);
 
-        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("STORE MANAGER DETAILS"));
+        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("CUSTOMER DETAILS"));
 
         jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder("CUSTOMER CREDENTIALS"));
 
@@ -831,7 +831,7 @@ public class ManufacturerProductManager extends javax.swing.JPanel {
         ));
         jScrollPane19.setViewportView(table1);
 
-        jPanel53.setBorder(javax.swing.BorderFactory.createTitledBorder("FILTER SALES ORDER BY"));
+        jPanel53.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jTextField46.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -853,13 +853,13 @@ public class ManufacturerProductManager extends javax.swing.JPanel {
             jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel53Layout.createSequentialGroup()
                 .addGap(398, 398, 398)
-                .addComponent(jTextField46, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+                .addComponent(jTextField46, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
                 .addGap(114, 114, 114))
         );
         jPanel53Layout.setVerticalGroup(
             jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel53Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(jTextField46, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -892,9 +892,9 @@ public class ManufacturerProductManager extends javax.swing.JPanel {
         jPanel52Layout.setVerticalGroup(
             jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel52Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jPanel53, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(jPanel53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -902,7 +902,7 @@ public class ManufacturerProductManager extends javax.swing.JPanel {
                     .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel48Layout = new javax.swing.GroupLayout(jPanel48);
