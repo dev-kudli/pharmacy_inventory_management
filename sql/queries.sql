@@ -1,35 +1,72 @@
-#1.View Manufacturer Inventory
-select m.manufacturer_id, c.company_name as manufacturer_name, d.drug_id, d.drug_name, m.quantity, m.selling_price
-from manufacturer_inventory m
-join master_drug_table d on m.drug_id = d.drug_id
-join company c on m.manufacturer_id = c.company_id;
+# MANUFACTURER
 
-#2.View All Orders of a Manufacturer
-SELECT po.order_id, po.pharmacy_id, c.company_name as pharmacy_name, po.order_date, po.order_status
+# View All Orders of a Manufacturer
+SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) as total_items
 FROM pharmacy_order po
-join company c on c.company_id=po.pharmacy_id
-WHERE po.manufacturer_id=1;
+JOIN company c ON c.company_id=po.pharmacy_id
+JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+WHERE po.manufacturer_id=1
+GROUP BY po.order_id, po.order_date, po.order_status;
 
-#3.View All Orders of a Pharmacy
-SELECT poi.item_id, md.drug_name, poi.quantity,  po.order_id, po.manufacturer_id, c.company_name as manufacturer_name, po.order_date, po.order_status
-FROM pharmacy_order po
-join company c on c.company_id=po.manufacturer_id
-join pharmacy_order_item poi on poi.order_id = po.order_id
-join master_drug_table md on md.drug_id=poi.item_id
-WHERE po.pharmacy_id=1;
+# View Manufacturer Stock
+SELECT mi.drug_id, mi.quantity, md.drug_name
+FROM manufacturer_inventory mi
+JOIN master_drug_table md ON md.drug_id=mi.drug_id
+WHERE manufacturer_id=1;
 
-#4.View Pharmacy Inventory
-select p.pharmacy_id, c.company_name, p.drug_id, p.quantity, p.cost_price, p.selling_price
-from pharmacy_inventory p
-join master_drug_table m on m.drug_id = p.drug_id
-join company c on p.pharmacy_id = c.company_id
-where pharmacy_id=1;
-
-SELECT poi.item_id, md.drug_name, poi.quantity,  po.order_id, po.manufacturer_id, c.company_name as manufacturer_name, po.order_date, po.order_status
+# Fetch Order Items for Manufacturer
+SELECT poi.item_id, md.drug_name, poi.quantity
 FROM pharmacy_order po
 JOIN company c ON c.company_id=po.manufacturer_id
 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
 JOIN master_drug_table md ON md.drug_id=poi.item_id
 WHERE po.order_id=1;
 
-select * from pharmacy_order po join pharmacy_order_item poi where po.order_id = poi.order_id;
+# PHARMACY
+# View Manufacturer Inventory
+SELECT m.manufacturer_id, c.company_name AS manufacturer_name, d.drug_id, d.drug_name, m.quantity, m.selling_price
+FROM manufacturer_inventory m
+JOIN master_drug_table d ON m.drug_id = d.drug_id
+JOIN company c ON m.manufacturer_id = c.company_id;
+
+# View All Orders of a Pharmacy
+SELECT po.order_id, po.order_date, po.order_status, COUNT(poi.item_id) as total_items
+FROM pharmacy_order po
+JOIN company c ON c.company_id=po.manufacturer_id
+JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+JOIN master_drug_table md ON md.drug_id=poi.item_id
+WHERE po.pharmacy_id=1
+GROUP BY po.order_id, po.order_date, po.order_status;
+
+# View Pharmacy Inventory
+SELECT p.inventory_id, p.drug_id, p.quantity, p.cost_price, p.selling_price
+FROM pharmacy_inventory p
+JOIN master_drug_table m ON m.drug_id = p.drug_id
+JOIN company c ON p.pharmacy_id = c.company_id
+WHERE pharmacy_id=1;
+
+# Fetch Order Items for Pharmacy
+SELECT poi.item_id, md.drug_name, poi.quantity
+FROM pharmacy_order po
+JOIN company c ON c.company_id=po.manufacturer_id
+JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+JOIN master_drug_table md ON md.drug_id=poi.item_id
+WHERE po.order_id=1;
+
+# View All Shipments Of Distributor
+SELECT s.shipment_id, p.order_id, p.order_status, s.distributor_id, c1.company_name AS distributor_name, s.transporter_id, c2.company_name AS transporter_name, p.order_date
+FROM shipment s
+JOIN pharmacy_order p ON p.order_id=s.order_id
+JOIN company c1 ON s.distributor_id=c1.company_id
+JOIN company c2 ON s.transporter_id=c2.company_id
+WHERE c1.company_id=1;
+
+# Assign Transporter
+UPDATE shipment
+SET transporter_id=1
+WHERE shipment_id=1;
+
+#8.View Transporter Vehicles
+SELECT tv.transporter_id, c.company_name AS transporter_name, tv.vehicle_count
+FROM transport_vehicle tv
+JOIN company c ON tv.transporter_id=c.company_id;
