@@ -1,7 +1,7 @@
 # MANUFACTURER
 
 # View All Orders of a Manufacturer
-SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) as total_items
+SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) AS total_items
 FROM pharmacy_order po
 JOIN company c ON c.company_id=po.pharmacy_id
 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
@@ -30,7 +30,7 @@ JOIN master_drug_table d ON m.drug_id = d.drug_id
 JOIN company c ON m.manufacturer_id = c.company_id;
 
 # View All Orders of a Pharmacy
-SELECT po.order_id, po.order_date, po.manufacturer_id, c.company_name as manufacturer_name, po.order_status, COUNT(poi.item_id) as total_items, SUM(poi.cost_price*poi.quantity) as total_price
+SELECT po.order_id, po.order_date, po.manufacturer_id, c.company_name AS manufacturer_name, po.order_status, COUNT(poi.item_id) AS total_items, SUM(poi.cost_price*poi.quantity) AS total_price
 FROM pharmacy_order po
 JOIN company c ON c.company_id=po.manufacturer_id
 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
@@ -46,13 +46,19 @@ JOIN company c ON p.pharmacy_id = c.company_id
 WHERE pharmacy_id=1;
 
 # Fetch Order Items for Pharmacy
-SELECT poi.item_id, md.drug_name, poi.quantity
+SELECT poi.item_id, md.drug_name, poi.quantity, poi.cost_price
 FROM pharmacy_order po
 JOIN company c ON c.company_id=po.manufacturer_id
 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
 JOIN master_drug_table md ON md.drug_id=poi.item_id
 WHERE po.order_id=1;
 
+# View Pharmacy Stores
+SELECT store_id, store_name, store_address, store_zip, store_city
+FROM pharmacy_store
+WHERE pharmacy_id=1;
+
+# DISTRIBUTOR
 # View All Shipments Of Distributor
 SELECT s.shipment_id, p.order_id, p.order_status, s.distributor_id, c1.company_name AS distributor_name, s.transporter_id, c2.company_name AS transporter_name, p.order_date
 FROM shipment s

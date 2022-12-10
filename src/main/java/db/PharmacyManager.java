@@ -1,6 +1,7 @@
 package db;
 
 import data.model.pharmacy.*;
+import static db.PharmacyManager.con;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -103,7 +104,7 @@ public abstract class PharmacyManager {
         try {
             //Build Query
             String query = """
-                SELECT poi.item_id, md.drug_name, poi.quantity
+                SELECT poi.item_id, md.drug_name, poi.quantity, poi.cost_price
                 FROM pharmacy_order po
                 JOIN company c ON c.company_id=po.manufacturer_id
                 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
@@ -198,25 +199,39 @@ public abstract class PharmacyManager {
         }
     }
     
-//    /**
-//     * @param drug - Drug object
-//     * @param pharmacy_id - Drug object
-//     * @return true if operation succeeds
-//     * @throws java.lang.Exception
-//     */
-//    public static boolean updateStockDetails(ManufacturedDrugDetails drug, int pharmacy_id) throws Exception {
-//        boolean isUpdated = false;
-//        try {
-//            String queryToUpdateOrder = """
-//                UPDATE pharmacy_inventory
-//                SET selling_price=%s
-//                WHERE drug_id=%s AND pharmacy_id=%s""";
-//            queryToUpdateOrder = String.format(queryToUpdateOrder, drug.getDrugSellingPrice(), drug.getDrugId(), pharmacy_id);
-//            PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
-//            preparedStmt.execute();
-//            return !isUpdated;
-//        } catch (SQLException e) {
-//            throw new Exception(FILENAME + "->" + "updateStockDetails" + "->" + e);
-//        }
-//    }
+    /**
+     * @param pharmacy_id - Pharmacy ID
+     * @return ResultSet if operation succeeds
+     * @throws java.lang.Exception
+     */
+    public static ResultSet fetchAllStores(int pharmacy_id) throws Exception {
+        try {
+            String queryToFetchStores = """
+                SELECT store_id, store_name, store_address, store_zip, store_city
+                FROM pharmacy_store
+                WHERE pharmacy_id=%s""";
+            queryToFetchStores = String.format(queryToFetchStores, pharmacy_id);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(queryToFetchStores);
+            return rs;
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "fetchAllStores" + "->" + e);
+        }
+    }
+
+    
+    /**
+     * @param store_id - Store ID
+     * @return INT - Number of Stores deleted
+     * @throws java.lang.Exception
+     */
+    public static int deleteStore(int store_id) throws Exception {
+        try {
+            String queryToDeleteStore = "DELETE FROM pharmacy_store WHERE store_id=1";
+            Statement stmt = con.createStatement();
+            return stmt.executeUpdate(queryToDeleteStore);
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "deleteStore" + "->" + e);
+        }
+    }
 }
