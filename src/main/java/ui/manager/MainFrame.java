@@ -2,9 +2,10 @@ package ui.manager;
 
 import java.awt.FlowLayout;
 import javax.swing.JTable;
-import ui.manufacturer.ManufacturerProductManager;
+import ui.manufacturer.ManufacturerAdministratorPanel;
 import ui.pharmacy.PharmacyAdministratorPanel;
 import ui.pharmacy.PharmacyOrderReport;
+import ui.common.MainPagePanel;
 
 public class MainFrame extends javax.swing.JFrame {
 
@@ -22,20 +23,20 @@ public class MainFrame extends javax.swing.JFrame {
     
         public void showProductManagerPanel() {
 //        getContentPane.removeAll();
-        add(new ManufacturerProductManager());
+        add(new ManufacturerAdministratorPanel());
         setLayout(new FlowLayout());
         repaint();
         revalidate();
     }
-//        JTable table = new JTable();
-//        public void showPharmacyReportPabel() {
-//    //        getContentPane.removeAll();
-//        add(new PharmacyOrderReport(table));
-//        setLayout(new FlowLayout());
-//        repaint();
-//        revalidate();
-//    }
-//        
+        
+        public void showLoginPanel() {
+//        getContentPane.removeAll();
+        add(new MainPagePanel());
+        setLayout(new FlowLayout());
+        repaint();
+        revalidate();
+    }
+  
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
