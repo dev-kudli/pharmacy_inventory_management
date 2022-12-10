@@ -236,6 +236,9 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ManuOrderTableMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ManuOrderTableMouseEntered(evt);
+            }
         });
         ManuOrderTable.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -281,27 +284,6 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
             .addGroup(manageOrdersLayout.createSequentialGroup()
                 .addGroup(manageOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(manageOrdersLayout.createSequentialGroup()
-                        .addGroup(manageOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(manageOrdersLayout.createSequentialGroup()
-                                .addGap(285, 285, 285)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(manageOrdersLayout.createSequentialGroup()
-                                .addGap(546, 546, 546)
-                                .addGroup(manageOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(manageOrdersLayout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabelCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(manageOrdersLayout.createSequentialGroup()
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(manageOrdersLayout.createSequentialGroup()
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabelOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(manageOrdersLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(manageOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(manageOrdersLayout.createSequentialGroup()
@@ -314,11 +296,32 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
                         .addGap(43, 43, 43)
                         .addComponent(jButtonDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtondistributor, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtondistributor, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(manageOrdersLayout.createSequentialGroup()
+                        .addGroup(manageOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(manageOrdersLayout.createSequentialGroup()
+                                .addGap(546, 546, 546)
+                                .addGroup(manageOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(manageOrdersLayout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(manageOrdersLayout.createSequentialGroup()
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabelOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(manageOrdersLayout.createSequentialGroup()
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabelCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(manageOrdersLayout.createSequentialGroup()
+                                .addGap(568, 568, 568)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(manageOrdersLayout.createSequentialGroup()
-                .addGap(568, 568, 568)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 969, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         manageOrdersLayout.setVerticalGroup(
@@ -1205,23 +1208,27 @@ manuOrderTable.setRowCount(0);
     while(rs.next())
     {
         int orderId = rs.getInt("order_id");
+        String orderDate = rs.getString("order_date");
         int pharmacyId = rs.getInt("pharmacy_id");
         String pharmacyName = rs.getString("pharmacy_name");
-        String orderDate = rs.getString("order_date");
+        int quantity = rs.getInt("total_items");
+        //Float totalPrice = Float.valueOf(rs.getString("total_price"));
         String OrderStatus = rs.getString("order_status");
 
-        //float totalPrice = quantity*unitPrice;
 
  
         
         
-        Object[] rowData = new Object[5];
+        Object[] rowData = new Object[7];
 
         rowData[0] = orderId;
-        rowData[1] = pharmacyId;
-        rowData[2] = pharmacyName;
-        rowData[3] = orderDate;
-        rowData[4] = OrderStatus;
+        rowData[1] = orderDate;
+        rowData[2] = pharmacyId;
+        rowData[3] = pharmacyName;
+        rowData[4] = quantity;
+        //rowData[5] = totalPrice;
+        rowData[6] = OrderStatus;
+       
 
         //rowData[7] = unitPrice;
         //rowData[8] = totalPrice;
@@ -1268,25 +1275,34 @@ jLabelCustomer.setText(pharmacyName);
 jLabelStatus.setText(orderStatus);
 
 //QUERY PART
+try
+{
+        System.out.println("STARTING QUERY.....");
+        ResultSet rs = ManufacturerManager.fetchAllOrderItems(orderId);
+        
+        while(rs.next()){
+        int drugId = rs.getInt("item_id");
+        String drugName = rs.getString("drug_name");
+        int quantity = rs.getInt("quantity");
+        //float unitPrice = Float.valueOf(rs.getString(""));
 
-//ResultSet rs = ManufacturerManager.fetchOrderItems(orderId);
-//int orderId = rs.getInt("");
-//int drugId = rs.getInt("");
-//String drugName = rs.getString("");
-//int quantity = rs.getInt("");
-//float unitPrice = Float.valueOf(rs.getString(""));
-//
-//Object[] rowData = new Object[5];
-//
-//rowData[0] = orderId;
-//rowData[1] = drugId;
-//rowData[2] = drugName;
-//rowData[3] = quantity;
-//rowData[4] = unitPrice;
-// 
-//ManufactOrderItmTable.addRow(rowData);
+        Object[] rowData = new Object[5];
 
-        // TODO add your handling code here:
+        rowData[0] = orderId;
+        rowData[1] = drugId;
+        rowData[2] = drugName;
+        rowData[3] = quantity;
+        //rowData[4] = unitPrice;
+
+        ManufactOrderItmTable.addRow(rowData);
+        }
+
+}  
+catch(Exception e)
+{
+    System.out.println("INSIDE CATCH OF FETCH ALL ORDER ITEMS QUERY");
+    System.out.println(e);
+}// TODO add your handling code here:
     }//GEN-LAST:event_ManuOrderTableMouseClicked
 
     private void jButtonApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApproveActionPerformed
@@ -1609,6 +1625,10 @@ UiDesignFunctions.searchEmployeeDetails(keyword, manufacturerDrugTable2);
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldKeyManKeyReleased
+
+    private void ManuOrderTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManuOrderTableMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ManuOrderTableMouseEntered
        public void searchEmployeeDetails(String keyword){
         DefaultTableModel tableSearch = (DefaultTableModel)ManuOrderTable.getModel();
         //DefaultTableModel tableEdit = (DefaultTableModel)jTableEdit.getModel();
