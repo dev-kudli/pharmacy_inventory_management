@@ -412,6 +412,11 @@ int pharmacyId = 1;
                 "STORE ID", "STORE NAME", "ADDRESS", "ZIPCODE", "CITY"
             }
         ));
+        jpharmTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpharmTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jpharmTable2);
 
         jButton4.setText("UPDATE STORE");
@@ -2296,6 +2301,40 @@ pharmOrderTable.setRowCount(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+DefaultTableModel pharmTable= (DefaultTableModel)jpharmTable2.getModel();
+int selectedIdx = jpharmTable2.getSelectedRow();
+
+
+String storeName =jTextField6.getText();
+String storeAddress=jLabel13.getText();
+String storeCity =jComboBoxCity.getSelectedItem().toString();
+String zipcode =jComboBoxZip.getSelectedItem().toString();
+
+Location location = new Location(storeAddress,zipcode,storeCity);
+PharmacyStore store = new PharmacyStore(storeName,pharmacyId,location);
+int storeId = Integer.parseInt(jLabel15.getText());
+
+//UPDATE QUERY
+try
+{
+  //ResultSet rs =   PharmacyManager.UpdateStore(storeId);
+
+
+jTextField6.setText("");
+jLabel13.setText("");
+jComboBoxCity.setSelectedItem("Boston");
+jComboBoxZip.setSelectedItem("02215");
+JOptionPane.showMessageDialog(this,"Updated Successfully");
+  
+}
+catch(Exception e)
+{
+    System.out.println(e);
+}
+
+
+
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -2323,6 +2362,24 @@ pharmOrderTable.setRowCount(0);
             JOptionPane.showMessageDialog(this, "Store Deleted Successfully");}
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jpharmTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpharmTable2MouseClicked
+DefaultTableModel pharmTable= (DefaultTableModel)jpharmTable2.getModel();
+int selectedIdx = jpharmTable2.getSelectedRow();
+
+int storeId = Integer.parseInt(pharmTable.getValueAt(selectedIdx, 0).toString());
+String storeName = pharmTable.getValueAt(selectedIdx, 1).toString();
+String storeAddress = pharmTable.getValueAt(selectedIdx, 2).toString();
+String storeCity = pharmTable.getValueAt(selectedIdx, 3).toString();
+String zipcode = pharmTable.getValueAt(selectedIdx, 4).toString();
+
+jLabel15.setText(String.valueOf(storeId));
+jTextField6.setText(storeName);
+jLabel13.setText(storeAddress);
+jComboBoxCity.setSelectedItem(storeCity.toString());
+jComboBoxZip.setSelectedItem(zipcode.toString());
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpharmTable2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
