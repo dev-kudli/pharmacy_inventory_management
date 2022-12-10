@@ -50,13 +50,13 @@ public abstract class PharmacyManager {
             try {
                 //Query to insert Order Items
                 String queryToInsertOrderItems = "INSERT INTO pharmacy_order_item(item_id, quantity, order_id, cost_price)"
-                                + "values (?, ?, ?)";
+                                + "values (?, ?, ?, ?)";
                 PreparedStatement preparedStmt2 = con.prepareStatement(queryToInsertOrderItems);
                 for (PharmacyPurchaseOrderItem item : order.getOrderItems()) {
                     preparedStmt2.setInt (1, item.getDrug().getDrugId());
                     preparedStmt2.setInt (2, item.getQuantity());
                     preparedStmt2.setInt (3, orderId);
-                    preparedStmt2.setFloat (3, item.getSellingPrice());
+                    preparedStmt2.setFloat (4, item.getSellingPrice());
                     preparedStmt2.addBatch();
                 }
                 preparedStmt2.executeBatch();
@@ -78,7 +78,7 @@ public abstract class PharmacyManager {
         try {
             //Build Query
             String query = """
-                SELECT po.order_id, po.order_date, po.order_status, COUNT(poi.item_id) as total_items
+                SELECT po.order_id, po.order_date, po.manufacturer_id, c.company_name as manufacturer_name, po.order_status, COUNT(poi.item_id) as total_items, SUM(poi.cost_price*poi.quantity) as total_price
                 FROM pharmacy_order po
                 JOIN company c ON c.company_id=po.manufacturer_id
                 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
@@ -137,7 +137,7 @@ public abstract class PharmacyManager {
         } 
     }
     
-    public static ResultSet fetchInventory(int pharmacyId) throws Exception {
+    public static ResultSet fetchPharmacyInventory(int pharmacyId) throws Exception {
         try {
             String query = """
                 SELECT p.inventory_id, p.drug_id, p.quantity, p.cost_price, p.selling_price
@@ -150,10 +150,10 @@ public abstract class PharmacyManager {
             ResultSet rs = stmt.executeQuery(query);
             return rs;
         } catch (SQLException e) {
-            throw new Exception(FILENAME + "->" + "displayManufacturerInventory" + "->" + e);
+            throw new Exception(FILENAME + "->" + "fetchPharmacyInventory" + "->" + e);
         } 
     }
-    
+   
     /**
      * @param order - Order object
      * @return true if operation succeeds

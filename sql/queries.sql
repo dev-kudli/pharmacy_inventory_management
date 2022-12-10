@@ -30,7 +30,7 @@ JOIN master_drug_table d ON m.drug_id = d.drug_id
 JOIN company c ON m.manufacturer_id = c.company_id;
 
 # View All Orders of a Pharmacy
-SELECT po.order_id, po.order_date, po.order_status, COUNT(poi.item_id) as total_items
+SELECT po.order_id, po.order_date, po.manufacturer_id, c.company_name as manufacturer_name, po.order_status, COUNT(poi.item_id) as total_items, SUM(poi.cost_price*poi.quantity) as total_price
 FROM pharmacy_order po
 JOIN company c ON c.company_id=po.manufacturer_id
 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
