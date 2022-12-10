@@ -234,4 +234,25 @@ public abstract class PharmacyManager {
             throw new Exception(FILENAME + "->" + "deleteStore" + "->" + e);
         }
     }
+    
+    /**
+     * @param store - Store class
+     * @return INT - Number of Stores deleted
+     * @throws java.lang.Exception
+     */
+    public static int addStore(PharmacyStore store) throws Exception {
+        try {
+            String queryToAddStore = "INSERT INTO pharmacy_store(pharmacy_id, store_name, store_address, store_zip, store_city)"
+                    + "VALUES(?, ?, ?, ?, ?)";
+            PreparedStatement preparedStmt = con.prepareStatement(queryToAddStore);
+            preparedStmt.setInt (1, store.getPharmacyId());
+            preparedStmt.setString (2, store.getStoreName());
+            preparedStmt.setString (3, store.location.address);
+            preparedStmt.setString (3, store.location.zipcode);
+            preparedStmt.setString (3, store.location.city);
+            preparedStmt.execute();
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "addStore" + "->" + e);
+        }
+    }
 }

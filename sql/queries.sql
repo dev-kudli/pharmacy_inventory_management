@@ -58,6 +58,9 @@ SELECT store_id, store_name, store_address, store_zip, store_city
 FROM pharmacy_store
 WHERE pharmacy_id=1;
 
+# Delete Store
+DELETE FROM pharmacy_store WHERE store_id=1;
+
 # DISTRIBUTOR
 # View All Shipments Of Distributor
 SELECT s.shipment_id, p.order_id, p.order_status, s.distributor_id, c1.company_name AS distributor_name, s.transporter_id, c2.company_name AS transporter_name, p.order_date
