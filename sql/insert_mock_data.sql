@@ -10,7 +10,7 @@ insert into company(company_name, company_type, registered_date) values("CVS Pha
 insert into company(company_name, company_type, registered_date) values("MedPlus", "pharmacy", "1970-02-16");
 
 insert into manufacturer_inventory(manufacturer_id, drug_id, quantity, cost_price, selling_price) values(1, 1, 10, 3, 4);
-insert into manufacturer_inventory(manufacturer_id, drug_id, quantity, cost_price, selling_price) values(2, 1, 10, 4, 4.5);
+insert into manufacturer_inventory(manufacturer_id, drug_id, quantity, cost_price, selling_price) values(1, 2, 10, 4, 4.5);
 
 insert into pharmacy_order(pharmacy_id, manufacturer_id, order_date, order_status) values(1, 1, "2021-02-16", "pending");
 insert into pharmacy_order(pharmacy_id, manufacturer_id, order_date, order_status) values(1, 2, "2021-02-16", "pending");

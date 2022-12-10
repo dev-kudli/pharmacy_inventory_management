@@ -98,11 +98,37 @@ public abstract class ManufacturerManager {
         try {
             //Build Query
             String query = """
-                SELECT po.order_id, po.pharmacy_id, c.company_name as pharmacy_name, po.order_date, po.order_status
+                SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) as total_items
                 FROM pharmacy_order po
-                join company c on c.company_id=po.pharmacy_id
-                WHERE po.manufacturer_id=%s""";
+                JOIN company c ON c.company_id=po.pharmacy_id
+                JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+                WHERE po.manufacturer_id=%s
+                GROUP BY po.order_id, po.order_date, po.order_status""";
             query = String.format(query, manufacturerId);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            return rs;
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+    
+    /**
+     * @param orderId - Order ID
+     * @return ResultSet if operation succeeds
+     * @throws java.lang.Exception
+     */
+    public static ResultSet fetchAllOrderItems(int orderId) throws Exception {
+        try {
+            //Build Query
+            String query = """
+                SELECT poi.item_id, md.drug_name, poi.quantity
+                FROM pharmacy_order po
+                JOIN company c ON c.company_id=po.manufacturer_id
+                JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+                JOIN master_drug_table md ON md.drug_id=poi.item_id
+                WHERE po.order_id=%s""";
+            query = String.format(query, orderId);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             return rs;
