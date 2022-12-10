@@ -2104,9 +2104,9 @@ pharmOrderTable1.setRowCount(0);
     {
          int storeId = rs.getInt("store_id");
         String storeName = rs.getString("store_name");
-        String address = rs.getString("pharmacy_address");
-        String zipcode = rs.getString("zipcode");
-        String city = rs.getString("city");
+        String address = rs.getString("store_address");
+        String zipcode = rs.getString("store_zip");
+        String city = rs.getString("store_city");
         
         Object[] rowData = new Object[5];
 
@@ -2204,11 +2204,11 @@ pharmOrderTable.setRowCount(0);
     
     while(rs.next())
     {
-        int storeId = rs.getInt("store_id");
+      int storeId = rs.getInt("store_id");
         String storeName = rs.getString("store_name");
-        String address = rs.getString("pharmacy_address");
-        String zipcode = rs.getString("zipcode");
-        String city = rs.getString("city");
+        String address = rs.getString("store_address");
+        String zipcode = rs.getString("store_zip");
+        String city = rs.getString("store_city");
         
         Object[] rowData = new Object[5];
 
