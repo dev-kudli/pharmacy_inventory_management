@@ -141,7 +141,7 @@ public abstract class PharmacyManager {
     public static ResultSet fetchPharmacyInventory(int pharmacyId) throws Exception {
         try {
             String query = """
-                SELECT p.inventory_id, p.drug_id, p.quantity, p.cost_price, p.selling_price
+                SELECT p.inventory_id, p.drug_id, m.drug_name, p.quantity, p.cost_price, p.selling_price
                 FROM pharmacy_inventory p
                 JOIN master_drug_table m ON m.drug_id = p.drug_id
                 JOIN company c ON p.pharmacy_id = c.company_id
