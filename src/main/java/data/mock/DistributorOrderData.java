@@ -37,7 +37,7 @@ public abstract class DistributorOrderData {
     
     public static void insertOrders() throws Exception {
         for (DistributorOrder order : orders) {
-            DistributorManager.createOrder(order);
+//            DistributorManager.createOrder(order);
         }
     }
 }

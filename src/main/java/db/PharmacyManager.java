@@ -49,13 +49,14 @@ public abstract class PharmacyManager {
             
             try {
                 //Query to insert Order Items
-                String queryToInsertOrderItems = "INSERT INTO pharmacy_order_item(item_id, quantity, order_id)"
+                String queryToInsertOrderItems = "INSERT INTO pharmacy_order_item(item_id, quantity, order_id, cost_price)"
                                 + "values (?, ?, ?)";
                 PreparedStatement preparedStmt2 = con.prepareStatement(queryToInsertOrderItems);
                 for (PharmacyPurchaseOrderItem item : order.getOrderItems()) {
                     preparedStmt2.setInt (1, item.getDrug().getDrugId());
                     preparedStmt2.setInt (2, item.getQuantity());
                     preparedStmt2.setInt (3, orderId);
+                    preparedStmt2.setFloat (3, item.getSellingPrice());
                     preparedStmt2.addBatch();
                 }
                 preparedStmt2.executeBatch();
