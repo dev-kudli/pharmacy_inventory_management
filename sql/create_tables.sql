@@ -28,6 +28,17 @@ company_owner VARCHAR(10),
 foreign key (company_owner) references person(username)
 );
 
+CREATE TABLE pharmacy_store(
+store_id INT PRIMARY KEY AUTO_INCREMENT,
+pharmacy_id INT,
+store_name VARCHAR(100) not null,
+store_address VARCHAR(100) not null,
+store_zip VARCHAR(10) not null,
+store_city VARCHAR(25) not null,
+foreign key (pharmacy_id) references company(company_id)
+);
+
+
 DROP TABLE pharmacy_order;
 CREATE TABLE pharmacy_order(
 order_id INT PRIMARY KEY AUTO_INCREMENT,

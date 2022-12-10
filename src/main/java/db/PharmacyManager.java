@@ -1,6 +1,7 @@
 package db;
 
 import data.model.pharmacy.*;
+import static db.PharmacyManager.con;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,13 +51,13 @@ public abstract class PharmacyManager {
             try {
                 //Query to insert Order Items
                 String queryToInsertOrderItems = "INSERT INTO pharmacy_order_item(item_id, quantity, order_id, cost_price)"
-                                + "values (?, ?, ?)";
+                                + "values (?, ?, ?, ?)";
                 PreparedStatement preparedStmt2 = con.prepareStatement(queryToInsertOrderItems);
                 for (PharmacyPurchaseOrderItem item : order.getOrderItems()) {
                     preparedStmt2.setInt (1, item.getDrug().getDrugId());
                     preparedStmt2.setInt (2, item.getQuantity());
                     preparedStmt2.setInt (3, orderId);
-                    preparedStmt2.setFloat (3, item.getSellingPrice());
+                    preparedStmt2.setFloat (4, item.getSellingPrice());
                     preparedStmt2.addBatch();
                 }
                 preparedStmt2.executeBatch();
@@ -78,7 +79,7 @@ public abstract class PharmacyManager {
         try {
             //Build Query
             String query = """
-                SELECT po.order_id, po.order_date, po.order_status, COUNT(poi.item_id) as total_items
+                SELECT po.order_id, po.order_date, po.manufacturer_id, c.company_name AS manufacturer_name, po.order_status, COUNT(poi.item_id) AS total_items, SUM(poi.cost_price*poi.quantity) AS total_price
                 FROM pharmacy_order po
                 JOIN company c ON c.company_id=po.manufacturer_id
                 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
@@ -103,7 +104,7 @@ public abstract class PharmacyManager {
         try {
             //Build Query
             String query = """
-                SELECT poi.item_id, md.drug_name, poi.quantity
+                SELECT poi.item_id, md.drug_name, poi.quantity, poi.cost_price
                 FROM pharmacy_order po
                 JOIN company c ON c.company_id=po.manufacturer_id
                 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
@@ -137,10 +138,10 @@ public abstract class PharmacyManager {
         } 
     }
     
-    public static ResultSet fetchInventory(int pharmacyId) throws Exception {
+    public static ResultSet fetchPharmacyInventory(int pharmacyId) throws Exception {
         try {
             String query = """
-                SELECT p.inventory_id, p.drug_id, p.quantity, p.cost_price, p.selling_price
+                SELECT p.inventory_id, p.drug_id, m.drug_name, p.quantity, p.cost_price, p.selling_price
                 FROM pharmacy_inventory p
                 JOIN master_drug_table m ON m.drug_id = p.drug_id
                 JOIN company c ON p.pharmacy_id = c.company_id
@@ -150,10 +151,10 @@ public abstract class PharmacyManager {
             ResultSet rs = stmt.executeQuery(query);
             return rs;
         } catch (SQLException e) {
-            throw new Exception(FILENAME + "->" + "displayManufacturerInventory" + "->" + e);
+            throw new Exception(FILENAME + "->" + "fetchPharmacyInventory" + "->" + e);
         } 
     }
-    
+   
     /**
      * @param order - Order object
      * @return true if operation succeeds
@@ -198,25 +199,61 @@ public abstract class PharmacyManager {
         }
     }
     
-//    /**
-//     * @param drug - Drug object
-//     * @param pharmacy_id - Drug object
-//     * @return true if operation succeeds
-//     * @throws java.lang.Exception
-//     */
-//    public static boolean updateStockDetails(ManufacturedDrugDetails drug, int pharmacy_id) throws Exception {
-//        boolean isUpdated = false;
-//        try {
-//            String queryToUpdateOrder = """
-//                UPDATE pharmacy_inventory
-//                SET selling_price=%s
-//                WHERE drug_id=%s AND pharmacy_id=%s""";
-//            queryToUpdateOrder = String.format(queryToUpdateOrder, drug.getDrugSellingPrice(), drug.getDrugId(), pharmacy_id);
-//            PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
-//            preparedStmt.execute();
-//            return !isUpdated;
-//        } catch (SQLException e) {
-//            throw new Exception(FILENAME + "->" + "updateStockDetails" + "->" + e);
-//        }
-//    }
+    /**
+     * @param pharmacy_id - Pharmacy ID
+     * @return ResultSet if operation succeeds
+     * @throws java.lang.Exception
+     */
+    public static ResultSet fetchAllStores(int pharmacy_id) throws Exception {
+        try {
+            String queryToFetchStores = """
+                SELECT store_id, store_name, store_address, store_zip, store_city
+                FROM pharmacy_store
+                WHERE pharmacy_id=%s""";
+            queryToFetchStores = String.format(queryToFetchStores, pharmacy_id);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(queryToFetchStores);
+            return rs;
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "fetchAllStores" + "->" + e);
+        }
+    }
+
+    
+    /**
+     * @param store_id - Store ID
+     * @return INT - Number of Stores deleted
+     * @throws java.lang.Exception
+     */
+    public static int deleteStore(int store_id) throws Exception {
+        try {
+            String queryToDeleteStore = "DELETE FROM pharmacy_store WHERE store_id=1";
+            Statement stmt = con.createStatement();
+            return stmt.executeUpdate(queryToDeleteStore);
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "deleteStore" + "->" + e);
+        }
+    }
+    
+    /**
+     * @param store - Store class
+     * @return INT - Number of Stores deleted
+     * @throws java.lang.Exception
+     */
+    public static boolean addStore(PharmacyStore store) throws Exception {
+        try {
+            String queryToAddStore = "INSERT INTO pharmacy_store(pharmacy_id, store_name, store_address, store_zip, store_city)"
+                    + "VALUES(?, ?, ?, ?, ?)";
+            PreparedStatement preparedStmt = con.prepareStatement(queryToAddStore);
+            preparedStmt.setInt (1, store.getPharmacyId());
+            preparedStmt.setString (2, store.getStoreName());
+            preparedStmt.setString (3, store.location.address);
+            preparedStmt.setString (3, store.location.zipcode);
+            preparedStmt.setString (3, store.location.city);
+            preparedStmt.execute();
+            return true;
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "addStore" + "->" + e);
+        }
+    }
 }
