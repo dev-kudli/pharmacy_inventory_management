@@ -160,7 +160,7 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MANUFACTURER", "DISTRIBUTER", "PHARMACY", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MANUFACTURER", "DISTRIBUTER", "PHARMACY", "TRANSPORTER", " " }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -265,7 +265,7 @@ company.setRegisteredDate(d);
 
 try{
     CompanyManager.createCompany(company);
-    JOptionPane.showMessageDialog(this,"Please Select an Order to Review");
+    JOptionPane.showMessageDialog(this,"Company Registered Successfully");
 }
 catch(Exception e)
 {
