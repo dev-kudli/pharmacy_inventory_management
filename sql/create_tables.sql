@@ -1,4 +1,17 @@
-DROP TABLE person;
+DROP TABLE IF EXISTS pharmacy_store;
+DROP TABLE IF EXISTS pharmacy_order_item;
+DROP TABLE IF EXISTS pharmacy_inventory;
+DROP TABLE IF EXISTS manufacturer_inventory;
+DROP TABLE IF EXISTS shipment;
+DROP TABLE IF EXISTS transport_vehicle;
+DROP TABLE IF EXISTS pharmacy_order;
+DROP TABLE IF EXISTS company;
+DROP TABLE IF EXISTS master_drug_table;
+DROP TABLE IF EXISTS person;
+
+alter table pharmacy_order add column distributor_id int;
+alter table pharmacy_order add foreign key (distributor_id) references company(company_id);
+
 CREATE TABLE person(
 username VARCHAR(10) PRIMARY KEY,
 person_name VARCHAR(50) NOT NULL,
@@ -12,13 +25,13 @@ person_country VARCHAR(20),
 person_state VARCHAR(20)
 );
 
-DROP TABLE master_drug_table;
+
 CREATE TABLE master_drug_table(
 drug_id INT PRIMARY KEY AUTO_INCREMENT,
 drug_name VARCHAR(100) NOT NULL
 );
 
-DROP TABLE company;
+
 CREATE TABLE company(
 company_id INT PRIMARY KEY AUTO_INCREMENT,
 company_name VARCHAR(100) NOT NULL,
@@ -45,7 +58,9 @@ order_id INT PRIMARY KEY AUTO_INCREMENT,
 pharmacy_id INT NOT NULL,
 manufacturer_id INT NOT NULL,
 order_date DATE,
-order_status varchar(10)
+order_status varchar(10),
+foreign key (pharmacy_id) references company(company_id),
+foreign key (manufacturer_id) references company(company_id)
 );
 
 DROP TABLE pharmacy_order_item;
@@ -54,10 +69,9 @@ order_item_id INT PRIMARY KEY AUTO_INCREMENT,
 order_id INT NOT NULL,
 item_id INT NOT NULL,
 quantity INT NOT NULL,
+cost_price DECIMAL,
 foreign key (order_id) references pharmacy_order(order_id)
 );
-
-alter table pharmacy_order_item add column cost_price DECIMAL;
 
 DROP TABLE pharmacy_inventory;
 CREATE TABLE pharmacy_inventory(
