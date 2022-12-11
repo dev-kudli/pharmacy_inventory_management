@@ -27,14 +27,14 @@ public abstract class DistributorManager {
     }
       
     
-    public static boolean assignTransporter(int shipmentId, int transporterId) throws Exception {
+    public static boolean assignTransporter(int orderId, int transporterId) throws Exception {
         boolean isUpdated = false;
         try {            
             String queryToUpdateTransporter = """
                 UPDATE shipment
                 SET transporter_id=%s
-                WHERE shipment_id=%s""";
-            queryToUpdateTransporter = String.format(queryToUpdateTransporter, shipmentId, transporterId);
+                WHERE order_id=%s""";
+            queryToUpdateTransporter = String.format(queryToUpdateTransporter, orderId, transporterId);
             Statement stmt = con.createStatement();
             int count = stmt.executeUpdate(queryToUpdateTransporter);
             if (count>0) return !isUpdated;

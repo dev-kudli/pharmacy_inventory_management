@@ -6,6 +6,7 @@ package ui.common;
 
 import helper.ui.UiDesignFunctions;
 import java.awt.Color;
+import ui.manager.UIManager;
 
 /**
  *
@@ -76,15 +77,23 @@ String userType ="";
 
         jButton1.setFont(new java.awt.Font("Marker Felt", 0, 20)); // NOI18N
         jButton1.setText("REGISTER AS A NEW COMPANY");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 360, 90));
-
-        bgColor.setIcon(new javax.swing.ImageIcon("/Users/shreyajaiswal/Desktop/Shreya/Semester_one/AED/aed_final_project/src/main/java/ui/images/manu-bg.jpeg")); // NOI18N
         add(bgColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 810, 550));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+UIManager.AddCompanyRegPanel("Manufacturer");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
