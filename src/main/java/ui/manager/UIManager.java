@@ -9,7 +9,7 @@ import ui.common.CompanyLoginPanel;
 import ui.pharmacy.*;
 import ui.common.MainPagePanel;
 import ui.manufacturer.ManufacturerAdministratorPanel;
-import ui.manufacturer.ManufacturerManagerPanel;
+import ui.common.CompanyManagerPanel;
 
 public abstract class UIManager {
     private final static MainFrame frame = new MainFrame();
@@ -18,7 +18,8 @@ public abstract class UIManager {
     private static PharmacyManagerPanel pharmaManagerPanel;
     private static CompanyLoginPanel companyLoginPanel;
     private static  ManufacturerAdministratorPanel manuAdministratorPanel;
-    private static ManufacturerManagerPanel manuManagerPanel;
+    private static CompanyManagerPanel companyManagerPanel;
+ 
     
     public static void init() {
         frame.setLayout(new FlowLayout());
@@ -58,12 +59,12 @@ public abstract class UIManager {
         removeAndAddPanel(manuAdministratorPanel);
     }
       
-      public static void AddManuManagerPanel() 
+      public static void AddCompanyManagerPanel(String companyType) 
         {
         frame.setLayout(new FlowLayout());
         frame.setVisible(true);
-        manuManagerPanel = new ManufacturerManagerPanel();
-        removeAndAddPanel(manuAdministratorPanel);
+        companyManagerPanel = new CompanyManagerPanel(companyType);
+        removeAndAddPanel(companyManagerPanel);
     }
       
      
