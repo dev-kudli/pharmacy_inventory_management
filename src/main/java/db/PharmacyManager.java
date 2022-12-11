@@ -229,6 +229,7 @@ public abstract class PharmacyManager {
     public static int deleteStore(int store_id) throws Exception {
         try {
             String queryToDeleteStore = "DELETE FROM pharmacy_store WHERE store_id=1";
+            queryToDeleteStore = String.format(queryToDeleteStore, store_id);
             Statement stmt = con.createStatement();
             return stmt.executeUpdate(queryToDeleteStore);
         } catch (SQLException e) {
