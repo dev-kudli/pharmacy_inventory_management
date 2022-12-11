@@ -26,7 +26,6 @@ drug_id INT PRIMARY KEY AUTO_INCREMENT,
 drug_name VARCHAR(100) NOT NULL
 );
 
-
 CREATE TABLE company(
 company_id INT PRIMARY KEY AUTO_INCREMENT,
 company_name VARCHAR(100) NOT NULL,
@@ -46,8 +45,6 @@ store_city VARCHAR(25) not null,
 foreign key (pharmacy_id) references company(company_id)
 );
 
-
-DROP TABLE pharmacy_order;
 CREATE TABLE pharmacy_order(
 order_id INT PRIMARY KEY AUTO_INCREMENT,
 pharmacy_id INT NOT NULL,
@@ -58,7 +55,6 @@ foreign key (pharmacy_id) references company(company_id),
 foreign key (manufacturer_id) references company(company_id)
 );
 
-DROP TABLE pharmacy_order_item;
 CREATE TABLE pharmacy_order_item(
 order_item_id INT PRIMARY KEY AUTO_INCREMENT,
 order_id INT NOT NULL,
@@ -68,7 +64,6 @@ cost_price DECIMAL,
 foreign key (order_id) references pharmacy_order(order_id)
 );
 
-DROP TABLE pharmacy_inventory;
 CREATE TABLE pharmacy_inventory(
 inventory_id INT primary key auto_increment,
 pharmacy_id INT,
@@ -80,7 +75,6 @@ FOREIGN KEY (drug_id) REFERENCES master_drug_table(drug_id),
 FOREIGN KEY (pharmacy_id) REFERENCES company(company_id)
 );
 
-DROP TABLE manufacturer_inventory;
 CREATE TABLE manufacturer_inventory(
 manufacturer_id INT,
 drug_id INT,
@@ -92,7 +86,6 @@ FOREIGN KEY (drug_id) REFERENCES master_drug_table(drug_id),
 FOREIGN KEY (manufacturer_id) REFERENCES company(company_id)
 );
 
-DROP TABLE shipment;
 CREATE TABLE shipment(
 shipment_id INT primary key auto_increment,
 order_id INT,
@@ -104,7 +97,6 @@ foreign key (distributor_id) references company(company_id),
 foreign key (transporter_id) references company(company_id)
 );
 
-drop table transport_vehicle;
 create table transport_vehicle(
 transporter_id INT primary key,
 vehicle_count INT,
