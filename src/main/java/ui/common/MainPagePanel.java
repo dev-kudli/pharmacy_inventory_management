@@ -130,7 +130,7 @@ UIManager.AddCompanyManagerPanel("Pharmacy");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-UIManager.AddCompanyManagerPanel("Pharmacy");
+UIManager.AddCompanyManagerPanel("Distributor");
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
