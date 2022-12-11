@@ -72,10 +72,10 @@ public abstract class ManufacturerManager {
      * @return int - Number of records updated
      * @throws java.lang.Exception
      */
-    public static int assignDistributor(int orderId, String username) throws Exception {
+    public static int assignDistributor(int orderId, int distributorId) throws Exception {
         try {
-            String queryToAssignDistributor = "UPDATE pharmacy_order SET distributorId=\"%s\" WHERE order_id=%s";
-            queryToAssignDistributor = String.format(queryToAssignDistributor, username, orderId);
+            String queryToAssignDistributor = "UPDATE shipment SET distributorId=%s WHERE order_id=%s";
+            queryToAssignDistributor = String.format(queryToAssignDistributor, distributorId, orderId);
             Statement stmt = con.createStatement();
             return stmt.executeUpdate(queryToAssignDistributor);
         } catch (SQLException e) {
