@@ -1,4 +1,14 @@
-DROP TABLE person;
+DROP TABLE IF EXISTS pharmacy_store;
+DROP TABLE IF EXISTS pharmacy_order_item;
+DROP TABLE IF EXISTS pharmacy_inventory;
+DROP TABLE IF EXISTS manufacturer_inventory;
+DROP TABLE IF EXISTS shipment;
+DROP TABLE IF EXISTS transport_vehicle;
+DROP TABLE IF EXISTS pharmacy_order;
+DROP TABLE IF EXISTS company;
+DROP TABLE IF EXISTS master_drug_table;
+DROP TABLE IF EXISTS person;
+
 CREATE TABLE person(
 username VARCHAR(10) PRIMARY KEY,
 person_name VARCHAR(50) NOT NULL,
@@ -12,13 +22,13 @@ person_country VARCHAR(20),
 person_state VARCHAR(20)
 );
 
-DROP TABLE master_drug_table;
+
 CREATE TABLE master_drug_table(
 drug_id INT PRIMARY KEY AUTO_INCREMENT,
 drug_name VARCHAR(100) NOT NULL
 );
 
-DROP TABLE company;
+
 CREATE TABLE company(
 company_id INT PRIMARY KEY AUTO_INCREMENT,
 company_name VARCHAR(100) NOT NULL,
@@ -45,7 +55,9 @@ order_id INT PRIMARY KEY AUTO_INCREMENT,
 pharmacy_id INT NOT NULL,
 manufacturer_id INT NOT NULL,
 order_date DATE,
-order_status varchar(10)
+order_status varchar(10),
+foreign key (pharmacy_id) references company(company_id),
+foreign key (manufacturer_id) references company(company_id)
 );
 
 DROP TABLE pharmacy_order_item;
