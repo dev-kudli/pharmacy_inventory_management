@@ -12,20 +12,22 @@ public class CompanyManager {
     public static java.sql.Connection con = Connection.getConnection();
     /**
      * @param company - Company class
+     * @param username - Username of owner
      * @return ResultSet if operation succeeds
      * @throws java.lang.Exception
      */
-    public static boolean createCompany(Company company) throws Exception {
+    public static boolean createCompany(Company company, String username) throws Exception {
         boolean isCreated = true;
         if (!Validation.isValidString(company.getCompanyName())) throw new Error("Invalid Company Name");
         if (!Arrays.asList(CompanyConstant.COMPANY_TYPES).contains(company.getCompanyType())) throw new Error("Invalid Company Type");
         try {
-            String query1 = "INSERT INTO company(registered_date, company_name, company_type)"
-                            + "values (?, ?, ?)";
+            String query1 = "INSERT INTO company(registered_date, company_name, company_type, company_owner)"
+                            + "values (?, ?, ?, ?)";
             PreparedStatement preparedStmt1 = con.prepareStatement(query1);
             preparedStmt1.setString (1, company.getRegisteredDate().getFormattedDate());
             preparedStmt1.setString (2, company.getCompanyName());
             preparedStmt1.setString (3, company.getCompanyType());
+            preparedStmt1.setString (4, username);
             preparedStmt1.execute();
             return isCreated;
         } catch (SQLException e) {
