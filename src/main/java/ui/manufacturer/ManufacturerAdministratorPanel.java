@@ -30,13 +30,16 @@ import java.awt.print.*;
  * @author shreyajaiswal
  */
 public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
-    int manufacturerId =1;
-
+    //int manufacturerId =1;
+String username;
+int manufacturerId;
     /**
      * Creates new form ManufacturerAdminPanel
      */
-    public ManufacturerAdministratorPanel() {
+    public ManufacturerAdministratorPanel(String username, int manufacturerId) {
         initComponents();
+        this.username = username;
+        this.manufacturerId = manufacturerId;
         UiDesignFunctions.SetButtonBgGreen(jButtonApprove);
         UiDesignFunctions.SetButtonBgRed(jButtonDecline);
         jButtondistributor.setVisible(false);
@@ -1125,7 +1128,7 @@ manuDrugTable.setRowCount(0);
 //QUERY TO VIEW STOCKS OF MANUFACTURE WITH MANUFACTURING_ID
    try
     {
-    ResultSet rs = ManufacturerManager.fetchStock();
+    ResultSet rs = ManufacturerManager.fetchStock(manufacturerId);
     
     while(rs.next())
     {

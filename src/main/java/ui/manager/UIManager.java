@@ -46,11 +46,11 @@ public abstract class UIManager {
         removeAndAddPanel(companyLoginPanel);
     }
     
-      public static void AddManuAdminPanel() 
+      public static void AddManuAdminPanel(String username, int manId) 
         {
         frame.setLayout(new FlowLayout());
         frame.setVisible(true);
-        manuAdministratorPanel = new ManufacturerAdministratorPanel();
+        manuAdministratorPanel = new ManufacturerAdministratorPanel(username, manId);
         removeAndAddPanel(manuAdministratorPanel);
     }
       

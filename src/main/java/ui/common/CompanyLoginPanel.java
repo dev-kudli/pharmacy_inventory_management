@@ -4,8 +4,10 @@
  */
 package ui.common;
 
+import com.mysql.cj.protocol.Resultset;
 import db.PersonManager;
 import helper.constant.UserRole;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import ui.manager.UIManager;
 
@@ -93,6 +95,14 @@ String userType = "";
 
         jLabel4.setText("PASSWORD");
 
+        jTextFieldUserName.setText("user");
+        jTextFieldUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldUserNameActionPerformed(evt);
+            }
+        });
+
+        jPasswordField1.setText("password");
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
@@ -222,42 +232,53 @@ String userType = "";
 
 String username = jTextFieldUserName.getText();
 String password = jPasswordField1.getText();
-String loginRole = jComboBoxLoginRole.getSelectedItem().toString(); 
+//String loginRole = jComboBoxLoginRole.getSelectedItem().toString(); 
 
 try
 {
-boolean val = PersonManager.verifyUser(username, password,userType);
+ResultSet rs = PersonManager.verifyUser(username, password,userType);
+if (rs.next()) {
+    String verifiedUsername = rs.getString("username");
+    int verifiedCompanyId = rs.getInt("company_id");
+    String loginRole = rs.getString("person_role");
+     System.out.print(loginRole);
+     
+     if(loginRole.equalsIgnoreCase(UserRole.MANUFACTURE_ADMIN))
+     {
+        UIManager.AddManuAdminPanel(verifiedUsername, verifiedCompanyId); 
+     }
 
-if(val == false){
-   JOptionPane.showMessageDialog(this, "INCORRECT USERNAME AND PASSWORD");
+//     if(loginRole.equalsIgnoreCase(UserRole.MANUFACTURE_ADMIN))
+//     {
+       //UIManager.AddManuAdminPanel();
+//     }
+//     else if(loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
+//     {
+//       UIManager.AddpharmacyAdminPanel();
+//     }
+//     else if(loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
+//     {
+//       UIManager.AddpharmacyAdminPanel();
+//     }
+//     else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_ADMIN))
+//    {
+//     UIManager.AddpharmacyAdminPanel();    
+//    }
+//    else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_STORE_MANAGER)){
+//        UIManager.AddpharmacyStorePanel();
+//    }
 }
-else if(val==true & loginRole.equalsIgnoreCase("MANUFACTURE_ADMIN"))
-{
-  UIManager.AddManuAdminPanel();
-}
-else if(val==true & loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
-{
-  UIManager.AddpharmacyAdminPanel();
-}
-else if(val==true & loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
-{
-  UIManager.AddpharmacyAdminPanel();
-}
+
 }
 catch(Exception e)
 {
-  JOptionPane.showMessageDialog(this, "PLEASE ENTER VALID USERNAME AND PASSWORD");
+ //JOptionPane.showMessageDialog(this, "IN CATCH PLEASE ENTER VALID USERNAME AND PASSWORD");
+  System.out.println(e);
   //System.out.println("Verifying username password");
-  //System.out.println(e);
+
 }
 
-if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_ADMIN))
-{
- UIManager.AddpharmacyAdminPanel();    
-}
-else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_STORE_MANAGER)){
-    UIManager.AddpharmacyStorePanel();
-}
+
         
        
         // TODO add your handling code here:
@@ -271,6 +292,10 @@ else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_STORE_MANAGER)){
 UIManager.AddCompanyManagerPanel(userType);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextFieldUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldUserNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

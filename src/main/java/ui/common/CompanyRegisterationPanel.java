@@ -688,9 +688,11 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
     contact.setLocation(loc);
     person.setLocation(location);
 try
-{
-    PersonManager.createUser(person);
-    CompanyManager.createCompany(company,username);
+{   CompanyManager.createCompany(company);
+    int n = CompanyManager.getCompanyId();
+    System.out.println("n--->"+n);
+    PersonManager.createUser(person,n);
+    
     
     JOptionPane.showMessageDialog(this,"Company and Administrator Registered Successfully");
     jButton3.setVisible(true);

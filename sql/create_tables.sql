@@ -9,9 +9,16 @@ DROP TABLE IF EXISTS manufacturer_inventory;
 DROP TABLE IF EXISTS shipment;
 DROP TABLE IF EXISTS transport_vehicle;
 DROP TABLE IF EXISTS pharmacy_order;
-DROP TABLE IF EXISTS company;
 DROP TABLE IF EXISTS master_drug_table;
 DROP TABLE IF EXISTS person;
+DROP TABLE IF EXISTS company;
+
+CREATE TABLE company(
+company_id INT PRIMARY KEY AUTO_INCREMENT,
+company_name VARCHAR(100) NOT NULL,
+company_type VARCHAR(20) NOT NULL,
+registered_date DATE
+);
 
 CREATE TABLE person(
 username VARCHAR(10) PRIMARY KEY,
@@ -22,21 +29,14 @@ person_gender CHAR(6),
 person_role VARCHAR(20) NOT NULL,
 person_address VARCHAR(100),
 person_city VARCHAR(20),
-person_zipcode VARCHAR(10)
+person_zipcode VARCHAR(10),
+company_id INT,
+foreign key (company_id) references company(company_id)
 );
 
 CREATE TABLE master_drug_table(
 drug_id INT PRIMARY KEY AUTO_INCREMENT,
 drug_name VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE company(
-company_id INT PRIMARY KEY AUTO_INCREMENT,
-company_name VARCHAR(100) NOT NULL,
-company_type VARCHAR(20) NOT NULL,
-registered_date DATE,
-company_owner VARCHAR(10),
-foreign key (company_owner) references person(username)
 );
 
 CREATE TABLE pharmacy_store(
