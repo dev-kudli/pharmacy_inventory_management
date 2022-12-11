@@ -1,5 +1,6 @@
 package main;
 
+import email.SendEmail;
 import ui.manager.UIManager;
 
 public class Main {
