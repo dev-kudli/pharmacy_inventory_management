@@ -45,11 +45,11 @@ public abstract class UIManager {
         removeAndAddPanel(pharmaManagerPanel);
     }
     
-    public static void AddCompanyLoginPanel() 
+    public static void AddCompanyLoginPanel(String companyType) 
         {
         frame.setLayout(new FlowLayout());
         frame.setVisible(true);
-        companyLoginPanel = new CompanyLoginPanel();
+        companyLoginPanel = new CompanyLoginPanel(companyType);
         removeAndAddPanel(companyLoginPanel);
     }
     

@@ -2,10 +2,10 @@ package helper.constant;
 
 public abstract class UserRole {
     public static final String PHARMACY_ADMIN = "PHARMACY_ADMIN";
-    public static final String PHARMACY_STORE_MANAGER = "store_adm";
-    public static final String CUSTOMER = "customer";
+    public static final String PHARMACY_STORE_MANAGER = "STORE_ADMIN";
+    public static final String CUSTOMER = "CUSTOMER";
     public static final String MANUFACTURE_ADMIN = "MANUFACTURE_ADMIN";
-    public static final String DISTRIBUTOR_ADMIN = "dist_adm";
-    public static final String DISTRIBUTOR_TRANSPORT_MANAGER = "dist_transport_adm";
-    public static final String MANUFACTURE_PRODUCT_MANAGER = "man_product_adm";
+    public static final String DISTRIBUTOR_ADMIN = "DISTRIBUTOR_ADMIN";
+    public static final String DISTRIBUTOR_TRANSPORT_MANAGER = "DISTRIBUTOR_TRANSPORT_ADMIN";
+    public static final String MANUFACTURE_PRODUCT_MANAGER = "MAN_PRODUCT_ADMIN";
 }
