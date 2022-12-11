@@ -9,6 +9,9 @@ DROP TABLE IF EXISTS company;
 DROP TABLE IF EXISTS master_drug_table;
 DROP TABLE IF EXISTS person;
 
+alter table pharmacy_order add column distributor_id int;
+alter table pharmacy_order add foreign key (distributor_id) references company(company_id);
+
 CREATE TABLE person(
 username VARCHAR(10) PRIMARY KEY,
 person_name VARCHAR(50) NOT NULL,
