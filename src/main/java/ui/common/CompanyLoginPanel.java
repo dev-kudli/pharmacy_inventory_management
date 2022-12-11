@@ -4,6 +4,7 @@
  */
 package ui.common;
 
+import db.PersonManager;
 import helper.constant.UserRole;
 import ui.manager.UIManager;
 
@@ -41,7 +42,7 @@ String userType = "";
         {
             jComboBoxLoginRole.removeAllItems();
             jComboBoxLoginRole.addItem("PHARMACY_ADMIN");
-            jComboBoxLoginRole.addItem("STORE_ADMIN");
+            jComboBoxLoginRole.addItem("PHARMACY_STORE_MANAGER");
         }
         
         else if(this.userType.equalsIgnoreCase("distributor"))
@@ -190,17 +191,46 @@ String userType = "";
     }//GEN-LAST:event_jComboBoxLoginRoleActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//    public static final String PHARMACY_ADMIN = "PHARMACY_ADMIN";
+//    public static final String PHARMACY_STORE_MANAGER = "PHARMACY_STORE_MANAGER";
+//    public static final String CUSTOMER = "CUSTOMER";
+//    public static final String MANUFACTURE_ADMIN = "MANUFACTURE_ADMIN";
+//    public static final String DISTRIBUTOR_ADMIN = "DISTRIBUTOR_ADMIN";
+//    public static final String DISTRIBUTOR_TRANSPORT_MANAGER = "DISTRIBUTOR_TRANSPORT_ADMIN";
+//    public static final String MANUFACTURE_PRODUCT_MANAGER = "MAN_PRODUCT_ADMIN"
+
 String username = jTextFieldUserName.getText();
 String password = jTextFieldPassword.getText();
 String loginRole = jComboBoxLoginRole.getSelectedItem().toString(); 
 
+try
+{
+boolean val = PersonManager.verifyUser(username, password);
+if(val==true & loginRole.equalsIgnoreCase("MANUFACTURE_ADMIN"))
+{
+  UIManager.AddManuAdminPanel();
+}
+else if(val==true & loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
+{
+  UIManager.AddpharmacyAdminPanel();
+}
+else if(val==true & loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
+{
+  UIManager.AddpharmacyAdminPanel();
+}
+}
+catch(Exception e)
+{
+  System.out.println("Verifying username password");
+  System.out.println(e);
+}
 
 if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_ADMIN))
 {
  UIManager.AddpharmacyAdminPanel();    
 }
-else if(loginRole.equalsIgnoreCase(UserRole.MANUFACTURE_ADMIN)){
-    UIManager.AddManuAdminPanel();
+else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_STORE_MANAGER)){
+    UIManager.AddpharmacyStorePanel();
 }
         
        
