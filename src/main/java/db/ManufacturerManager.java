@@ -100,9 +100,10 @@ public abstract class ManufacturerManager {
         try {
             //Build Query
             String query = """
-                SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) as total_items
+                SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) AS total_items, po.distributor_id, c2.company_name as distributor_name
                 FROM pharmacy_order po
                 JOIN company c ON c.company_id=po.pharmacy_id
+                JOIN company c2 ON c2.company_id=po.distributor_id
                 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
                 WHERE po.manufacturer_id=%s
                 GROUP BY po.order_id, po.order_date, po.order_status""";

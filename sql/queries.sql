@@ -1,8 +1,9 @@
 # MANUFACTURER
 # View All Orders of a Manufacturer
-SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) AS total_items
+SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) AS total_items, po.distributor_id, c2.distributor_name
 FROM pharmacy_order po
 JOIN company c ON c.company_id=po.pharmacy_id
+JOIN company c2 ON c2.company_id=po.distributor_id
 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
 WHERE po.manufacturer_id=1
 GROUP BY po.order_id, po.order_date, po.order_status;
