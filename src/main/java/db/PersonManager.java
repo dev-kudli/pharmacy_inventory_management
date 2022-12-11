@@ -11,12 +11,18 @@ public abstract class PersonManager {
     public static boolean createUser(Person p) throws Exception {
         boolean isInserted = true;
         try {
-            String query = "INSERT INTO user(username, password, role)"
-                            + "values (?, ?, ?)";
+            String query = "INSERT INTO user(username, person_name, password, person_dob, person_gender, person_role, person_address, person_city, person_zip)"
+                            + "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setString (1, p.getUsername());
-            preparedStmt.setString (2, p.getPassword());
-            preparedStmt.setString (3, p.getPersonRole());
+            preparedStmt.setString (2, p.getPersonName());
+            preparedStmt.setString (3, p.getPassword());
+            preparedStmt.setString (4, p.getPersonDob().getFormattedDate());
+            preparedStmt.setString (5, p.getPersonGender());
+            preparedStmt.setString (6, p.getPersonRole());
+            preparedStmt.setString (7, p.getLocation().address);
+            preparedStmt.setString (8, p.getLocation().city);
+            preparedStmt.setString (9, p.getLocation().zipcode);
             preparedStmt.execute();
             return isInserted;
         } catch (SQLException e) {

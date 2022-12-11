@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package data.model.person;
 import data.model.common.Contact;
 import data.model.common.Date;
+import data.model.common.Location;
 import db.PersonManager;
 
 public class Person {
@@ -15,6 +12,7 @@ public class Person {
     private String personGender;
     private Contact personContact;
     private String password;
+    private Location location;
      
     public Person(String username, String personName, String password) {
         this.username = username;
@@ -66,4 +64,13 @@ public class Person {
     public boolean save() throws Exception {
         return PersonManager.createUser(this);
     }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+    
 }
