@@ -29,7 +29,9 @@ import db.ManufacturerManager;
 import helper.ui.UiDesignFunctions;
 import java.time.LocalDateTime;
 import javax.swing.JLabel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableRowSorter;
 public class PharmacyAdministratorPanel extends javax.swing.JPanel {
 int pharmacyId = 1;
 
@@ -372,6 +374,18 @@ int pharmacyId = 1;
 
         jLabel9.setText("1");
 
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField3KeyPressed(evt);
+            }
+        });
+
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField4KeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -484,6 +498,12 @@ int pharmacyId = 1;
         jLabel14.setText("STORE CITY");
 
         jLabel15.setText("1");
+
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField6KeyPressed(evt);
+            }
+        });
 
         jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -833,6 +853,18 @@ int pharmacyId = 1;
 
         jLabel37.setText("CITY");
 
+        jTextField26.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField26KeyPressed(evt);
+            }
+        });
+
+        jTextField27.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField27KeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
@@ -1034,6 +1066,11 @@ int pharmacyId = 1;
         jTextField34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField34ActionPerformed(evt);
+            }
+        });
+        jTextField34.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField34KeyReleased(evt);
             }
         });
 
@@ -1302,6 +1339,12 @@ int pharmacyId = 1;
 
         jLabel70.setText("DRUG TYPE");
 
+        jTextField48.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField48KeyPressed(evt);
+            }
+        });
+
         jButton21.setText("DELETE");
 
         jButton23.setText("UPDATE");
@@ -1388,6 +1431,17 @@ int pharmacyId = 1;
         );
 
         jPanel51.setBorder(javax.swing.BorderFactory.createTitledBorder("SEARCH BY"));
+
+        jTextField49.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField49ActionPerformed(evt);
+            }
+        });
+        jTextField49.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField49KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel51Layout = new javax.swing.GroupLayout(jPanel51);
         jPanel51.setLayout(jPanel51Layout);
@@ -2737,9 +2791,90 @@ catch(Exception e)
             jTextField7.setEditable(true);
         }else{
               jTextField7.setEditable(false);
-            JOptionPane.showMessageDialog(null, "Please enter only alphabetic characters.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please enter valid CITY", "Invalid Input", JOptionPane.WARNING_MESSAGE);
         }      
     }//GEN-LAST:event_jTextField7KeyPressed
+
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField4.setEditable(true);
+        }else{
+              jTextField4.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter valid CITY.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }  
+    }//GEN-LAST:event_jTextField4KeyPressed
+
+    private void jTextField27KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField27KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField27.setEditable(true);
+        }else{
+              jTextField27.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter valid CITY.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }  
+    }//GEN-LAST:event_jTextField27KeyPressed
+
+    private void jTextField48KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField48KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField48.setEditable(true);
+        }else{
+              jTextField48.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter valid NAME.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }  
+    }//GEN-LAST:event_jTextField48KeyPressed
+
+    private void jTextField49KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField49KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField49KeyReleased
+
+    private void jTextField49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField49ActionPerformed
+        // TODO add your handling code here:
+    
+    }//GEN-LAST:event_jTextField49ActionPerformed
+
+    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
+        // TODO add your handling code here:
+        char c = evt. getKeyChar ();
+        if (!Character.isDigit (c)){
+            JOptionPane.showMessageDialog(null, "Please enter Valid ZIPCODE!", "Error", JOptionPane.ERROR_MESSAGE);
+           evt. consume ();
+        }
+    }//GEN-LAST:event_jTextField3KeyPressed
+
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        // TODO add your handling code here:
+        char c = evt. getKeyChar ();
+        if (!Character.isDigit (c)){
+            JOptionPane.showMessageDialog(null, "Please enter Valid ZIPCODE!", "Error", JOptionPane.ERROR_MESSAGE);
+           evt. consume ();
+        }
+    }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void jTextField26KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField26KeyPressed
+        // TODO add your handling code here:
+        char c = evt. getKeyChar ();
+        if (!Character.isDigit (c)){
+            JOptionPane.showMessageDialog(null, "Please enter Valid ZIPCODE!", "Error", JOptionPane.ERROR_MESSAGE);
+           evt. consume ();
+        }
+    }//GEN-LAST:event_jTextField26KeyPressed
+
+    private void jTextField34KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField34KeyReleased
+        // TODO add your handling code here:
+        String mobileNo=jTextField34.getText () ;
+        if(mobileNo.matches ("^[0-9]*$")&& mobileNo.length()==10)
+        {
+           jTextField34.setBackground(java.awt.Color.green);
+        }
+
+        else
+            jTextField34.setBackground(java.awt.Color.red);
+    }//GEN-LAST:event_jTextField34KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

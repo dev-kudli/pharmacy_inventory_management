@@ -152,6 +152,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField1">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField1KeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
@@ -229,8 +232,14 @@
                 <Component class="javax.swing.JTextField" name="jTextField4">
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField5">
+                  <Events>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField5KeyPressed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField6">
+                  <Events>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField6KeyPressed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -291,8 +300,15 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField7">
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField7KeyReleased"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField8">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField8ActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField8KeyPressed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

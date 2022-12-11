@@ -744,6 +744,11 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
 
         jPanel35.setBorder(javax.swing.BorderFactory.createTitledBorder("SEARCH DRUGS"));
 
+        jTextFieldKeyMan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldKeyManActionPerformed(evt);
+            }
+        });
         jTextFieldKeyMan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldKeyManKeyReleased(evt);
@@ -1698,6 +1703,10 @@ UiDesignFunctions.searchEmployeeDetails(keyword, manufacturerDrugTable2);
          }
         
     }//GEN-LAST:event_jTextFieldSpKeyTyped
+
+    private void jTextFieldKeyManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldKeyManActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldKeyManActionPerformed
        public void searchEmployeeDetails(String keyword){
         DefaultTableModel tableSearch = (DefaultTableModel)ManuOrderTable.getModel();
         //DefaultTableModel tableEdit = (DefaultTableModel)jTableEdit.getModel();

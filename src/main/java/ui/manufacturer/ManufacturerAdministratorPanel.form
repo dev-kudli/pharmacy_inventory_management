@@ -1117,6 +1117,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTextField" name="jTextFieldKeyMan">
                               <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldKeyManActionPerformed"/>
                                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldKeyManKeyReleased"/>
                               </Events>
                             </Component>
