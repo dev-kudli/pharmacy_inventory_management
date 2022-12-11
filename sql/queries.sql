@@ -80,4 +80,11 @@ SELECT tv.transporter_id, c.company_name AS transporter_name, tv.vehicle_count
 FROM transport_vehicle tv
 JOIN company c ON tv.transporter_id=c.company_id;
 
-UPDATE company SET company_owner=test WHERE company_id=1;
+# TRANSPORTER
+# View All Shipments
+SELECT s.shipment_id, p.order_date, p.pharmacy_id, c1.company_name AS pharmacy_name, c2.company_name AS distributor_name, s.shipment_status
+FROM shipment s
+JOIN pharmacy_order p ON p.order_id=s.order_id
+JOIN company c1 ON p.pharmacy_id=c1.company_id
+JOIN company c2 ON s.distributor_id=c1.company_id
+WHERE c1.company_id=1;
