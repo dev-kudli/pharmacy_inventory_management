@@ -1,7 +1,5 @@
 package db;
 
-import data.model.common.Date;
-import data.model.common.Drug;
 import data.model.pharmacy.PharmacyPurchaseOrder;
 import data.model.pharmacy.PharmacyPurchaseOrderItem;
 import helper.constant.UserRole;
@@ -9,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
 public abstract class ManufacturerManager {
     private final static String FILENAME = "ManufacturerManager";
@@ -82,6 +79,7 @@ public abstract class ManufacturerManager {
         boolean isUpdated = false;
         try {
             for (PharmacyPurchaseOrderItem item : order.getOrderItems()) {
+                System.out.println(item.getDrug().getDrugId()+"by"+item.getQuantity());
                 String queryToUpdateOrder = "UPDATE manufacturer_inventory SET quantity=quantity-%s WHERE drug_id=%s AND manufacturer_id=%s";
                 queryToUpdateOrder = String.format(queryToUpdateOrder, item.getQuantity(), item.getDrug().getDrugId(), order.getPharmacymanufactureId());
                 PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
@@ -102,9 +100,10 @@ public abstract class ManufacturerManager {
         try {
             //Build Query
             String query = """
-                SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) as total_items
+                SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) AS total_items, po.distributor_id, c2.company_name as distributor_name
                 FROM pharmacy_order po
                 JOIN company c ON c.company_id=po.pharmacy_id
+                JOIN company c2 ON c2.company_id=po.distributor_id
                 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
                 WHERE po.manufacturer_id=%s
                 GROUP BY po.order_id, po.order_date, po.order_status""";

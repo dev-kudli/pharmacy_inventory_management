@@ -28,14 +28,14 @@ public class CommonFunctions {
                 int pId = rs.getInt("pharmacy_id");
                 int mId = rs.getInt("manufacturer_id");
                 PharmacyPurchaseOrder order = new PharmacyPurchaseOrder(pId, mId, new Date(13, 22, 2020));
-                order.setOrderId(oId);
                 List<PharmacyPurchaseOrderItem> orderItems = order.getOrderItems();
+                order.setOrderId(oId);
+                
+                PharmacyPurchaseOrderItem firstItem = prepareOrderItem(rs);
+                orderItems.add(firstItem);
+                
                 while(rs.next()) {
-                    int drugId = rs.getInt("item_id");
-                    String drugName = rs.getString("drug_name");
-                    int quantity = rs.getInt("quantity");
-                    Drug drug = new Drug(drugId, drugName);
-                    PharmacyPurchaseOrderItem item = new PharmacyPurchaseOrderItem(drug, quantity,0);
+                    PharmacyPurchaseOrderItem item = prepareOrderItem(rs);
                     orderItems.add(item);
                 }
                 return order;
@@ -45,5 +45,14 @@ public class CommonFunctions {
         } catch (SQLException e) {
             throw e;
         }
+    }
+    
+    private static PharmacyPurchaseOrderItem prepareOrderItem(ResultSet rs) throws Exception {
+        int drugId = rs.getInt("item_id");
+        String drugName = rs.getString("drug_name");
+        int quantity = rs.getInt("quantity");
+        Drug drug = new Drug(drugId, drugName);
+        PharmacyPurchaseOrderItem item = new PharmacyPurchaseOrderItem(drug, quantity,0);
+        return item;
     }
 }
