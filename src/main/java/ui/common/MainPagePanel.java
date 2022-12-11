@@ -4,6 +4,8 @@
  */
 package ui.common;
 
+import helper.ui.UiDesignFunctions;
+import java.awt.Color;
 import ui.manager.UIManager;
 
 /**
@@ -17,6 +19,10 @@ public class MainPagePanel extends javax.swing.JPanel {
      */
     public MainPagePanel() {
         initComponents();
+        Color globalColor = new Color(102, 102, 102);
+        UiDesignFunctions.SetButtonBg(globalColor, jButton3);
+        UiDesignFunctions.SetButtonBg(globalColor, jButton5);
+        UiDesignFunctions.SetButtonBg(globalColor, jButton1);
         //jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui.images/LoginBgImg.png")));
 
     }
@@ -51,23 +57,24 @@ public class MainPagePanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 680, 810, 90));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 650, 810, 110));
 
         jButton3.setBackground(new java.awt.Color(102, 102, 102));
         jButton3.setFont(new java.awt.Font("Marker Felt", 1, 48)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("MANUFACTURER");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, 810, 90));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, 810, 110));
 
         jButton5.setBackground(new java.awt.Color(102, 102, 102));
         jButton5.setFont(new java.awt.Font("Marker Felt", 1, 48)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("DISTRIBUTOR");
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 550, 810, 100));
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, 810, 120));
 
         jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 70)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -99,7 +106,7 @@ public class MainPagePanel extends javax.swing.JPanel {
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 810, 80));
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, -40, 1970, 1370));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1990, 1370));
 
         jLabel5.setText("jLabel5");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, 770, 100));
