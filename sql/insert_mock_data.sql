@@ -1,4 +1,4 @@
-insert into master_drug_table(drug_name) values('Crocin');
+	insert into master_drug_table(drug_name) values('Crocin');
 insert into master_drug_table(drug_name) values('Paracetamol');
 insert into master_drug_table(drug_name) values('Cetrizon');
 

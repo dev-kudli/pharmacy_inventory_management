@@ -35,6 +35,7 @@ public class CompanyManager {
      * @return ResultSet if operation succeeds
      * @throws java.lang.Exception
      */
+    
     public static boolean createCompany(Company company) throws Exception {
         boolean isCreated = true;
         if (!Validation.isValidString(company.getCompanyName())) throw new Error("Invalid Company Name");
