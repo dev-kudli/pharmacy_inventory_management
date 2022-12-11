@@ -26,6 +26,8 @@ SELECT company_id, company_name
 FROM company
 WHERE company_type="distributor";
 
+UPDATE pharmacy_order SET distributor_id=1 WHERE order_id=1;
+
 # -------------------------------#-------------------------------#
 
 # PHARMACY
@@ -71,17 +73,16 @@ DELETE FROM pharmacy_store WHERE store_id=1;
 
 # DISTRIBUTOR
 # View All Shipments Of Distributor
-SELECT s.shipment_id, p.order_id, p.order_status, s.distributor_id, c1.company_name AS distributor_name, s.transporter_id, c2.company_name AS transporter_name, p.order_date
-FROM shipment s
-JOIN pharmacy_order p ON p.order_id=s.order_id
-JOIN company c1 ON s.distributor_id=c1.company_id
-JOIN company c2 ON s.transporter_id=c2.company_id
+SELECT p.order_id, p.order_status, p.distributor_id, c1.company_name AS distributor_name, p.transporter_id, c2.company_name AS transporter_name, p.order_date
+FROM pharmacy_order p
+LEFT OUTER JOIN company c1 ON p.distributor_id=c1.company_id
+LEFT OUTER JOIN company c2 ON p.transporter_id=c2.company_id
 WHERE c1.company_id=1;
 
 # Assign Transporter
-UPDATE shipment
+UPDATE pharmacy_order
 SET transporter_id=1
-WHERE shipment_id=1;
+WHERE order_id=1;
 
 #8.View Transporter Vehicles
 SELECT tv.transporter_id, c.company_name AS transporter_name, tv.vehicle_count

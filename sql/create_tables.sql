@@ -52,10 +52,14 @@ CREATE TABLE pharmacy_order(
 order_id INT PRIMARY KEY AUTO_INCREMENT,
 pharmacy_id INT NOT NULL,
 manufacturer_id INT NOT NULL,
+distributor_id INT,
+transporter_id INT,
 order_date DATE,
 order_status varchar(10),
 foreign key (pharmacy_id) references company(company_id),
-foreign key (manufacturer_id) references company(company_id)
+foreign key (manufacturer_id) references company(company_id),
+foreign key (distributor_id) references company(company_id),
+foreign key (transporter_id) references company(company_id)
 );
 
 CREATE TABLE pharmacy_order_item(

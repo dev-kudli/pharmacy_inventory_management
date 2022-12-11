@@ -1,23 +1,26 @@
 package db;
 
+import data.model.pharmacy.PharmacyPurchaseOrder;
 import static db.PersonManager.con;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public abstract class TransportManager {
-    public static boolean confirmShipmentStatus(int shipmentId) throws Exception {
+    public static boolean confirmShipmentStatus(int orderId) throws Exception {
         boolean isShipped = false;
         try {
             String queryToUpdateStatus = """
-                UPDATE shipment
-                SET shipment_status=\"delivered\"
-                WHERE shipment_id=%s""";
-            queryToUpdateStatus = String.format(queryToUpdateStatus, shipmentId);
+                UPDATE pharmacy_order
+                SET order_status=\"DELIVERED\"
+                WHERE order_id=%s""";
+            queryToUpdateStatus = String.format(queryToUpdateStatus, orderId);
             Statement stmt = con.createStatement();
             stmt.executeUpdate(queryToUpdateStatus);
             
-            PharmacyManager.updateStockAndQuantity(shipmentId);
+            PharmacyPurchaseOrder order = CommonFunctions.getOrderFromOrderId(orderId);
+            PharmacyManager.updateStockAndQuantity(order);
+            return !isShipped;
         } catch (SQLException e) {
             throw e;
         }
