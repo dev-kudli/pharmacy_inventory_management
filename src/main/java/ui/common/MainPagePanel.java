@@ -57,7 +57,7 @@ public class MainPagePanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 650, 810, 110));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 690, 810, 110));
 
         jButton3.setBackground(new java.awt.Color(102, 102, 102));
         jButton3.setFont(new java.awt.Font("Marker Felt", 1, 48)); // NOI18N
@@ -68,13 +68,13 @@ public class MainPagePanel extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, 810, 110));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 810, 110));
 
         jButton5.setBackground(new java.awt.Color(102, 102, 102));
         jButton5.setFont(new java.awt.Font("Marker Felt", 1, 48)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("DISTRIBUTOR");
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, 810, 120));
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 550, 810, 120));
 
         jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 70)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -106,6 +106,8 @@ public class MainPagePanel extends javax.swing.JPanel {
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 810, 80));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/shreyajaiswal/Desktop/images/loginBgImage.png")); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1990, 1370));
 
         jLabel5.setText("jLabel5");
@@ -113,7 +115,7 @@ public class MainPagePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-UIManager.AddCompanyLoginPanel();
+UIManager.AddCompanyManagerPanel("Manufacturer");
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
