@@ -30,12 +30,16 @@ public abstract class PersonManager {
         }
     }
     
-    public static boolean verifyUser(String username, String password) throws Exception {
+    public static boolean verifyUser(String username, String password, String role) throws Exception {
         boolean isValidUser = true;
         try {
-            String query = String.format("SELECT username, password FROM person WHERE username=\"%s\"", username);
+            String queryToVerifyUser = """
+                           SELECT username, password
+                           FROM person
+                           WHERE username=\"%s\" AND person_role=\"%s\"""";
+            queryToVerifyUser = String.format(queryToVerifyUser, username, role);
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            ResultSet rs = stmt.executeQuery(queryToVerifyUser);
             if(rs.next()) {
                 if (password.equals(rs.getString("password"))) return isValidUser;
                 else throw new Exception("Invalid Password");

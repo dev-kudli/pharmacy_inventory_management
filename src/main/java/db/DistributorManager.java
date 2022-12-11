@@ -1,7 +1,5 @@
 package db;
 
-import data.model.distributor.*;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,11 +9,10 @@ public abstract class DistributorManager {
         public static ResultSet getShipments(int distrubutorId) throws Exception {
         try {            
             String query = """
-                SELECT p.order_id, p.order_status, s.distributor_id, c1.company_name AS distributor_name, s.transporter_id, c2.company_name AS transporter_name, p.order_date
-                FROM shipment s
-                JOIN pharmacy_order p ON p.order_id=s.order_id
-                JOIN company c1 ON s.distributor_id=c1.company_id
-                JOIN company c2 ON s.transporter_id=c2.company_id
+                SELECT p.order_id, p.order_status, p.distributor_id, c1.company_name AS distributor_name, p.transporter_id, c2.company_name AS transporter_name, p.order_date
+                FROM pharmacy_order p
+                LEFT OUTER JOIN company c1 ON p.distributor_id=c1.company_id
+                LEFT OUTER JOIN company c2 ON p.transporter_id=c2.company_id
                 WHERE c1.company_id=%s""";
             query = String.format(query, distrubutorId);
             Statement stmt = con.createStatement();
@@ -31,8 +28,8 @@ public abstract class DistributorManager {
         boolean isUpdated = false;
         try {            
             String queryToUpdateTransporter = """
-                UPDATE shipment
-                SET transporter_id=%s
+                UPDATE pharmacy_order
+                SET transporter_id=1
                 WHERE order_id=%s""";
             queryToUpdateTransporter = String.format(queryToUpdateTransporter, orderId, transporterId);
             Statement stmt = con.createStatement();
