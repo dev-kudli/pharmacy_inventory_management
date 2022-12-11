@@ -4,6 +4,7 @@
  */
 package ui.common;
 
+import helper.constant.UserRole;
 import helper.ui.UiDesignFunctions;
 import java.awt.Color;
 import ui.manager.UIManager;
@@ -120,7 +121,7 @@ public class MainPagePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-UIManager.AddCompanyManagerPanel("Manufacturer");
+UIManager.AddCompanyManagerPanel(UserRole.MANUFACTURE_ADMIN);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 

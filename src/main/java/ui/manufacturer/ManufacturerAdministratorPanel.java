@@ -89,7 +89,7 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabelpharmacyName = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        jLabelOrd = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabeldisName = new javax.swing.JLabel();
         jLabelId = new javax.swing.JLabel();
@@ -99,6 +99,7 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
         jLabelDeliveryDate = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
         manageInventory = new javax.swing.JPanel();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         ViewStock = new javax.swing.JPanel();
@@ -201,17 +202,17 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
 
         ManuOrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "2022-10-09", "2", "CVA", "5", "pending"},
-                {"2", "2022-20-09", "1", "CVS", "10", "pending"},
-                {"3", "2022-12-09", "1", "CVS", "10", "pending"},
+                {"1", "2022-10-09", "CVA", "5", "pending", null},
+                {"2", "2022-20-09", "CVS", "10", "pending", null},
+                {"3", "2022-12-09", "CVS", "10", "pending", null},
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ORDER ID", "ORDER DATE", "PHARMACY ID", "PHARMACY NAME", "TOTAL ORDER QUANTITY", "STATUS"
+                "ORDER ID", "ORDER DATE", "PHARMACY NAME", "TOTAL ORDER QUANTITY", "STATUS", "DISTRIBUTOR NAME"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -379,7 +380,7 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("ASSIGN DISTRIBUTOR");
+        jButton3.setText("VIEW DISTRIBUTORS");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -445,7 +446,7 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
 
         jLabelpharmacyName.setText("XX");
 
-        jLabel16.setText("XX");
+        jLabelOrd.setText("XX");
 
         jLabeldisName.setText("XX");
 
@@ -494,7 +495,7 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
                                         .addComponent(jLabel6))
                                     .addGap(73, 73, 73)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelOrd, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabelpharmacyName, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -510,7 +511,7 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelOrd, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -555,6 +556,13 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton14.setText("ASSIGN DISTRIBUTOR");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout manageorderDistributionLayout = new javax.swing.GroupLayout(manageorderDistribution);
         manageorderDistribution.setLayout(manageorderDistributionLayout);
         manageorderDistributionLayout.setHorizontalGroup(
@@ -569,7 +577,7 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(jButton4))
+                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(manageorderDistributionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -577,7 +585,8 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(manageorderDistributionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton4))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         manageorderDistributionLayout.setVerticalGroup(
@@ -586,15 +595,7 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addGroup(manageorderDistributionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(manageorderDistributionLayout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(manageorderDistributionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(manageorderDistributionLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(manageorderDistributionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -603,8 +604,19 @@ public class ManufacturerAdministratorPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(manageorderDistributionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(67, Short.MAX_VALUE))
+                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(manageorderDistributionLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
 
         jTabbedPane1.addTab("MANAGE ORDER DISTIBUTION", manageorderDistribution);
@@ -1231,6 +1243,7 @@ manuOrderTable.setRowCount(0);
         int pharmacyId = rs.getInt("pharmacy_id");
         String pharmacyName = rs.getString("pharmacy_name");
         int quantity = rs.getInt("total_items");
+        String distrubutorName = rs.getString("distributor_name");
         //Float totalPrice = Float.valueOf(rs.getString("total_price"));
         String OrderStatus = rs.getString("order_status");
 
@@ -1242,10 +1255,10 @@ manuOrderTable.setRowCount(0);
 
         rowData[0] = orderId;
         rowData[1] = orderDate;
-        rowData[2] = pharmacyId;
-        rowData[3] = pharmacyName;
-        rowData[4] = quantity;
-        rowData[5] = OrderStatus;
+        rowData[2] = pharmacyName;
+        rowData[3] = quantity;
+        rowData[4] = OrderStatus;
+        rowData[5] = distrubutorName;
         //rowData[5] = totalPrice;
         //rowData[6] = OrderStatus;
        
@@ -1351,11 +1364,13 @@ int response = JOptionPane.showConfirmDialog(null, "Approve the order request?",
                             //QUERY EXECUTED TO UPDATETHE BACKEND
                             ManufacturerManager.updateOrder(orderId,status);
                             System.out.println("\norder ORDER APPROVAL COMPLETED");
+                            jLabelStatus.setText("");
                             jLabelStatus.setForeground(globalColor);
 
 
                             DefaultTableModel ManufactOrderTable= (DefaultTableModel)ManuOrderTable.getModel();
                             int selectedIndx = ManuOrderTable.getSelectedRow();
+                            ManufactOrderTable.setValueAt("APPROVE", selectedIndx, 4);
                             ManufactOrderTable.removeRow(selectedIndx);
                             DefaultTableModel ManufactOrderItmTable  = (DefaultTableModel)manufacturerOrderItemsTable.getModel();
                             ManufactOrderItmTable.setRowCount(0);
@@ -1396,7 +1411,7 @@ String pharmacyName = ManufactOrderTable.getValueAt(selectedIndx,1).toString();
 //String quantity = ManufactOrderTable.getValueAt(selectedIndx,2).toString();
 
 
-jLabel16.setText(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
+jLabelOrd.setText(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
 jLabelpharmacyName.setText(pharmacyName);
 
 //QUERY PART
@@ -1559,7 +1574,7 @@ jTextAreaReceipt.setText(" *****************************************************
 jTextAreaReceipt.setText(jTextAreaReceipt.getText()+"\n ************* DISTRIBUTOR ASSIGNMENT RECEIPT *********** \n");
 jTextAreaReceipt.setText(jTextAreaReceipt.getText()+"\n *************************************************************** \n\n\n");
 jTextAreaReceipt.setText(jTextAreaReceipt.getText()+"\n *************************************************************** \n\n");
-jTextAreaReceipt.setText(jTextAreaReceipt.getText()+" ORDER NUMBER : " + "      "+jLabel16.getText()+"\n\n");
+jTextAreaReceipt.setText(jTextAreaReceipt.getText()+" ORDER NUMBER : " + "      "+jLabelOrd.getText()+"\n\n");
 
 jTextAreaReceipt.setText(jTextAreaReceipt.getText()+" PHARMACY NAME : " + "     "+jLabelpharmacyName.getText()+"\n\n");
 //jTextAreaReceipt.setText("\n\n");
@@ -1757,6 +1772,24 @@ jTabbedPane1.setSelectedIndex(0);
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+int orderId = Integer.parseInt(jLabelOrd.getText());
+int disId = Integer.parseInt(jLabelId.getText());
+
+
+try
+{
+    ManufacturerManager.assignDistributor(orderId, disId);
+    JOptionPane.showMessageDialog(this,"Distributor Assigned for the ORDER ID"+orderId+"Successfully");
+}
+catch(Exception e)
+{
+    System.out.println(e);
+}
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
        public void searchEmployeeDetails(String keyword){
         DefaultTableModel tableSearch = (DefaultTableModel)ManuOrderTable.getModel();
         //DefaultTableModel tableEdit = (DefaultTableModel)jTableEdit.getModel();
@@ -1785,6 +1818,7 @@ jTabbedPane1.setSelectedIndex(0);
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1803,7 +1837,6 @@ jTabbedPane1.setSelectedIndex(0);
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
@@ -1822,6 +1855,7 @@ jTabbedPane1.setSelectedIndex(0);
     private javax.swing.JLabel jLabelId;
     private javax.swing.JLabel jLabelManDrugId;
     private javax.swing.JLabel jLabelManDrugName;
+    private javax.swing.JLabel jLabelOrd;
     private javax.swing.JLabel jLabelOrderId;
     private javax.swing.JLabel jLabelStatus;
     private javax.swing.JLabel jLabeldisName;

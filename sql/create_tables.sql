@@ -1,3 +1,4 @@
+drop database pharmacy_inventory_management;
 create database pharmacy_inventory_management;
 use pharmacy_inventory_management;
 

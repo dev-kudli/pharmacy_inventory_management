@@ -50,25 +50,25 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
      */
     
     String userType="";
-    String adminRole="";
+    //String adminRole="";
     public CompanyRegisterationPanel(String userType) {
         initComponents();
         setDefaultVlaues();
         this.userType = userType;
-        if(this.userType.equalsIgnoreCase("manufacturer"))
-        {
-           adminRole = "MANUFACTURE_ADMIN" ;
-        }
-        else if(this.userType.equalsIgnoreCase("pharmacy"))
-        {
-           adminRole = "PHARMACY_ADMIN" ;
-        }
-        else if(this.userType.equalsIgnoreCase("DISTRIBUTOR"))
-        {
-           adminRole = "DISTRIBUTOR_ADMIN" ;
-        }
+//        if(this.userType.equalsIgnoreCase("manufacturer"))
+////        {
+//           adminRole = "MANUFACTURE_ADMIN" ;
+//        }
+//        else if(this.userType.equalsIgnoreCase("pharmacy"))
+//        {
+//           adminRole = "PHARMACY_ADMIN" ;
+//        }
+//        else if(this.userType.equalsIgnoreCase("DISTRIBUTOR"))
+//        {
+//           adminRole = "DISTRIBUTOR_ADMIN" ;
+//        }
         
-    }
+            }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -663,7 +663,7 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
 
 
     Person person = new Person(username,name,password);
-    person.setPersonType(adminRole);
+    person.setPersonType(userType);
     person.setPersonGender(gender);
     person.setPersonDob(dob);
     Contact contact = person.getPersonContact();
@@ -759,6 +759,7 @@ Validation.checkValidEmail(email,jTextFieldComEmail);
     }//GEN-LAST:event_jTextFieldComEmailKeyReleased
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+UIManager.AddCompanyLoginPanel(userType);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -91,7 +91,7 @@ String userType ="";
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    UIManager.AddCompanyLoginPanel("Manufacturer");
+    UIManager.AddCompanyLoginPanel(userType);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
