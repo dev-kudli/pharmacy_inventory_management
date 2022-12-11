@@ -338,6 +338,12 @@ int pharmacyId = 1;
 
         jLabel16.setText("STORE NAME");
 
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField6KeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
@@ -646,6 +652,12 @@ int pharmacyId = 1;
 
         jLabel32.setText("STORE MANAGER NAME");
 
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField9KeyPressed(evt);
+            }
+        });
+
         jLabel34.setText(" DOB");
 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("ADDRESS"));
@@ -655,6 +667,21 @@ int pharmacyId = 1;
         jLabel36.setText("ZIPCODE");
 
         jLabel37.setText("CITY");
+
+        jTextField26.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField26KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField26KeyTyped(evt);
+            }
+        });
+
+        jTextField27.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField27KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -696,6 +723,12 @@ int pharmacyId = 1;
         jLabel38.setText("PHONE NUMBER");
 
         jLabel39.setText("EMAIL");
+
+        jTextField28.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField28KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -781,6 +814,11 @@ int pharmacyId = 1;
         );
 
         jButton15.setText("ADD STORE MANAGER");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
 
         jButton16.setText("BACK");
 
@@ -791,7 +829,7 @@ int pharmacyId = 1;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 403, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 411, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -853,16 +891,31 @@ int pharmacyId = 1;
                 jTextField17ActionPerformed(evt);
             }
         });
+        jTextField17.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField17KeyPressed(evt);
+            }
+        });
 
         jTextField34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField34ActionPerformed(evt);
             }
         });
+        jTextField34.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField34KeyReleased(evt);
+            }
+        });
 
         jTextField35.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField35ActionPerformed(evt);
+            }
+        });
+        jTextField35.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField35KeyPressed(evt);
             }
         });
 
@@ -1116,17 +1169,59 @@ int pharmacyId = 1;
 
         jLabel43.setText("DRUG NAME");
 
+        jTextField21.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField21KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField21KeyTyped(evt);
+            }
+        });
+
         jLabel64.setText("QUANTITY");
+
+        jTextField23.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField23KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField23KeyTyped(evt);
+            }
+        });
 
         jLabel66.setText("AVAILABILITY");
 
         jLabel67.setText("MANUFACTURER");
 
+        jTextField43.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField43KeyTyped(evt);
+            }
+        });
+
         jLabel68.setText("UNIT PRICE");
+
+        jTextField46.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField46KeyPressed(evt);
+            }
+        });
 
         jLabel69.setText("DRUG ID");
 
         jLabel70.setText("DRUG TYPE");
+
+        jTextField47.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField47KeyPressed(evt);
+            }
+        });
+
+        jTextField48.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField48KeyPressed(evt);
+            }
+        });
 
         jButton21.setText("DELETE");
 
@@ -1266,7 +1361,7 @@ int pharmacyId = 1;
         EditStockLayout.setVerticalGroup(
             EditStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditStockLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1623,8 +1718,9 @@ int pharmacyId = 1;
         manageInventoryLayout.setHorizontalGroup(
             manageInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageInventoryLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTabbedPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1444, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         manageInventoryLayout.setVerticalGroup(
             manageInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2380,6 +2476,227 @@ jComboBoxCity.setSelectedItem(storeCity.toString());
 jComboBoxZip.setSelectedItem(zipcode.toString());
         // TODO add your handling code here:
     }//GEN-LAST:event_jpharmTable2MouseClicked
+
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField6.setEditable(true);
+        }else{
+              jTextField6.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter Valid NAME", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }      
+    }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void jTextField9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField9.setEditable(true);
+        }else{
+              jTextField9.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter Valid NAME", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }      
+    }//GEN-LAST:event_jTextField9KeyPressed
+
+    private void jTextField27KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField27KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField27.setEditable(true);
+        }else{
+              jTextField27.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter Valid CITY", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }      
+    }//GEN-LAST:event_jTextField27KeyPressed
+
+    private void jTextField17KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField17KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField17.setEditable(true);
+        }else{
+              jTextField17.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter Valid NAME", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }      
+    }//GEN-LAST:event_jTextField17KeyPressed
+
+    private void jTextField47KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField47KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField47.setEditable(true);
+        }else{
+              jTextField47.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter Valid NAME", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }      
+    }//GEN-LAST:event_jTextField47KeyPressed
+
+    private void jTextField46KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField46KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField46.setEditable(true);
+        }else{
+              jTextField46.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter Valid NAME", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }      
+    }//GEN-LAST:event_jTextField46KeyPressed
+
+    private void jTextField35KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField35KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField46.setEditable(true);
+        }else{
+              jTextField46.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter Valid GENDER", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jTextField35KeyPressed
+
+    private void jTextField34KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField34KeyReleased
+        // TODO add your handling code here:
+        String mobileNo=jTextField34.getText () ;
+        if(mobileNo.matches ("^[0-9]*$")&& mobileNo.length()==10)
+        {
+           jTextField34.setBackground(java.awt.Color.green);
+        }
+
+        else
+            jTextField34.setBackground(java.awt.Color.red);
+    }//GEN-LAST:event_jTextField34KeyReleased
+
+    private void jTextField28KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField28KeyReleased
+        // TODO add your handling code here:
+        String mobileNo=jTextField28.getText () ;
+        if(mobileNo.matches ("^[0-9]*$")&& mobileNo.length()==10)
+        {
+           jTextField28.setBackground(java.awt.Color.green);
+        }
+
+        else
+            jTextField28.setBackground(java.awt.Color.red);
+    }//GEN-LAST:event_jTextField28KeyReleased
+
+    private void jTextField26KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField26KeyPressed
+        // TODO add your handling code here:
+//        if (Character.isLetter(evt.getKeyChar())) {
+//             JOptionPane.showMessageDialog(null, "Please enter valid ZIPCODE", "Error", JOptionPane.ERROR_MESSAGE);
+//             evt.consume();
+//          } else {
+//    // If the character is not a letter, try to parse it as a double
+//    try {
+//      Double.parseDouble(jTextField26.getText() + evt.getKeyChar());
+//    } catch (NumberFormatException e) {
+//        JOptionPane.showMessageDialog(null, "Please enter Valid ZIPCODE", "Error", JOptionPane.ERROR_MESSAGE);
+//        evt.consume();
+//    }
+//         }
+    }//GEN-LAST:event_jTextField26KeyPressed
+
+    private void jTextField23KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField23KeyPressed
+        // TODO add your handling code here:
+//        if (Character.isLetter(evt.getKeyChar())) {
+//             JOptionPane.showMessageDialog(null, "Please enter valid ID", "Error", JOptionPane.ERROR_MESSAGE);
+//             evt.consume();
+//          } else {
+//    // If the character is not a letter, try to parse it as a double
+//    try {
+//      Double.parseDouble(jTextField23.getText() + evt.getKeyChar());
+//    } catch (NumberFormatException e) {
+//        JOptionPane.showMessageDialog(null, "Please enter Valid ID", "Error", JOptionPane.ERROR_MESSAGE);
+//        evt.consume();
+//    }
+//         }
+    }//GEN-LAST:event_jTextField23KeyPressed
+
+    private void jTextField21KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField21KeyPressed
+        // TODO add your handling code here:
+//        if (Character.isLetter(evt.getKeyChar())) {
+//             JOptionPane.showMessageDialog(null, "Please enter valid QUANTITY", "Error", JOptionPane.ERROR_MESSAGE);
+//             evt.consume();
+//          } else {
+//    // If the character is not a letter, try to parse it as a double
+//    try {
+//      Double.parseDouble(jTextField21.getText() + evt.getKeyChar());
+//    } catch (NumberFormatException e) {
+//        JOptionPane.showMessageDialog(null, "Please enter Valid QUANTITY", "Error", JOptionPane.ERROR_MESSAGE);
+//        evt.consume();
+//    }
+//         }
+        
+    }//GEN-LAST:event_jTextField21KeyPressed
+
+    private void jTextField43KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField43KeyTyped
+        // TODO add your handling code here:
+        if (Character.isLetter(evt.getKeyChar())) {
+             JOptionPane.showMessageDialog(null, "Please enter valid Price", "Error", JOptionPane.ERROR_MESSAGE);
+             evt.consume();
+          } else {
+    // If the character is not a letter, try to parse it as a double
+    try {
+      Double.parseDouble(jTextField43.getText() + evt.getKeyChar());
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Please enter Valid Price", "Error", JOptionPane.ERROR_MESSAGE);
+        evt.consume();
+    }
+         }
+    }//GEN-LAST:event_jTextField43KeyTyped
+
+    private void jTextField23KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField23KeyTyped
+        // TODO add your handling code here:
+        char c = evt. getKeyChar ();
+        if (!Character.isDigit (c)){
+            JOptionPane.showMessageDialog(null, "Please enter Valid ID!", "Error", JOptionPane.ERROR_MESSAGE);
+           evt. consume ();
+        }
+    }//GEN-LAST:event_jTextField23KeyTyped
+
+    private void jTextField21KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField21KeyTyped
+        // TODO add your handling code here:
+        char c = evt. getKeyChar ();
+        if (!Character.isDigit (c)){
+            JOptionPane.showMessageDialog(null, "Please enter Valid QUANTITY!", "Error", JOptionPane.ERROR_MESSAGE);
+           evt. consume ();
+        }
+    }//GEN-LAST:event_jTextField21KeyTyped
+
+    private void jTextField48KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField48KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField48.setEditable(true);
+        }else{
+              jTextField48.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter Valid TYPE", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }   
+    }//GEN-LAST:event_jTextField48KeyPressed
+
+    private void jTextField26KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField26KeyTyped
+        // TODO add your handling code here:
+            if (Character.isLetter(evt.getKeyChar())) {
+             JOptionPane.showMessageDialog(null, "Please enter valid ZIPCODE", "Error", JOptionPane.ERROR_MESSAGE);
+             evt.consume();
+          } else {
+    // If the character is not a letter, try to parse it as a double
+    try {
+      Double.parseDouble(jTextField26.getText() + evt.getKeyChar());
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Please enter Valid ZIPCODE", "Error", JOptionPane.ERROR_MESSAGE);
+        evt.consume();
+    }
+         }
+    }//GEN-LAST:event_jTextField26KeyTyped
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+        if (jTextField9.getText().isEmpty() || jTextField16.getText().isEmpty() || jTextField28.getText().isEmpty()|| jTextField30.getText().isEmpty()|| jTextField31.getText().isEmpty() || jTextField29.getText().isEmpty() || jTextField25.getText().isEmpty() || jTextField26.getText().isEmpty() || jTextField27.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Enter all the Details", "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }else{
+            
+        }
+    }//GEN-LAST:event_jButton15ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

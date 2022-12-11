@@ -4,6 +4,7 @@ import data.model.common.Date;
 import data.model.common.Drug;
 import data.model.pharmacy.PharmacyPurchaseOrder;
 import data.model.pharmacy.PharmacyPurchaseOrderItem;
+import helper.constant.UserRole;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,7 +69,7 @@ public abstract class ManufacturerManager {
     
     /**
      * @param orderId - ID of the Order
-     * @param username - Distributor username
+     * @param distributorId - Distributor ID
      * @return int - Number of records updated
      * @throws java.lang.Exception
      */
@@ -80,6 +81,26 @@ public abstract class ManufacturerManager {
             return stmt.executeUpdate(queryToAssignDistributor);
         } catch (SQLException e) {
             throw new Exception(FILENAME + "->" + "assignDistributor" + "->" + e);
+        }
+    }
+    
+    /**
+     * @return ResultSet
+     * @throws java.lang.Exception
+     */
+    public static ResultSet viewAllDistributors() throws Exception {
+        try {
+            String queryToFetchDistributors = """
+                SELECT company_id, company_name
+                FROM company
+                WHERE company_type=%s""";
+            queryToFetchDistributors = String.format(queryToFetchDistributors, UserRole.DISTRIBUTOR_ADMIN);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(queryToFetchDistributors);
+            return rs;
+            
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "viewAllDistributors" + "->" + e);
         }
     }
     

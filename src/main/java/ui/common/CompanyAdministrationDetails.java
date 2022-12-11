@@ -310,7 +310,7 @@ public class CompanyAdministrationDetails extends javax.swing.JPanel {
             jTextField1.setEditable(true);
         }else{
               jTextField1.setEditable(false);
-            JOptionPane.showMessageDialog(null, "Please enter only alphabetic characters.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please enter Valid NAME", "Invalid Input", JOptionPane.WARNING_MESSAGE);
         }          
     }//GEN-LAST:event_jTextField1KeyPressed
 
