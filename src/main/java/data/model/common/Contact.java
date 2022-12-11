@@ -27,9 +27,5 @@ public class Contact {
 
     public void setLocation(Location location) {
         this.location = location;
-    }
-    
-  
-    
-  
+    } 
 }

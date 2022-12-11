@@ -103,3 +103,7 @@ WHERE c1.transporter_id=1;
 UPDATE shipment
 SET shipment_status="delivered"
 WHERE shipment_id=1;
+
+# Report
+SELECT person_name, person_gender, person_email, person_contact
+FROM person WHERE person_role="STORE_MANAGER" AND company_id=1;
