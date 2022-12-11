@@ -24,12 +24,10 @@ public abstract class PersonManager {
         }
     }
     
-    public static boolean verifyUser() throws Exception {
+    public static boolean verifyUser(String username, String password) throws Exception {
         boolean isValidUser = true;
         try {
-            String name = "Barney Rubble";
-            String password = "password";
-            String query = String.format("SELECT username, password FROM user WHERE username=\"%s\"", name);
+            String query = String.format("SELECT username, password FROM user WHERE username=\"%s\"", username);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             if(rs.next()) {
