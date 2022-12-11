@@ -4,6 +4,7 @@ import data.model.common.Company;
 import helper.constant.CompanyTypes;
 import helper.validation.Validation;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
@@ -18,7 +19,12 @@ public class CompanyManager {
                 ORDER BY company_id DESC
                 LIMIT 1""";
             Statement stmt = con.createStatement();
-            return stmt.executeUpdate(queryToGetCompanyId);
+            ResultSet rs = stmt.executeQuery(queryToGetCompanyId);
+            if (rs.next()) {
+                return rs.getInt("company_id");
+            } else {
+                throw new Exception("Company Not Found");
+            }
         } catch (SQLException e) {
             throw e;
         }
@@ -29,21 +35,16 @@ public class CompanyManager {
      * @return ResultSet if operation succeeds
      * @throws java.lang.Exception
      */
-    public static boolean createCompany(Company company, String username) throws Exception {
+    public static boolean createCompany(Company company) throws Exception {
         boolean isCreated = true;
         if (!Validation.isValidString(company.getCompanyName())) throw new Error("Invalid Company Name");
-        if (company.getCompanyType().equals(CompanyTypes.DISTRIBUTOR) ||
-            company.getCompanyType().equals(CompanyTypes.MANUFACTURER) ||
-            company.getCompanyType().equals(CompanyTypes.PHARMACY) ||
-            company.getCompanyType().equals(CompanyTypes.TRANSPORTER)) throw new Error("Invalid Company Type");
         try {
-            String query1 = "INSERT INTO company(registered_date, company_name, company_type, company_owner)"
-                            + "values (?, ?, ?, ?)";
+            String query1 = "INSERT INTO company(registered_date, company_name, company_type)"
+                            + "values (?, ?, ?)";
             PreparedStatement preparedStmt1 = con.prepareStatement(query1);
             preparedStmt1.setString (1, company.getRegisteredDate().getFormattedDate());
             preparedStmt1.setString (2, company.getCompanyName());
             preparedStmt1.setString (3, company.getCompanyType());
-            preparedStmt1.setString (4, username);
             preparedStmt1.execute();
             return isCreated;
         } catch (SQLException e) {

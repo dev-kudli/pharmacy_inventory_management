@@ -4,6 +4,7 @@
  */
 package ui.common;
 
+import helper.constant.UserRole;
 import helper.ui.UiDesignFunctions;
 import java.awt.Color;
 import ui.manager.UIManager;
@@ -74,6 +75,11 @@ public class MainPagePanel extends javax.swing.JPanel {
         jButton5.setFont(new java.awt.Font("Marker Felt", 1, 48)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("DISTRIBUTOR");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 550, 810, 120));
 
         jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 70)); // NOI18N
@@ -115,14 +121,19 @@ public class MainPagePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-UIManager.AddCompanyManagerPanel("Manufacturer");
+UIManager.AddCompanyManagerPanel(UserRole.MANUFACTURE_ADMIN);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-UIManager.AddpharmacyManagerPanel();
+UIManager.AddCompanyManagerPanel(UserRole.PHARMACY_ADMIN);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+UIManager.AddCompanyManagerPanel(UserRole.DISTRIBUTOR_ADMIN);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

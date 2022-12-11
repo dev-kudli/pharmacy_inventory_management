@@ -1,5 +1,9 @@
 package helper.validation;
 
+import java.awt.Color;
+import java.util.regex.Pattern;
+import javax.swing.JTextField;
+
 public abstract class Validation {
     public static boolean isValidString(String s) {
         Boolean isValid = true;
@@ -25,16 +29,44 @@ public abstract class Validation {
         if (!email.contains("@") || !email.contains(".com")) isValid = false;
         return isValid;
     }
-   
+    
+    public static void isValidContact(String contact, JTextField field)
+    {
+                if(contact.matches("[0-9]*$") && contact.length() == 10){
+            field.setBackground(new Color(154, 228, 158));
+        
+    }
+                 else{
+            field.setBackground(new Color(246, 159, 132));         
+        }
+  
+         
+        }
+
+    
+    public static void checkValidEmail(String email, JTextField field)
+    {
+               
+        if((Pattern.matches("[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", email))){
+            field.setBackground(new Color(154, 228, 158));
+            
+        }
+        else{
+            
+            field.setBackground(new Color(246, 159, 132));
+           
+        }
+    }
+       
     
     
-    public static int IsValidateUsername(String username){
-      int i = 1;
+    public static boolean IsValidateUsername(String username){
+      //int i = 1;
       if(username.equals("")||username.length()<=3){
-          i=0;
+          return false;
       }
       
-      return i;
+      return true;
   }
     public static boolean IsValidPassword(String password) {
 

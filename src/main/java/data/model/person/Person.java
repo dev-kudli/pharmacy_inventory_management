@@ -61,9 +61,7 @@ public class Person {
         return password;
     }
     
-    public boolean save() throws Exception {
-        return PersonManager.createUser(this);
-    }
+
 
     public Location getLocation() {
         return location;

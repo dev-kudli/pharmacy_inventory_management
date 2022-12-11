@@ -348,24 +348,24 @@ public class TransportAdminPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtondistributorActionPerformed
 
     private void jButtonApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApproveActionPerformed
-        int response = JOptionPane.showConfirmDialog(null, "Approve the order request?", "Approve the order request?", JOptionPane.YES_NO_OPTION);
-        if(response == 0)
-        {
-            Color globalColor = new Color(129, 211, 129);
-
-            //QUERY EXECUTE IN THE BACKEND
-            TransportManager.confirmShipmentStatus(shipmentId);
-            System.out.println("\norder ORDER APPROVAL COMPLETED");
-            jLabelStatus.setForeground(globalColor);
-            jLabelStatus.setText("APPROVED");
-
-            DefaultTableModel ManufactOrderTable= (DefaultTableModel)ShipmentStatusTable.getModel();
-            int selectedIndx = ShipmentStatusTable.getSelectedRow();
-            ManufactOrderTable.removeRow(selectedIndx);
-            jButtondistributor.setVisible(true);
-
-        }
-        // TODO add your handling code here:
+//        int response = JOptionPane.showConfirmDialog(null, "Approve the order request?", "Approve the order request?", JOptionPane.YES_NO_OPTION);
+//        if(response == 0)
+//        {
+//            Color globalColor = new Color(129, 211, 129);
+//
+//            //QUERY EXECUTE IN THE BACKEND
+//            TransportManager.confirmShipmentStatus(shipmentId);
+//            System.out.println("\norder ORDER APPROVAL COMPLETED");
+//            jLabelStatus.setForeground(globalColor);
+//            jLabelStatus.setText("APPROVED");
+//
+//            DefaultTableModel ManufactOrderTable= (DefaultTableModel)ShipmentStatusTable.getModel();
+//            int selectedIndx = ShipmentStatusTable.getSelectedRow();
+//            ManufactOrderTable.removeRow(selectedIndx);
+//            jButtondistributor.setVisible(true);
+//
+//        }
+//        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonApproveActionPerformed
 
     private void ShipmentStatusTableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ShipmentStatusTableKeyPressed
@@ -378,24 +378,24 @@ public class TransportAdminPanel extends javax.swing.JPanel {
 
     private void ShipmentStatusTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShipmentStatusTableMouseClicked
         // get shipment id
-        
-        Color globalColor = new Color(227, 66, 52);
-        jLabelStatus.setForeground(globalColor);
-        UiDesignFunctions.AlignTableContents(shipmentStatusTable);
-        int selectedIndx = ShipmentStatusTable.getSelectedRow();
-        DefaultTableModel ManufactOrderTable= (DefaultTableModel)ShipmentStatusTable.getModel();
-        DefaultTableModel ManufactOrderItmTable  = (DefaultTableModel)manufacturerOrderItemsTable.getModel();
-        ManufactOrderItmTable.setRowCount(0);
-
-        if(selectedIndx<0){
-            JOptionPane.showMessageDialog(this,"Please Select an Order to Review");
-        }
-        int orderId = Integer.parseInt(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
-        String pharmacyName = ManufactOrderTable.getValueAt(selectedIndx,3).toString();
-        String orderStatus = ManufactOrderTable.getValueAt(selectedIndx,6).toString();
-        jLabelOrderId.setText(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
-        jLabelCustomer.setText(pharmacyName);
-        jLabelStatus.setText(orderStatus);
+//        
+//        Color globalColor = new Color(227, 66, 52);
+//        jLabelStatus.setForeground(globalColor);
+//        UiDesignFunctions.AlignTableContents(shipmentStatusTable);
+//        int selectedIndx = ShipmentStatusTable.getSelectedRow();
+//        DefaultTableModel ManufactOrderTable= (DefaultTableModel)ShipmentStatusTable.getModel();
+//        DefaultTableModel ManufactOrderItmTable  = (DefaultTableModel)manufacturerOrderItemsTable.getModel();
+//        ManufactOrderItmTable.setRowCount(0);
+//
+//        if(selectedIndx<0){
+//            JOptionPane.showMessageDialog(this,"Please Select an Order to Review");
+//        }
+//        int orderId = Integer.parseInt(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
+//        String pharmacyName = ManufactOrderTable.getValueAt(selectedIndx,3).toString();
+//        String orderStatus = ManufactOrderTable.getValueAt(selectedIndx,6).toString();
+//        jLabelOrderId.setText(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
+//        jLabelCustomer.setText(pharmacyName);
+//        jLabelStatus.setText(orderStatus);
     }//GEN-LAST:event_ShipmentStatusTableMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -440,7 +440,7 @@ public class TransportAdminPanel extends javax.swing.JPanel {
 
     private void jTextFieldKeywordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldKeywordKeyReleased
         String keyword = jTextFieldKeyword.getText();
-        searchEmployeeDetails( keyword);
+        //searchEmployeeDetails( keyword);
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldKeywordKeyReleased
 

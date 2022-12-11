@@ -8,11 +8,11 @@ import java.sql.Statement;
 
 public abstract class PersonManager {
     public static java.sql.Connection con = Connection.getConnection();
-    public static boolean createUser(Person p) throws Exception {
+    public static boolean createUser(Person p, int companyId) throws Exception {
         boolean isInserted = true;
         try {
-            String query = "INSERT INTO person(username, person_name, password, person_dob, person_gender, person_role, person_address, person_city, person_zip)"
-                            + "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO person(username, person_name, password, person_dob, person_gender, person_role, person_address, person_city, person_zipcode, company_id)"
+                            + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setString (1, p.getUsername());
             preparedStmt.setString (2, p.getPersonName());
@@ -23,6 +23,7 @@ public abstract class PersonManager {
             preparedStmt.setString (7, p.getLocation().address);
             preparedStmt.setString (8, p.getLocation().city);
             preparedStmt.setString (9, p.getLocation().zipcode);
+            preparedStmt.setInt (10, companyId);
             preparedStmt.execute();
             return isInserted;
         } catch (SQLException e) {
@@ -30,20 +31,17 @@ public abstract class PersonManager {
         }
     }
     
-    public static boolean verifyUser(String username, String password, String role) throws Exception {
+        public static ResultSet verifyUser(String username, String password, String role) throws Exception {
         boolean isValidUser = true;
         try {
             String queryToVerifyUser = """
-                           SELECT username, password
-                           FROM person
-                           WHERE username=\"%s\" AND person_role=\"%s\"""";
+                SELECT *
+                FROM person
+                WHERE username=\"%s\" AND person_role=\"%s\"""";
             queryToVerifyUser = String.format(queryToVerifyUser, username, role);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(queryToVerifyUser);
-            if(rs.next()) {
-                if (password.equals(rs.getString("password"))) return isValidUser;
-                else throw new Exception("Invalid Password");
-            } else throw new Exception("Invalid Username");
+            return rs;
         } catch (SQLException e) {
             throw e;
         } catch (Exception e) {
