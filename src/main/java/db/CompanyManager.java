@@ -1,7 +1,7 @@
 package db;
 
 import data.model.common.Company;
-import helper.constant.CompanyConstant;
+import helper.constant.CompanyTypes;
 import helper.validation.Validation;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -19,7 +19,10 @@ public class CompanyManager {
     public static boolean createCompany(Company company, String username) throws Exception {
         boolean isCreated = true;
         if (!Validation.isValidString(company.getCompanyName())) throw new Error("Invalid Company Name");
-        if (!Arrays.asList(CompanyConstant.COMPANY_TYPES).contains(company.getCompanyType())) throw new Error("Invalid Company Type");
+        if (company.getCompanyType().equals(CompanyTypes.DISTRIBUTOR) ||
+            company.getCompanyType().equals(CompanyTypes.MANUFACTURER) ||
+            company.getCompanyType().equals(CompanyTypes.PHARMACY) ||
+            company.getCompanyType().equals(CompanyTypes.TRANSPORTER)) throw new Error("Invalid Company Type");
         try {
             String query1 = "INSERT INTO company(registered_date, company_name, company_type, company_owner)"
                             + "values (?, ?, ?, ?)";
