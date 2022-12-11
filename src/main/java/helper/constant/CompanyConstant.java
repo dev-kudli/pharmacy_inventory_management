@@ -1,6 +1,6 @@
 package helper.constant;
 
-public abstract class CompanyTypes {
+public abstract class CompanyConstant {
     public final static String MANUFACTURER = "MANUFACTURER";
     public final static String PHARMACY = "PHARMACY";
     public final static String DISTRIBUTOR = "DISTRIBUTOR";

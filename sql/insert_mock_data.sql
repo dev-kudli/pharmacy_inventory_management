@@ -2,16 +2,16 @@
 insert into master_drug_table(drug_name) values('Paracetamol');
 insert into master_drug_table(drug_name) values('Cetrizon');
 
-insert into person(username, person_name, password, person_role) values("skudli", "Sudarshan Kudli", "password", "PHARMACY_ADMIN");
-insert into person(username, person_name, password, person_role) values("shreya98", "Shreya Jaiswal", "password", "STORE_MANAGER");
-insert into person(username, person_name, password, person_role) values("alankrutha", "Alankrutha Reddy", "password", "MANUFACTURER_ADMIN");
-
 insert into company(company_name, company_type, registered_date) values("Abbot Laboratories", "manufacturer", "1980-02-13");
 insert into company(company_name, company_type, registered_date) values("Johnson and Johnson", "manufacturer", "1985-04-13");
 insert into company(company_name, company_type, registered_date) values("Cardinal Health", "distributor", "1990-05-23");
 insert into company(company_name, company_type, registered_date) values("King World Medicines Group", "distributor", "2000-12-25");
 insert into company(company_name, company_type, registered_date) values("CVS Pharmacy", "pharmacy", "1982-06-04");
 insert into company(company_name, company_type, registered_date) values("MedPlus", "pharmacy", "1970-02-16");
+
+insert into person(username, person_name, password, person_role, company_id) values("skudli", "Sudarshan Kudli", "password", "PHARMACY_ADMIN", 5);
+insert into person(username, person_name, password, person_role, company_id) values("shreya98", "Shreya Jaiswal", "password", "STORE_MANAGER", 5);
+insert into person(username, person_name, password, person_role, company_id) values("alankrutha", "Alankrutha Reddy", "password", "MANUFACTURE_ADMIN", 1);
 
 insert into manufacturer_inventory(manufacturer_id, drug_id, quantity, cost_price, selling_price) values(1, 1, 100, 3, 4);
 insert into manufacturer_inventory(manufacturer_id, drug_id, quantity, cost_price, selling_price) values(1, 2, 120, 4, 4.5);

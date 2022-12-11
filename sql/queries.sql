@@ -1,9 +1,9 @@
 # MANUFACTURER
 # View All Orders of a Manufacturer
-SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) AS total_items, po.distributor_id, c2.distributor_name
+SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) AS total_items, po.distributor_id, c2.company_name as distributor_name, SUM(poi.cost_price*poi.quantity) AS total_price
 FROM pharmacy_order po
 JOIN company c ON c.company_id=po.pharmacy_id
-JOIN company c2 ON c2.company_id=po.distributor_id
+LEFT OUTER JOIN company c2 ON c2.company_id=po.distributor_id
 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
 WHERE po.manufacturer_id=1
 GROUP BY po.order_id, po.order_date, po.order_status;
@@ -20,14 +20,12 @@ FROM pharmacy_order po
 JOIN company c ON c.company_id=po.manufacturer_id
 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
 JOIN master_drug_table md ON md.drug_id=poi.item_id
-WHERE po.order_id=1;
+WHERE po.order_id=2;
 
 # View All Distributors
 SELECT company_id, company_name
 FROM company
 WHERE company_type="distributor";
-
-UPDATE pharmacy_order SET distributor_id=1 WHERE order_id=1;
 
 # -------------------------------#-------------------------------#
 
@@ -105,3 +103,7 @@ WHERE c1.transporter_id=1;
 UPDATE shipment
 SET shipment_status="delivered"
 WHERE shipment_id=1;
+
+# Report
+SELECT person_name, person_gender, person_email, person_contact
+FROM person WHERE person_role="STORE_MANAGER" AND company_id=1;

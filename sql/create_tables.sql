@@ -31,6 +31,8 @@ person_address VARCHAR(100),
 person_city VARCHAR(50),
 person_zipcode VARCHAR(10),
 company_id INT,
+person_email VARCHAR(50),
+person_contact VARCHAR(50),
 foreign key (company_id) references company(company_id)
 );
 

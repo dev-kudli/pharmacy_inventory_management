@@ -256,4 +256,22 @@ public abstract class PharmacyManager {
             throw new Exception(FILENAME + "->" + "addStore" + "->" + e);
         }
     }
+    
+    /**
+     * @param store - Store class
+     * @return INT - Number of Stores deleted
+     * @throws java.lang.Exception
+     */
+    public static ResultSet fetchAllStoreManagers(int pharmacyId) throws Exception {
+        try {
+            String queryToFetchStoreManagers = """
+                SELECT person_name, person_gender, person_email, person_contact
+                FROM person
+                WHERE person_role="STORE_MANAGER" AND company_id=%s""";
+            Statement stmt = con.createStatement();
+            return stmt.executeQuery(queryToFetchStoreManagers);
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "fetchAllStoreManagers" + "->" + e);
+        }
+    }
 }
