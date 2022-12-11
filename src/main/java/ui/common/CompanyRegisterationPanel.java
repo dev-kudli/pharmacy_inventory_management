@@ -4,6 +4,15 @@
  */
 package ui.common;
 
+import data.model.common.Company;
+import data.model.common.Date;
+import data.model.common.Location;
+import db.CompanyManager;
+import helper.date.localdateToDate;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shreyajaiswal
@@ -13,8 +22,11 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
     /**
      * Creates new form CompanyRegisterationPanel
      */
-    public CompanyRegisterationPanel() {
+    
+    String userType="";
+    public CompanyRegisterationPanel(String userType) {
         initComponents();
+        this.userType = userType;
     }
 
     /**
@@ -49,15 +61,18 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
         jTextField8 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("COMPANY DETAILS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 850, 70));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 800, 40));
         jPanel1.add(companyAdmPanelbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 70));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("COMPANY ADMINISTRATOR DETAILS"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "COMPANY DETAILS"));
 
         jLabel2.setText("COMPANY ID");
 
@@ -171,7 +186,7 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                                 .addGap(98, 98, 98)
                                 .addComponent(companyIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(9, Short.MAX_VALUE))))
+                        .addContainerGap(7, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,30 +207,73 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 600, 480));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 600, 480));
 
         jButton1.setText("REGISTER");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, 310, 50));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 310, 50));
+
+        jPanel5.setBackground(new java.awt.Color(204, 204, 255));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 890, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 90, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 891, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+String companyName =  jTextField1.getText();
+String companyType = jComboBox1.getSelectedItem().toString();
+String number = jTextField7.getText();
+String email =  jTextField8.getText();
+String address = jTextField8.getText();
+String zip = jTextField5.getText();
+String city = jTextField6.getText();
+
+Location location = new Location(address,zip,city);
+Date d = localdateToDate.localToDate(LocalDate.now());
+
+Company company = new Company(companyName,companyType);
+company.setLocation(location);
+company.setRegisteredDate(d);
+
+try{
+    CompanyManager.createCompany(company);
+    JOptionPane.showMessageDialog(this,"Please Select an Order to Review");
+}
+catch(Exception e)
+{
+    System.out.println(e);
+}
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -236,6 +294,7 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;

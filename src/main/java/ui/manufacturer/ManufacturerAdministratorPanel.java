@@ -1497,7 +1497,7 @@ jLabelDeliveryDate.setText(expectedTimestamp.toString());
 
 jLabelAssignedOn.setText(timestamp.toString());
 
-//ava.time.LocalDateTime.now(). 
+//java.time.LocalDateTime.now(). 
 
 
         // TODO add your handling code here:
