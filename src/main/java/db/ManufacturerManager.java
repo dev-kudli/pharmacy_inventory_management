@@ -67,10 +67,24 @@ public abstract class ManufacturerManager {
     }
     
     /**
-     * @param drugId - ID of an Drug
-     * @param manufacturerId - ID of the Manufacturer
-     * @param quantity - Quantity to add/subtract
-     * @param operation - Takes "add" or "subtract" values
+     * @param orderId - ID of the Order
+     * @param username - Distributor username
+     * @return int - Number of records updated
+     * @throws java.lang.Exception
+     */
+    public static int assignDistributor(int orderId, String username) throws Exception {
+        try {
+            String queryToAssignDistributor = "UPDATE pharmacy_order SET distributorId=\"%s\" WHERE order_id=%s";
+            queryToAssignDistributor = String.format(queryToAssignDistributor, username, orderId);
+            Statement stmt = con.createStatement();
+            return stmt.executeUpdate(queryToAssignDistributor);
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "assignDistributor" + "->" + e);
+        }
+    }
+    
+    /**
+     * @param order - Order class
      * @return true if operation succeeds
      * @throws java.lang.Exception
      */

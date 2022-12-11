@@ -4,7 +4,6 @@ import data.model.common.Company;
 import helper.constant.CompanyConstant;
 import helper.validation.Validation;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
@@ -29,6 +28,26 @@ public class CompanyManager {
             preparedStmt1.setString (3, company.getCompanyType());
             preparedStmt1.execute();
             return isCreated;
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+    
+    /**
+     * @param companyId - Company ID
+     * @param username - Username of a Person
+     * @return ResultSet if operation succeeds
+     * @throws java.lang.Exception
+     */
+    public static int assignCompanyOwner(int companyId, String username) throws Exception {
+        try {
+            String queryToAssignOwner = """
+                UPDATE company
+                SET company_owner=%s
+                WHERE company_id=%s""";
+            queryToAssignOwner = String.format(queryToAssignOwner, username, companyId);
+            Statement stmt = con.createStatement();
+            return stmt.executeUpdate(queryToAssignOwner);
         } catch (SQLException e) {
             throw e;
         }
