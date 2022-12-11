@@ -9,7 +9,20 @@ import java.sql.Statement;
 import java.util.Arrays;
 
 public class CompanyManager {
-    public static java.sql.Connection con = Connection.getConnection();
+    public static java.sql.Connection con = Connection.getConnection();   
+    public static int getCompanyId() throws Exception {
+        try {
+            String queryToGetCompanyId = """
+                SELECT *
+                FROM company
+                ORDER BY company_id DESC
+                LIMIT 1""";
+            Statement stmt = con.createStatement();
+            return stmt.executeUpdate(queryToGetCompanyId);
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
     /**
      * @param company - Company class
      * @param username - Username of owner
