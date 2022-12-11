@@ -22,13 +22,13 @@ registered_date DATE
 
 CREATE TABLE person(
 username VARCHAR(20) PRIMARY KEY,
-person_name VARCHAR(50) NOT NULL,
+person_name VARCHAR(100) NOT NULL,
 password VARCHAR(50) NOT NULL,
 person_dob Date,
 person_gender CHAR(10),
 person_role VARCHAR(50) NOT NULL,
 person_address VARCHAR(100),
-person_city VARCHAR(20),
+person_city VARCHAR(50),
 person_zipcode VARCHAR(10),
 company_id INT,
 person_email VARCHAR(50),

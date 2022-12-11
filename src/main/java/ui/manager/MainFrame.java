@@ -15,7 +15,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     public void showPharmacyAdminPanel() {
 //        getContentPane.removeAll();
-        add(new PharmacyAdministratorPanel());
+//        add(new PharmacyAdministratorPanel());
         setLayout(new FlowLayout());
         repaint();
         revalidate();
@@ -23,7 +23,7 @@ public class MainFrame extends javax.swing.JFrame {
     
         public void showProductManagerPanel() {
 //        getContentPane.removeAll();
-        add(new ManufacturerAdministratorPanel());
+//        add(new ManufacturerAdministratorPanel());
         setLayout(new FlowLayout());
         repaint();
         revalidate();
