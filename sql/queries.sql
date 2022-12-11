@@ -39,7 +39,7 @@ WHERE po.pharmacy_id=1
 GROUP BY po.order_id, po.order_date, po.order_status;
 
 # View Pharmacy Inventory
-SELECT p.inventory_id, p.drug_id, p.quantity, p.cost_price, p.selling_price
+SELECT p.inventory_id, p.drug_id, m.drug_name, p.quantity, p.cost_price, p.selling_price
 FROM pharmacy_inventory p
 JOIN master_drug_table m ON m.drug_id = p.drug_id
 JOIN company c ON p.pharmacy_id = c.company_id
@@ -79,3 +79,5 @@ WHERE shipment_id=1;
 SELECT tv.transporter_id, c.company_name AS transporter_name, tv.vehicle_count
 FROM transport_vehicle tv
 JOIN company c ON tv.transporter_id=c.company_id;
+
+UPDATE company SET company_owner=test WHERE company_id=1;

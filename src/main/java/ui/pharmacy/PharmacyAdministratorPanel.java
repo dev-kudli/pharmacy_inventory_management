@@ -1842,7 +1842,7 @@ manufactureTable.setRowCount(0);
 
                     PharmacyPurchaseOrder pharmacyPurchaseOrder = new PharmacyPurchaseOrder(companyId,manufacturerId,orderdate);
                     Drug drug = new Drug(drugid,drugName);
-                    PharmacyPurchaseOrderItem  pharmacyOrderItem = new PharmacyPurchaseOrderItem(drug,quantity);
+                    PharmacyPurchaseOrderItem  pharmacyOrderItem = new PharmacyPurchaseOrderItem(drug, quantity, sellingPrice);
 
                     List<PharmacyPurchaseOrderItem> orderItems = pharmacyPurchaseOrder.getOrderItems();
                     orderItems.add(pharmacyOrderItem);
@@ -1942,7 +1942,7 @@ pharmInvTable.setRowCount(0);
 //                FROM manufacturer_inventory m
    try
     {
-    ResultSet rs = PharmacyManager.fetchInventory(pharmacyId);
+    ResultSet rs = PharmacyManager.fetchPharmacyInventory(pharmacyId);
     
     while(rs.next())
     {
@@ -2104,9 +2104,9 @@ pharmOrderTable1.setRowCount(0);
     {
          int storeId = rs.getInt("store_id");
         String storeName = rs.getString("store_name");
-        String address = rs.getString("pharmacy_address");
-        String zipcode = rs.getString("zipcode");
-        String city = rs.getString("city");
+        String address = rs.getString("store_address");
+        String zipcode = rs.getString("store_zip");
+        String city = rs.getString("store_city");
         
         Object[] rowData = new Object[5];
 
@@ -2204,11 +2204,11 @@ pharmOrderTable.setRowCount(0);
     
     while(rs.next())
     {
-        int storeId = rs.getInt("store_id");
+      int storeId = rs.getInt("store_id");
         String storeName = rs.getString("store_name");
-        String address = rs.getString("pharmacy_address");
-        String zipcode = rs.getString("zipcode");
-        String city = rs.getString("city");
+        String address = rs.getString("store_address");
+        String zipcode = rs.getString("store_zip");
+        String city = rs.getString("store_city");
         
         Object[] rowData = new Object[5];
 

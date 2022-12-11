@@ -4,6 +4,8 @@
  */
 package ui.common;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shreyajaiswal
@@ -70,6 +72,12 @@ public class CompanyAdministrationDetails extends javax.swing.JPanel {
 
         jLabel4.setText("ADMINISTRATOR NAME");
 
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
+
         jLabel5.setText("ADMINISTRATOR DOB");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("ADDRESS"));
@@ -79,6 +87,18 @@ public class CompanyAdministrationDetails extends javax.swing.JPanel {
         jLabel8.setText("ZIPCODE");
 
         jLabel9.setText("CITY");
+
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField5KeyPressed(evt);
+            }
+        });
+
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField6KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -120,6 +140,12 @@ public class CompanyAdministrationDetails extends javax.swing.JPanel {
         jLabel10.setText("PHONE NUMBER");
 
         jLabel11.setText("EMAIL");
+
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField7KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -259,6 +285,51 @@ public class CompanyAdministrationDetails extends javax.swing.JPanel {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
+        // TODO add your handling code here:
+        String mobileNo=jTextField7.getText () ;
+        if(mobileNo.matches ("^[0-9]*$")&& mobileNo.length()==10)
+        {
+           jTextField7.setBackground(java.awt.Color.green);
+        }
+
+        else
+            jTextField7.setBackground(java.awt.Color.red);
+    }//GEN-LAST:event_jTextField7KeyReleased
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField1.setEditable(true);
+        }else{
+              jTextField1.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter only alphabetic characters.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }          
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
+        // TODO add your handling code here:
+        char c = evt. getKeyChar ();
+        if (!Character.isDigit (c)){
+            JOptionPane.showMessageDialog(null, "Please enter Valid ZIPCODE!", "Error", JOptionPane.ERROR_MESSAGE);
+           evt. consume ();
+        }
+        
+    }//GEN-LAST:event_jTextField5KeyPressed
+
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c)){
+            jTextField6.setEditable(true);
+        }else
+        {
+            jTextField6.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Please enter only alphabetic characters.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jTextField6KeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
