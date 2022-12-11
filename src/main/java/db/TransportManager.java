@@ -1,12 +1,12 @@
 package db;
 
 import data.model.pharmacy.PharmacyPurchaseOrder;
-import static db.PersonManager.con;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public abstract class TransportManager {
+    public static java.sql.Connection con = Connection.getConnection();
     public static boolean confirmShipmentStatus(int orderId) throws Exception {
         boolean isShipped = false;
         try {

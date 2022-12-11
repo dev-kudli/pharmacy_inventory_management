@@ -1,7 +1,5 @@
 package db;
 
-import data.model.common.Date;
-import data.model.common.Drug;
 import data.model.pharmacy.PharmacyPurchaseOrder;
 import data.model.pharmacy.PharmacyPurchaseOrderItem;
 import helper.constant.UserRole;
@@ -9,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
 public abstract class ManufacturerManager {
     private final static String FILENAME = "ManufacturerManager";
@@ -82,6 +79,7 @@ public abstract class ManufacturerManager {
         boolean isUpdated = false;
         try {
             for (PharmacyPurchaseOrderItem item : order.getOrderItems()) {
+                System.out.println(item.getDrug().getDrugId()+"by"+item.getQuantity());
                 String queryToUpdateOrder = "UPDATE manufacturer_inventory SET quantity=quantity-%s WHERE drug_id=%s AND manufacturer_id=%s";
                 queryToUpdateOrder = String.format(queryToUpdateOrder, item.getQuantity(), item.getDrug().getDrugId(), order.getPharmacymanufactureId());
                 PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
