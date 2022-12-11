@@ -266,6 +266,11 @@ public class CompanyAdministrationDetails extends javax.swing.JPanel {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 600, 590));
 
         jButton1.setText("ASSIGN COMPANY ADMINISTRATOR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 650, 310, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -330,6 +335,10 @@ public class CompanyAdministrationDetails extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter only alphabetic characters.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
