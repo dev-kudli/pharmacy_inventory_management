@@ -18,10 +18,8 @@ person_gender CHAR(6),
 person_role VARCHAR(20) NOT NULL,
 person_address VARCHAR(100),
 person_city VARCHAR(20),
-person_country VARCHAR(20),
-person_state VARCHAR(20)
+person_zipcode VARCHAR(10)
 );
-
 
 CREATE TABLE master_drug_table(
 drug_id INT PRIMARY KEY AUTO_INCREMENT,
