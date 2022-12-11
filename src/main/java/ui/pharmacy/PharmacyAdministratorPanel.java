@@ -1068,11 +1068,6 @@ int pharmacyId = 1;
                 jTextField34ActionPerformed(evt);
             }
         });
-        jTextField34.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField34KeyReleased(evt);
-            }
-        });
 
         jTextField35.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1327,11 +1322,29 @@ int pharmacyId = 1;
 
         jLabel43.setText("DRUG NAME");
 
+        jTextField21.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField21KeyPressed(evt);
+            }
+        });
+
         jLabel64.setText("QUANTITY");
+
+        jTextField23.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField23KeyPressed(evt);
+            }
+        });
 
         jLabel66.setText("AVAILABILITY");
 
         jLabel67.setText("MANUFACTURER");
+
+        jTextField43.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField43KeyTyped(evt);
+            }
+        });
 
         jLabel68.setText("UNIT PRICE");
 
@@ -2864,17 +2877,39 @@ catch(Exception e)
         }
     }//GEN-LAST:event_jTextField26KeyPressed
 
-    private void jTextField34KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField34KeyReleased
+    private void jTextField23KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField23KeyPressed
         // TODO add your handling code here:
-        String mobileNo=jTextField34.getText () ;
-        if(mobileNo.matches ("^[0-9]*$")&& mobileNo.length()==10)
-        {
-           jTextField34.setBackground(java.awt.Color.green);
+        char c = evt. getKeyChar ();
+        if (!Character.isDigit (c)){
+            JOptionPane.showMessageDialog(null, "Please enter Valid ID!", "Error", JOptionPane.ERROR_MESSAGE);
+           evt. consume ();
         }
+    }//GEN-LAST:event_jTextField23KeyPressed
 
-        else
-            jTextField34.setBackground(java.awt.Color.red);
-    }//GEN-LAST:event_jTextField34KeyReleased
+    private void jTextField21KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField21KeyPressed
+        // TODO add your handling code here:
+        char c = evt. getKeyChar ();
+        if (!Character.isDigit (c)){
+            JOptionPane.showMessageDialog(null, "Please enter Valid QUANTITY!", "Error", JOptionPane.ERROR_MESSAGE);
+           evt. consume ();
+        }
+    }//GEN-LAST:event_jTextField21KeyPressed
+
+    private void jTextField43KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField43KeyTyped
+        // TODO add your handling code here:
+        if (Character.isLetter(evt.getKeyChar())) {
+             JOptionPane.showMessageDialog(null, "Please enter valid Price", "Error", JOptionPane.ERROR_MESSAGE);
+             evt.consume();
+          } else {
+    // If the character is not a letter, try to parse it as a double
+    try {
+      Double.parseDouble(jTextField43.getText() + evt.getKeyChar());
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Please enter Valid Price", "Error", JOptionPane.ERROR_MESSAGE);
+        evt.consume();
+    }
+         }
+    }//GEN-LAST:event_jTextField43KeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
