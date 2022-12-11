@@ -6,6 +6,7 @@ package ui.common;
 
 import db.PersonManager;
 import helper.constant.UserRole;
+import javax.swing.JOptionPane;
 import ui.manager.UIManager;
 
 /**
@@ -90,7 +91,11 @@ String userType = "";
 
         jLabel4.setText("PASSWORD");
 
-        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,7 +212,11 @@ String loginRole = jComboBoxLoginRole.getSelectedItem().toString();
 try
 {
 boolean val = PersonManager.verifyUser(username, password);
-if(val==true & loginRole.equalsIgnoreCase("MANUFACTURE_ADMIN"))
+
+if(val == false){
+   JOptionPane.showMessageDialog(this, "INCORRECT USERNAME AND PASSWORD");
+}
+else if(val==true & loginRole.equalsIgnoreCase("MANUFACTURE_ADMIN"))
 {
   UIManager.AddManuAdminPanel();
 }
@@ -222,8 +231,9 @@ else if(val==true & loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
 }
 catch(Exception e)
 {
-  System.out.println("Verifying username password");
-  System.out.println(e);
+  JOptionPane.showMessageDialog(this, "PLEASE ENTER VALID USERNAME AND PASSWORD");
+  //System.out.println("Verifying username password");
+  //System.out.println(e);
 }
 
 if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_ADMIN))
@@ -237,6 +247,10 @@ else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_STORE_MANAGER)){
        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

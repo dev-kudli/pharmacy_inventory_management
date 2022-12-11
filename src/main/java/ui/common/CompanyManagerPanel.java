@@ -74,7 +74,7 @@ String userType ="";
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 240, 100));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 240, 100));
 
         jButton1.setFont(new java.awt.Font("Marker Felt", 0, 20)); // NOI18N
         jButton1.setText("REGISTER AS A NEW COMPANY");
@@ -83,9 +83,10 @@ String userType ="";
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 360, 110));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 360, 120));
 
         bgColor.setBackground(new java.awt.Color(102, 102, 102));
+        bgColor.setIcon(new javax.swing.ImageIcon("/Users/shreyajaiswal/Desktop/images/manu-bg.jpeg")); // NOI18N
         add(bgColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 810, 550));
     }// </editor-fold>//GEN-END:initComponents
 

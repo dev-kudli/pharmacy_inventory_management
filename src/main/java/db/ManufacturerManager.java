@@ -93,7 +93,7 @@ public abstract class ManufacturerManager {
             String queryToFetchDistributors = """
                 SELECT company_id, company_name
                 FROM company
-                WHERE company_type=%s""";
+                WHERE company_type="distributor"  """;
             queryToFetchDistributors = String.format(queryToFetchDistributors, UserRole.DISTRIBUTOR_ADMIN);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(queryToFetchDistributors);

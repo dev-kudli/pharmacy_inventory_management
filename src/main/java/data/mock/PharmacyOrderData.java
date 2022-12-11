@@ -15,14 +15,14 @@ public class PharmacyOrderData {
         Drug crocin = new Drug(1, "Crocin");
         Drug paracetamol = new Drug(2, "Paracetamol");
         
-        PharmacyPurchaseOrderItem item11 = new PharmacyPurchaseOrderItem(crocin, 5);
-        PharmacyPurchaseOrderItem item21 = new PharmacyPurchaseOrderItem(paracetamol, 2);
+//        PharmacyPurchaseOrderItem item11 = new PharmacyPurchaseOrderItem(crocin, 5);
+//        PharmacyPurchaseOrderItem item21 = new PharmacyPurchaseOrderItem(paracetamol, 2);
 
-        PharmacyPurchaseOrder order1 = new PharmacyPurchaseOrder(1, 1, date);
-        order1.getOrderItems().add(item11);
-        order1.getOrderItems().add(item21);
+//        PharmacyPurchaseOrder order1 = new PharmacyPurchaseOrder(1, 1, date);
+//        order1.getOrderItems().add(item11);
+//        order1.getOrderItems().add(item21);
 
-        orders.add(order1);
+//        orders.add(order1);
         
         ManufacturerManager.updateOrder(2, "completed");
         return orders;
