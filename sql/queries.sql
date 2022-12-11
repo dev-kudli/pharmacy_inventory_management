@@ -22,6 +22,11 @@ JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
 JOIN master_drug_table md ON md.drug_id=poi.item_id
 WHERE po.order_id=1;
 
+# Fetch Order Items for Manufacturer
+SELECT company_id, company_name
+FROM company
+WHERE company_type="distributor";
+
 # PHARMACY
 # View Manufacturer Inventory
 SELECT m.manufacturer_id, c.company_name AS manufacturer_name, d.drug_id, d.drug_name, m.quantity, m.selling_price
@@ -87,4 +92,4 @@ FROM shipment s
 JOIN pharmacy_order p ON p.order_id=s.order_id
 JOIN company c1 ON p.pharmacy_id=c1.company_id
 JOIN company c2 ON s.distributor_id=c1.company_id
-WHERE c1.company_id=1;
+WHERE c1.transporter_id=1;
