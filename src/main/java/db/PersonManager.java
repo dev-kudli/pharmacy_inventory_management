@@ -11,7 +11,7 @@ public abstract class PersonManager {
     public static boolean createUser(Person p) throws Exception {
         boolean isInserted = true;
         try {
-            String query = "INSERT INTO person(username, person_name, password, person_dob, person_gender, person_role, person_address, person_city, person_zip)"
+            String query = "INSERT INTO person(username, person_name, password, person_dob, person_gender, person_role, person_address, person_city, person_zipcode)"
                             + "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setString (1, p.getUsername());

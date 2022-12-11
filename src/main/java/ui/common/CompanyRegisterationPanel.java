@@ -10,6 +10,7 @@ import data.model.common.Date;
 import data.model.common.Location;
 import data.model.person.Person;
 import db.CompanyManager;
+import db.PersonManager;
 import helper.date.localdateToDate;
 import helper.validation.Validation;
 import java.text.DateFormat;
@@ -25,6 +26,25 @@ import ui.manager.UIManager;
  */
 public class CompanyRegisterationPanel extends javax.swing.JPanel {
 
+    public void setDefaultVlaues() {
+        jTextField1.setText("PHARMEASY MANUFACT");
+        jTextFieldComContact.setText("1234567891");
+        jTextFieldComEmail.setText("s@gmail.com");
+        jTextField4.setText("s@gmail.com");
+        jTextField5.setText("02215");
+        jTextField6.setText("s@gmail.com");
+        jTextFieldName.setText("kudli");
+        jTextFieldContact.setText("0123456789");
+        jTextFieldEmail.setText("s@gmail.com");
+        jTextFieldAddress.setText("s@gmail.com");
+        jTextFieldZip.setText("0215");
+        jTextFieldCity.setText("s@gmail.com");
+        jTextFieldUsername.setText("user");
+        jTextFieldPassword.setText("password");
+        
+        
+                
+    }
     /**
      * Creates new form CompanyRegisterationPanel
      */
@@ -33,6 +53,7 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
     String adminRole="";
     public CompanyRegisterationPanel(String userType) {
         initComponents();
+        setDefaultVlaues();
         this.userType = userType;
         if(this.userType.equalsIgnoreCase("manufacturer"))
         {
@@ -103,14 +124,19 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         jTextFieldUsername = new javax.swing.JTextField();
         jTextFieldPassword = new javax.swing.JTextField();
-        jDateChooserdob = new com.toedter.calendar.JDateChooser();
         jLabel14 = new javax.swing.JLabel();
         jComboBoxGender = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBoxYear = new javax.swing.JComboBox<>();
+        jComboBoxDay = new javax.swing.JComboBox<>();
+        jComboBoxMonth = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 102));
+        jButton2.setBackground(new java.awt.Color(102, 102, 102));
         jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("x");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,9 +145,9 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 30));
 
-        jPanel5.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel5.setBackground(new java.awt.Color(255, 204, 204));
 
-        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel1.setBackground(new java.awt.Color(255, 204, 204));
         jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("COMPANY DETAILS");
@@ -130,10 +156,10 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(604, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,33 +474,53 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
 
         jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male" }));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
+        jLabel2.setText("YYYY-MM-DD");
+
+        jComboBoxYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022" }));
+
+        jComboBoxDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        jComboBoxMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel6))
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldName)
-                            .addComponent(jDateChooserdob, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE))
-                        .addGap(76, 76, 76))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(101, 101, 101)
-                                .addComponent(jComboBoxGender, 0, 336, Short.MAX_VALUE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jLabel2)))
+                                .addGap(69, 69, 69))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel6))
+                                .addGap(12, 12, 12)))
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addComponent(jComboBoxYear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jComboBoxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jComboBoxDay, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,9 +531,15 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                     .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooserdob, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addGap(9, 9, 9)
+                    .addComponent(jComboBoxMonth)
+                    .addComponent(jComboBoxYear)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jComboBoxDay))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxGender, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -497,14 +549,14 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,6 +564,13 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 6, Short.MAX_VALUE))
         );
+
+        jButton3.setText("LOGIN");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -525,9 +584,13 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                         .addGap(21, 21, 21)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(343, 343, 343)
+                        .addGap(335, 335, 335)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 126, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(558, 558, 558)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -536,9 +599,11 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1370, 750));
@@ -556,63 +621,70 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//Company Details
 
-String companyName =  jTextField1.getText();
-String companyType = jComboBox1.getSelectedItem().toString();
-String number = jTextFieldComContact.getText();
-String comEmail =  jTextFieldComEmail.getText();
-String address = jTextFieldComEmail.getText();
-String comZip = jTextField5.getText();
-String comCity = jTextField6.getText();
+ //Company Details
 
-Location location = new Location(address,comZip,comCity);
-Date d = localdateToDate.localToDate(LocalDate.now());
+    String companyName =  jTextField1.getText();
+    if(Validation.isValidString(userType)==false)
+    {
+        System.out.println("Enter Valid Comp Name");
+    }
+    String companyType = jComboBox1.getSelectedItem().toString();
+    String number = jTextFieldComContact.getText();
+    String comEmail =  jTextFieldComEmail.getText();
+    String comaddress = jTextFieldComEmail.getText();
+    String comZip = jTextField5.getText();
+    String comCity = jTextField6.getText();
 
-Company company = new Company(companyName,companyType);
-company.setLocation(location);
-company.setRegisteredDate(d);
+    Location location = new Location(comaddress,comZip,comCity);
+    Date d = localdateToDate.localToDate(LocalDate.now());
 
-//Company Admin Details
-String name = jTextFieldName.getText();
-DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
-int year = jDateChooserdob.getDate().getYear();
-int month = jDateChooserdob.getDate().getMonth();
-int day  = jDateChooserdob.getDate().getDay();
-Date dob = new Date(year,month,day);
-String contactNumber = jTextFieldContact.getText();
-String email = jTextFieldEmail.getText();
-String addr = jTextFieldAddress.getText();
-String zip = jLabelZip.getText();
-String city = jLabelcity.getText();
-String gender = jComboBoxGender.getSelectedItem().toString();
-String username = jTextFieldUsername.getText();
-String password = jTextFieldPassword.getText();
+    Company company = new Company(companyName,companyType);
+    company.setLocation(location);
+    company.setRegisteredDate(d);
 
+    //Company Admin Details
+    String name = jTextFieldName.getText();
+    //DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+    int year = Integer.parseInt(jComboBoxYear.getSelectedItem().toString());
+    int month = Integer.parseInt(jComboBoxMonth.getSelectedItem().toString());
+    int day = Integer.parseInt(jComboBoxDay.getSelectedItem().toString());
 
-
-Person person = new Person(username,name,password);
-person.setPersonType(adminRole);
-person.setPersonGender(gender);
-person.setPersonDob(dob);
-Contact contact = person.getPersonContact();
-contact.setEmail(email);
-contact.setPhone(contactNumber);
-Location loc = new Location(addr,email,zip);
-contact.setLocation(loc);
+    Date dob = new Date(month,day,year);
+    String contactNumber = jTextFieldContact.getText();
+    String email = jTextFieldEmail.getText();
+    String addr = jTextFieldAddress.getText();
+    String zip = jLabelZip.getText();
+    String city = jLabelcity.getText();
+    String gender = jComboBoxGender.getSelectedItem().toString();
+    String username = jTextFieldUsername.getText();
+    String password = jTextFieldPassword.getText();
 
 
 
-
-try{
-    CompanyManager.createCompany(company);
-    JOptionPane.showMessageDialog(this,"Company Registered Successfully");
+    Person person = new Person(username,name,password);
+    person.setPersonType(adminRole);
+    person.setPersonGender(gender);
+    person.setPersonDob(dob);
+    Contact contact = person.getPersonContact();
+    contact.setEmail(email);
+    contact.setPhone(contactNumber);
+    Location loc = new Location(addr,email,zip);
+    contact.setLocation(loc);
+    person.setLocation(location);
+try
+{
+    PersonManager.createUser(person);
+    CompanyManager.createCompany(company,username);
     
+    JOptionPane.showMessageDialog(this,"Company and Administrator Registered Successfully");
+
 }
 catch(Exception e)
-{
-    System.out.println(e);
-}
+    {
+        System.out.println(e);
+        JOptionPane.showMessageDialog(this,"ENTER VALID COMPANY DETAILS");
+    }
         
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -686,13 +758,20 @@ Validation.checkValidEmail(email,jTextFieldComEmail);
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldComEmailKeyReleased
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxDay;
     private javax.swing.JComboBox<String> jComboBoxGender;
-    private com.toedter.calendar.JDateChooser jDateChooserdob;
+    private javax.swing.JComboBox<String> jComboBoxMonth;
+    private javax.swing.JComboBox<String> jComboBoxYear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -703,6 +782,7 @@ Validation.checkValidEmail(email,jTextFieldComEmail);
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
