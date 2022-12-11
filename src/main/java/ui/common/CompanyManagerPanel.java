@@ -38,6 +38,7 @@ String userType ="";
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         bgColor = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,6 +86,15 @@ String userType ="";
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 360, 120));
 
+        jButton3.setFont(new java.awt.Font("Marker Felt", 1, 13)); // NOI18N
+        jButton3.setText("BACK");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, -1, -1));
+
         bgColor.setBackground(new java.awt.Color(102, 102, 102));
         bgColor.setIcon(new javax.swing.ImageIcon("/Users/shreyajaiswal/Desktop/images/manu-bg.jpeg")); // NOI18N
         add(bgColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 810, 550));
@@ -100,11 +110,17 @@ UIManager.AddCompanyRegPanel(userType);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+UIManager.init();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bgColor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables

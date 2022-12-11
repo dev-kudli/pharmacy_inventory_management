@@ -1123,36 +1123,36 @@ DefaultTableModel manuDrugTable= (DefaultTableModel)manufacturerDrugTable1.getMo
 manuDrugTable.setRowCount(0);
 
 //QUERY TO VIEW STOCKS OF MANUFACTURE WITH MANUFACTURING_ID
-//   try
-//    {
-//    ResultSet rs = ManufacturerManager.fetchAllDrugs();
-//    
-//    while(rs.next())
-//    {
-//        int drugId = rs.getInt("order_id");
-//        String drugName = rs.getString("pharmacy_name");
-//        int quantity = rs.getInt("quantity");
-//        Float unitPrice = Float.parseFloat(rs.getString("unit_price"));
-//                
-//        
-//        Object[] rowData = new Object[4];
-//
-//        rowData[0] = drugId;
-//        rowData[1] = drugName;
-//        rowData[2] = quantity;
-//        rowData[3] = unitPrice;
-//   
-//        manuDrugTable.addRow(rowData);
-// 
-//
-//        
-//    }
-//    } 
-//    
-//    catch(Exception e){
-//        System.out.print(e);
-//    }
-// 
+   try
+    {
+    ResultSet rs = ManufacturerManager.fetchStock();
+    
+    while(rs.next())
+    {
+        int drugId = rs.getInt("order_id");
+        String drugName = rs.getString("pharmacy_name");
+        int quantity = rs.getInt("quantity");
+        Float unitPrice = Float.parseFloat(rs.getString("unit_price"));
+                
+        
+        Object[] rowData = new Object[4];
+
+        rowData[0] = drugId;
+        rowData[1] = drugName;
+        rowData[2] = quantity;
+        rowData[3] = unitPrice;
+   
+        manuDrugTable.addRow(rowData);
+ 
+
+        
+    }
+    } 
+    
+    catch(Exception e){
+        System.out.print(e);
+    }
+ 
 //
 //        // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -1303,8 +1303,8 @@ if(selectedIndx<0){
 JOptionPane.showMessageDialog(this,"Please Select an Order to Review");
 }
 int orderId = Integer.parseInt(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
-String pharmacyName = ManufactOrderTable.getValueAt(selectedIndx,3).toString();
-String orderStatus = ManufactOrderTable.getValueAt(selectedIndx,5).toString();
+String pharmacyName = ManufactOrderTable.getValueAt(selectedIndx,2).toString();
+String orderStatus = ManufactOrderTable.getValueAt(selectedIndx,4).toString();
 
 jLabelOrderId.setText(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
 jLabelCustomer.setText(pharmacyName);
@@ -1402,6 +1402,8 @@ UiDesignFunctions.AlignTableContents(manufacturerOrderItemsTable1);
 int selectedIndx = ManuOrderTable1.getSelectedRow();
 DefaultTableModel ManufactOrderTable= (DefaultTableModel)ManuOrderTable1.getModel();
 DefaultTableModel ManufactOrderItmTable  = (DefaultTableModel)manufacturerOrderItemsTable1.getModel();
+
+ManufactOrderItmTable.setRowCount(0);
 
 if(selectedIndx<0){
 JOptionPane.showMessageDialog(this,"Please Select an Order to assign Distributor");

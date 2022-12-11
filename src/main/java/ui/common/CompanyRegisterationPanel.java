@@ -53,6 +53,7 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
     //String adminRole="";
     public CompanyRegisterationPanel(String userType) {
         initComponents();
+        jButton3.setVisible(false);
         setDefaultVlaues();
         this.userType = userType;
 //        if(this.userType.equalsIgnoreCase("manufacturer"))
@@ -131,6 +132,7 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
         jComboBoxDay = new javax.swing.JComboBox<>();
         jComboBoxMonth = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -269,7 +271,7 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MANUFACTURER", "DISTRIBUTER", "PHARMACY", "TRANSPORTER", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MANUFACTURER", "DISTRIBUTER", "PHARMACY", "TRANSPORTER", " ", " " }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -565,10 +567,18 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
+        jButton3.setFont(new java.awt.Font("Marker Felt", 0, 18)); // NOI18N
         jButton3.setText("LOGIN");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("BACK");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -588,7 +598,9 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 126, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(558, 558, 558)
+                .addGap(30, 30, 30)
+                .addComponent(jButton4)
+                .addGap(475, 475, 475)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -602,7 +614,9 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(jButton4))
                 .addContainerGap())
         );
 
@@ -630,6 +644,7 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
         System.out.println("Enter Valid Comp Name");
     }
     String companyType = jComboBox1.getSelectedItem().toString();
+    System.out.println("****"+companyType+"*****");
     String number = jTextFieldComContact.getText();
     String comEmail =  jTextFieldComEmail.getText();
     String comaddress = jTextFieldComEmail.getText();
@@ -678,6 +693,7 @@ try
     CompanyManager.createCompany(company,username);
     
     JOptionPane.showMessageDialog(this,"Company and Administrator Registered Successfully");
+    jButton3.setVisible(true);
 
 }
 catch(Exception e)
@@ -763,11 +779,17 @@ UIManager.AddCompanyLoginPanel(userType);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+UIManager.AddCompanyManagerPanel(userType);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBoxDay;
     private javax.swing.JComboBox<String> jComboBoxGender;
