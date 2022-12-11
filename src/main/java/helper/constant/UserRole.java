@@ -8,4 +8,5 @@ public abstract class UserRole {
     public static final String DISTRIBUTOR_ADMIN = "DISTRIBUTOR_ADMIN";
     public static final String DISTRIBUTOR_TRANSPORT_MANAGER = "DISTRIBUTOR_TRANSPORT_MANAGER";
     public static final String MANUFACTURE_PRODUCT_MANAGER = "MANUFACTURE_PRODUCT_MANAGER";
+    public static final String TRANSPORT_ADMIN = "TRANSPORT_ADMIN";
 }

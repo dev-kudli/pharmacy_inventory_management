@@ -2,6 +2,7 @@ package db;
 
 import data.model.pharmacy.PharmacyPurchaseOrder;
 import data.model.pharmacy.PharmacyPurchaseOrderItem;
+import helper.constant.CompanyTypes;
 import helper.constant.UserRole;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -59,8 +60,8 @@ public abstract class ManufacturerManager {
             String queryToFetchDistributors = """
                 SELECT company_id, company_name
                 FROM company
-                WHERE company_type="distributor"  """;
-            queryToFetchDistributors = String.format(queryToFetchDistributors, UserRole.DISTRIBUTOR_ADMIN);
+                WHERE company_type=\"%s\"""";
+            queryToFetchDistributors = String.format(queryToFetchDistributors, CompanyTypes.DISTRIBUTOR);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(queryToFetchDistributors);
             return rs;

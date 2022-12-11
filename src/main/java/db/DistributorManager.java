@@ -29,9 +29,10 @@ public abstract class DistributorManager {
         try {            
             String queryToUpdateTransporter = """
                 UPDATE pharmacy_order
-                SET transporter_id=1
+                SET transporter_id=%s,
+                order_status="TRANSPORTING"
                 WHERE order_id=%s""";
-            queryToUpdateTransporter = String.format(queryToUpdateTransporter, orderId, transporterId);
+            queryToUpdateTransporter = String.format(queryToUpdateTransporter, transporterId, orderId);
             Statement stmt = con.createStatement();
             int count = stmt.executeUpdate(queryToUpdateTransporter);
             if (count>0) return !isUpdated;
