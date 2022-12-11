@@ -234,48 +234,44 @@ String username = jTextFieldUserName.getText();
 String password = jPasswordField1.getText();
 //String loginRole = jComboBoxLoginRole.getSelectedItem().toString(); 
 
-try
-{
-ResultSet rs = PersonManager.verifyUser(username, password,userType);
-if (rs.next()) {
-    String verifiedUsername = rs.getString("username");
-    int verifiedCompanyId = rs.getInt("company_id");
-    String loginRole = rs.getString("person_role");
-     System.out.print(loginRole);
-     
-     if(loginRole.equalsIgnoreCase(UserRole.MANUFACTURE_ADMIN))
-     {
-        UIManager.AddManuAdminPanel(verifiedUsername, verifiedCompanyId); 
-     }
+try {
+    ResultSet rs = PersonManager.verifyUser(username, password,userType);
+    if (rs.next()) {
+        String verifiedUsername = rs.getString("username");
+        int verifiedCompanyId = rs.getInt("company_id");
+        String loginRole = rs.getString("person_role");
 
-//     if(loginRole.equalsIgnoreCase(UserRole.MANUFACTURE_ADMIN))
-//     {
-       //UIManager.AddManuAdminPanel();
-//     }
-//     else if(loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
-//     {
-//       UIManager.AddpharmacyAdminPanel();
-//     }
-//     else if(loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
-//     {
-//       UIManager.AddpharmacyAdminPanel();
-//     }
-//     else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_ADMIN))
-//    {
-//     UIManager.AddpharmacyAdminPanel();    
-//    }
-//    else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_STORE_MANAGER)){
-//        UIManager.AddpharmacyStorePanel();
-//    }
-}
+        switch(loginRole) {
+            case UserRole.MANUFACTURE_ADMIN:
+                UIManager.AddManuAdminPanel(verifiedUsername, verifiedCompanyId); 
+              break;
+            case UserRole.PHARMACY_ADMIN:
+                UIManager.AddpharmacyAdminPanel(verifiedUsername, verifiedCompanyId);    
+              break;
+            default:
+              // code block
+        }
 
-}
-catch(Exception e)
-{
- //JOptionPane.showMessageDialog(this, "IN CATCH PLEASE ENTER VALID USERNAME AND PASSWORD");
-  System.out.println(e);
-  //System.out.println("Verifying username password");
+         {
+         }
 
+    //     else if(loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
+    //     {
+    //       UIManager.AddpharmacyAdminPanel();
+    //     }
+    //     else if(loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
+    //     {
+    //       UIManager.AddpharmacyAdminPanel();
+    //     }
+    //     else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_ADMIN))
+    //    {
+    //    }
+    //    else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_STORE_MANAGER)){
+    //        UIManager.AddpharmacyStorePanel();
+    //    }
+    } else throw new Exception("No User Found");
+} catch(Exception e) {
+ JOptionPane.showMessageDialog(this, e);
 }
 
 

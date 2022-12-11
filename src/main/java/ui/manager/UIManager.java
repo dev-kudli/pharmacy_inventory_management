@@ -30,10 +30,10 @@ public abstract class UIManager {
         removeAndAddPanel(mainPagePanel);
     }
     
-    public static void AddpharmacyAdminPanel() {
+    public static void AddpharmacyAdminPanel(String username, int pharmacyId) {
         frame.setLayout(new FlowLayout());
         frame.setVisible(true);
-        pharmaAdmPanel = new PharmacyAdministratorPanel();
+        pharmaAdmPanel = new PharmacyAdministratorPanel(username, pharmacyId);
         removeAndAddPanel(pharmaAdmPanel);
     }
     

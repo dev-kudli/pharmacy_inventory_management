@@ -343,6 +343,11 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
 
         jLabelcity.setText("CITY");
 
+        jTextFieldZip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldZipActionPerformed(evt);
+            }
+        });
         jTextFieldZip.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldZipKeyPressed(evt);
@@ -669,8 +674,9 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
     String contactNumber = jTextFieldContact.getText();
     String email = jTextFieldEmail.getText();
     String addr = jTextFieldAddress.getText();
-    String zip = jLabelZip.getText();
-    String city = jLabelcity.getText();
+    String zip = jTextFieldZip.getText();
+    System.out.println("ZIP -->"+ zip.length());
+    String city = jTextFieldCity.getText();
     String gender = jComboBoxGender.getSelectedItem().toString();
     String username = jTextFieldUsername.getText();
     String password = jTextFieldPassword.getText();
@@ -684,9 +690,10 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
     Contact contact = person.getPersonContact();
     contact.setEmail(email);
     contact.setPhone(contactNumber);
-    Location loc = new Location(addr,email,zip);
+    Location loc = new Location(addr,zip,city);
     contact.setLocation(loc);
-    person.setLocation(location);
+    person.setLocation(loc);
+    System.out.println(zip);
 try
 {   CompanyManager.createCompany(company);
     int n = CompanyManager.getCompanyId();
@@ -724,12 +731,12 @@ System.exit(0);
     }//GEN-LAST:event_jTextFieldNameKeyPressed
 
     private void jTextFieldZipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldZipKeyPressed
-        // TODO add your handling code here:
-        char c = evt. getKeyChar ();
-        if (!Character.isDigit (c)){
-            JOptionPane.showMessageDialog(null, "Please enter Valid ZIPCODE!", "Error", JOptionPane.ERROR_MESSAGE);
-            evt. consume ();
-        }
+//        // TODO add your handling code here:
+//        char c = evt. getKeyChar ();
+//        if (!Character.isDigit (c)){
+//            JOptionPane.showMessageDialog(null, "Please enter Valid ZIPCODE!", "Error", JOptionPane.ERROR_MESSAGE);
+//            evt. consume ();
+//        }
 
     }//GEN-LAST:event_jTextFieldZipKeyPressed
 
@@ -785,6 +792,10 @@ UIManager.AddCompanyLoginPanel(userType);
 UIManager.AddCompanyManagerPanel(userType);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextFieldZipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldZipActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldZipActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
