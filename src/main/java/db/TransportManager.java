@@ -6,15 +6,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public abstract class TransportManager {
-    public static int confirmShipmentStatus(int shipmentId) throws Exception {
+    public static boolean confirmShipmentStatus(int shipmentId) throws Exception {
+        boolean isShipped = false;
         try {
             String queryToUpdateStatus = """
                 UPDATE shipment
-                SET shipment_status=completed
+                SET shipment_status=\"delivered\"
                 WHERE shipment_id=%s""";
             queryToUpdateStatus = String.format(queryToUpdateStatus, shipmentId);
             Statement stmt = con.createStatement();
-            return stmt.executeUpdate(queryToUpdateStatus);
+            stmt.executeUpdate(queryToUpdateStatus);
+            
+            PharmacyManager.updateStockAndQuantity(shipmentId);
         } catch (SQLException e) {
             throw e;
         }

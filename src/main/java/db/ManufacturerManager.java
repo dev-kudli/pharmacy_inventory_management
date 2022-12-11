@@ -41,24 +41,17 @@ public abstract class ManufacturerManager {
                 int oId = rs.getInt("order_id");
                 int pId = rs.getInt("pharmacy_id");
                 int mId = rs.getInt("manufacturer_id");
-                int drugId = rs.getInt("item_id");
-                String drugName = rs.getString("drug_name");
-                int quantity = rs.getInt("quantity");
-                Drug drug = new Drug(drugId, drugName);
-                PharmacyPurchaseOrderItem item = new PharmacyPurchaseOrderItem(drug, quantity,0);
                 PharmacyPurchaseOrder order = new PharmacyPurchaseOrder(pId, mId, new Date(13, 22, 2020));
                 order.setOrderId(oId);
                 List<PharmacyPurchaseOrderItem> orderItems = order.getOrderItems();
-                orderItems.add(item);
                 while(rs.next()) {
-                    int drugId1 = rs.getInt("item_id");
-                    String drugName1 = rs.getString("drug_name");
-                    int quantity1 = rs.getInt("quantity");
-                    Drug drug1 = new Drug(drugId1, drugName1);
-                    PharmacyPurchaseOrderItem item1 = new PharmacyPurchaseOrderItem(drug1, quantity1,0);
-                    orderItems.add(item1);
+                    int drugId = rs.getInt("item_id");
+                    String drugName = rs.getString("drug_name");
+                    int quantity = rs.getInt("quantity");
+                    Drug drug = new Drug(drugId, drugName);
+                    PharmacyPurchaseOrderItem item = new PharmacyPurchaseOrderItem(drug, quantity,0);
+                    orderItems.add(item);
                 }
-                PharmacyManager.updateStockAndQuantity(order);
                 ManufacturerManager.updateStock(order);
             }
             return !isUpdated;
