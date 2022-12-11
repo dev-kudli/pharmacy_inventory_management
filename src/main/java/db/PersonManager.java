@@ -11,7 +11,7 @@ public abstract class PersonManager {
     public static boolean createUser(Person p) throws Exception {
         boolean isInserted = true;
         try {
-            String query = "INSERT INTO user(username, person_name, password, person_dob, person_gender, person_role, person_address, person_city, person_zip)"
+            String query = "INSERT INTO person(username, person_name, password, person_dob, person_gender, person_role, person_address, person_city, person_zip)"
                             + "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setString (1, p.getUsername());
@@ -33,7 +33,7 @@ public abstract class PersonManager {
     public static boolean verifyUser(String username, String password) throws Exception {
         boolean isValidUser = true;
         try {
-            String query = String.format("SELECT username, password FROM user WHERE username=\"%s\"", username);
+            String query = String.format("SELECT username, password FROM person WHERE username=\"%s\"", username);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             if(rs.next()) {
@@ -50,7 +50,7 @@ public abstract class PersonManager {
     public static boolean deleteUser() throws Exception {
         boolean isValidUser = true;
         try {
-            String query = "DELETE FROM user WHERE username=?";
+            String query = "DELETE FROM person WHERE username=?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setString (1, "Barney Rubble");
             preparedStmt.execute();

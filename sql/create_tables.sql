@@ -1,3 +1,6 @@
+create database pharmacy_inventory_management;
+use pharmacy_inventory_management;
+
 DROP TABLE IF EXISTS pharmacy_store;
 DROP TABLE IF EXISTS pharmacy_order_item;
 DROP TABLE IF EXISTS pharmacy_inventory;

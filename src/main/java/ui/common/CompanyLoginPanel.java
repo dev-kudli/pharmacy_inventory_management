@@ -4,6 +4,7 @@
  */
 package ui.common;
 
+import db.PersonManager;
 import helper.constant.UserRole;
 import ui.manager.UIManager;
 
@@ -12,12 +13,44 @@ import ui.manager.UIManager;
  * @author shreyajaiswal
  */
 public class CompanyLoginPanel extends javax.swing.JPanel {
+String userType = "";
 
     /**
      * Creates new form CompanyLoginPanel
      */
-    public CompanyLoginPanel() {
+    public CompanyLoginPanel(String userType) {
+//        
+//    public static final String PHARMACY_ADMIN = "PHARMACY_ADMIN";
+//    public static final String PHARMACY_STORE_MANAGER = "STORE_ADMIN";
+//    public static final String CUSTOMER = "CUSTOMER";
+//    public static final String MANUFACTURE_ADMIN = "MANUFACTURE_ADMIN";
+//    public static final String DISTRIBUTOR_ADMIN = "DISTRIBUTOR_ADMIN";
+//    public static final String DISTRIBUTOR_TRANSPORT_MANAGER = "DISTRIBUTOR_TRANSPORT_ADMIN";
+//    public static final String MANUFACTURE_PRODUCT_MANAGER = "MAN_PRODUCT_ADMIN"
+        
+        
         initComponents();
+        this.userType = userType;
+        
+        if(this.userType.equalsIgnoreCase("manufacturer"))
+        {
+            jComboBoxLoginRole.removeAllItems();
+            jComboBoxLoginRole.addItem("MANUFACTURE_ADMIN");
+            jComboBoxLoginRole.addItem("MAN_PRODUCT_ADMIN");
+        }
+        else if(this.userType.equalsIgnoreCase("pharmacy"))
+        {
+            jComboBoxLoginRole.removeAllItems();
+            jComboBoxLoginRole.addItem("PHARMACY_ADMIN");
+            jComboBoxLoginRole.addItem("PHARMACY_STORE_MANAGER");
+        }
+        
+        else if(this.userType.equalsIgnoreCase("distributor"))
+        {
+            jComboBoxLoginRole.removeAllItems();
+            jComboBoxLoginRole.addItem("DISTRIBUTOR_ADMIN");
+            jComboBoxLoginRole.addItem("DISTRIBUTOR_TRANSPORT_ADMIN");
+        }
     }
 
     /**
@@ -34,8 +67,8 @@ public class CompanyLoginPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jComboBoxLoginRole = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldUserName = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -57,6 +90,8 @@ public class CompanyLoginPanel extends javax.swing.JPanel {
 
         jLabel4.setText("PASSWORD");
 
+        jPasswordField1.setText("jPasswordField1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -68,11 +103,10 @@ public class CompanyLoginPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jComboBoxLoginRole, 0, 277, Short.MAX_VALUE)
-                        .addComponent(jTextField1)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBoxLoginRole, 0, 277, Short.MAX_VALUE)
+                    .addComponent(jTextFieldUserName)
+                    .addComponent(jPasswordField1))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -85,14 +119,15 @@ public class CompanyLoginPanel extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(68, Short.MAX_VALUE))
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
+        jButton1.setFont(new java.awt.Font("Marker Felt", 0, 18)); // NOI18N
         jButton1.setText("LOGIN");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,18 +162,17 @@ public class CompanyLoginPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(320, 320, 320)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(121, 121, 121))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(274, 274, 274))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,9 +181,9 @@ public class CompanyLoginPanel extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
+                .addGap(33, 33, 33)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -158,13 +192,46 @@ public class CompanyLoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBoxLoginRoleActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//    public static final String PHARMACY_ADMIN = "PHARMACY_ADMIN";
+//    public static final String PHARMACY_STORE_MANAGER = "PHARMACY_STORE_MANAGER";
+//    public static final String CUSTOMER = "CUSTOMER";
+//    public static final String MANUFACTURE_ADMIN = "MANUFACTURE_ADMIN";
+//    public static final String DISTRIBUTOR_ADMIN = "DISTRIBUTOR_ADMIN";
+//    public static final String DISTRIBUTOR_TRANSPORT_MANAGER = "DISTRIBUTOR_TRANSPORT_ADMIN";
+//    public static final String MANUFACTURE_PRODUCT_MANAGER = "MAN_PRODUCT_ADMIN"
+
+String username = jTextFieldUserName.getText();
+String password = jPasswordField1.getText();
 String loginRole = jComboBoxLoginRole.getSelectedItem().toString(); 
+
+try
+{
+boolean val = PersonManager.verifyUser(username, password);
+if(val==true & loginRole.equalsIgnoreCase("MANUFACTURE_ADMIN"))
+{
+  UIManager.AddManuAdminPanel();
+}
+else if(val==true & loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
+{
+  UIManager.AddpharmacyAdminPanel();
+}
+else if(val==true & loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
+{
+  UIManager.AddpharmacyAdminPanel();
+}
+}
+catch(Exception e)
+{
+  System.out.println("Verifying username password");
+  System.out.println(e);
+}
+
 if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_ADMIN))
 {
  UIManager.AddpharmacyAdminPanel();    
 }
-else if(loginRole.equalsIgnoreCase(UserRole.MANUFACTURE_ADMIN)){
-    UIManager.AddManuAdminPanel();
+else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_STORE_MANAGER)){
+    UIManager.AddpharmacyStorePanel();
 }
         
        
@@ -181,7 +248,7 @@ else if(loginRole.equalsIgnoreCase(UserRole.MANUFACTURE_ADMIN)){
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField jTextFieldUserName;
     // End of variables declaration//GEN-END:variables
 }

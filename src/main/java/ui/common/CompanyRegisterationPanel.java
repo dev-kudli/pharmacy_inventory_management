@@ -27,6 +27,7 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
     public CompanyRegisterationPanel(String userType) {
         initComponents();
         this.userType = userType;
+        jButtonAssignCompany.setVisible(false);
     }
 
     /**
@@ -39,8 +40,6 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        companyAdmPanelbg = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         companyIdLabel = new javax.swing.JLabel();
@@ -60,17 +59,15 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        companyAdmPanelbg = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButtonAssignCompany = new javax.swing.JButton();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
-        jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 36)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("COMPANY DETAILS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 800, 40));
-        jPanel1.add(companyAdmPanelbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 70));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "COMPANY DETAILS"));
 
@@ -210,30 +207,76 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 600, 480));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 600, 480));
 
+        jButton2.setBackground(new java.awt.Color(255, 102, 102));
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButton2.setText("x");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 40));
+
+        jButton1.setFont(new java.awt.Font("Marker Felt", 0, 18)); // NOI18N
         jButton1.setText("REGISTER");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 310, 50));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 600, 600, 50));
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("COMPANY DETAILS");
+
+        jButton3.setText("X");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 890, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(companyAdmPanelbg, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(592, 592, 592))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 90, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(companyAdmPanelbg, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 90));
+
+        jButtonAssignCompany.setFont(new java.awt.Font("Marker Felt", 0, 18)); // NOI18N
+        jButtonAssignCompany.setText("PROCEED TO ASSIGN COMPANY ADMINISTRATOR");
+        jButtonAssignCompany.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAssignCompanyActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonAssignCompany, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 680, 600, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -266,6 +309,7 @@ company.setRegisteredDate(d);
 try{
     CompanyManager.createCompany(company);
     JOptionPane.showMessageDialog(this,"Company Registered Successfully");
+    jButtonAssignCompany.setVisible(true);
 }
 catch(Exception e)
 {
@@ -275,11 +319,27 @@ catch(Exception e)
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButtonAssignCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAssignCompanyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAssignCompanyActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+System.exit(0);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel companyAdmPanelbg;
     private javax.swing.JLabel companyIdLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonAssignCompany;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

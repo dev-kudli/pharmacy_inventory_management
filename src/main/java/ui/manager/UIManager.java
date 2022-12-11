@@ -21,6 +21,7 @@ public abstract class UIManager {
     private static  ManufacturerAdministratorPanel manuAdministratorPanel;
     private static CompanyManagerPanel companyManagerPanel;
     private static CompanyRegisterationPanel companyRegPanel;
+    private static PharmacyStoreManagerPanel pharmacyStoreManagerPanel;
  
     
     public static void init() {
@@ -45,11 +46,11 @@ public abstract class UIManager {
         removeAndAddPanel(pharmaManagerPanel);
     }
     
-    public static void AddCompanyLoginPanel() 
+    public static void AddCompanyLoginPanel(String companyType) 
         {
         frame.setLayout(new FlowLayout());
         frame.setVisible(true);
-        companyLoginPanel = new CompanyLoginPanel();
+        companyLoginPanel = new CompanyLoginPanel(companyType);
         removeAndAddPanel(companyLoginPanel);
     }
     
@@ -75,6 +76,14 @@ public abstract class UIManager {
         removeAndAddPanel(companyRegPanel);  
       }
       
+      public static void AddpharmacyStorePanel(){
+        frame.setLayout(new FlowLayout());
+        frame.setVisible(true);
+        pharmacyStoreManagerPanel = new PharmacyStoreManagerPanel();
+        removeAndAddPanel(pharmacyStoreManagerPanel);  
+          
+      }
+    
      
     
     
