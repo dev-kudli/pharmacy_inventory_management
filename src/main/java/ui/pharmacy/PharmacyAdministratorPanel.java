@@ -226,7 +226,6 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         PharmacyAdminId = new javax.swing.JLabel();
         pharmacyLogo = new javax.swing.JLabel();
-        CompanyName = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 204, 153));
 
@@ -1747,9 +1746,6 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         PharmacyAdminId.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         PharmacyAdminId.setText("1001");
 
-        CompanyName.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        CompanyName.setText("CVS PHARMACY");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -1766,11 +1762,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(pharmacyAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 918, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(CompanyName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addComponent(pharmacyLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(pharmacyLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1783,11 +1775,9 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(pharmacyLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CompanyName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PharmacyAdminId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PharmacyAdminId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -2763,7 +2753,6 @@ catch(Exception e)
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CompanyName;
     private javax.swing.JPanel EditStock;
     private javax.swing.JPanel EditStore;
     private javax.swing.JLabel PharmacyAdminId;

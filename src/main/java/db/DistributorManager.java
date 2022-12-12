@@ -9,9 +9,9 @@ public abstract class DistributorManager {
         public static ResultSet getShipments(int distrubutorId) throws Exception {
         try {            
             String query = """
-                SELECT p.order_id, p.order_status, p.distributor_id, c1.company_name AS distributor_name, p.transporter_id, c2.company_name AS transporter_name, p.order_date
+                SELECT p.order_id, p.order_status, p.manufacturer_id, c1.company_name AS manufacturer_name, p.transporter_id, c2.company_name AS transporter_name, p.order_date
                 FROM pharmacy_order p
-                LEFT OUTER JOIN company c1 ON p.distributor_id=c1.company_id
+                LEFT OUTER JOIN company c1 ON p.manufacturer_id=c1.company_id
                 LEFT OUTER JOIN company c2 ON p.transporter_id=c2.company_id
                 WHERE c1.company_id=%s""";
             query = String.format(query, distrubutorId);

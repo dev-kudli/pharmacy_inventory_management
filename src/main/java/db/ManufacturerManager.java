@@ -126,7 +126,7 @@ public abstract class ManufacturerManager {
         try {
             //Build Query
             String query = """
-                SELECT poi.item_id, md.drug_name, poi.quantity
+                SELECT poi.item_id, md.drug_name, poi.quantity, poi.cost_price*poi.quantity AS unit_price
                 FROM pharmacy_order po
                 JOIN company c ON c.company_id=po.manufacturer_id
                 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
@@ -149,7 +149,7 @@ public abstract class ManufacturerManager {
     public static ResultSet fetchStock(int manufacturerId) throws Exception {
         try {
             String query = """
-                SELECT mi.drug_id, mi.quantity, md.drug_name
+                SELECT mi.drug_id, mi.quantity, md.drug_name, selling_price 
                 FROM manufacturer_inventory mi
                 JOIN master_drug_table md ON md.drug_id=mi.drug_id
                 WHERE manufacturer_id=%s""";

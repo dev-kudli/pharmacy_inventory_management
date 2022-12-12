@@ -6,6 +6,7 @@ package ui.common;
 
 import com.mysql.cj.protocol.Resultset;
 import db.PersonManager;
+import helper.constant.CompanyTypes;
 import helper.constant.UserRole;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -36,20 +37,20 @@ String userType = "";
         initComponents();
         this.userType = userType;
         
-        if(this.userType.equalsIgnoreCase(UserRole.MANUFACTURE_ADMIN))
+        if(this.userType.equalsIgnoreCase(UserRole.MANUFACTURE_ADMIN)||(this.userType.equalsIgnoreCase(CompanyTypes.MANUFACTURER)))
         {
             jComboBoxLoginRole.removeAllItems();
             jComboBoxLoginRole.addItem("MANUFACTURE_ADMIN");
             jComboBoxLoginRole.addItem("MAN_PRODUCT_ADMIN");
         }
-        else if(this.userType.equalsIgnoreCase(UserRole.PHARMACY_ADMIN))
+        else if(this.userType.equalsIgnoreCase(UserRole.PHARMACY_ADMIN)||(this.userType.equalsIgnoreCase(CompanyTypes.PHARMACY)))
         {
             jComboBoxLoginRole.removeAllItems();
             jComboBoxLoginRole.addItem("PHARMACY_ADMIN");
             jComboBoxLoginRole.addItem("PHARMACY_STORE_MANAGER");
         }
         
-        else if(this.userType.equalsIgnoreCase(UserRole.DISTRIBUTOR_ADMIN))
+        else if(this.userType.equalsIgnoreCase(UserRole.DISTRIBUTOR_ADMIN)||(this.userType.equalsIgnoreCase(CompanyTypes.DISTRIBUTOR)))
         {
             jComboBoxLoginRole.removeAllItems();
             jComboBoxLoginRole.addItem("DISTRIBUTOR_ADMIN");
