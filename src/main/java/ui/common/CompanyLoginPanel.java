@@ -248,6 +248,9 @@ try {
             case UserRole.PHARMACY_ADMIN:
                 UIManager.AddpharmacyAdminPanel(verifiedUsername, verifiedCompanyId);    
               break;
+            case UserRole.DISTRIBUTOR_ADMIN:
+                UIManager.AddDistributorManagerPanel(verifiedUsername, verifiedCompanyId);    
+              break;
             default:
               // code block
         }
