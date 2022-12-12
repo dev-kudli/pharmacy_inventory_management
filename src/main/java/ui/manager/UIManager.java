@@ -11,6 +11,7 @@ import ui.common.MainPagePanel;
 import ui.manufacturer.ManufacturerAdministratorPanel;
 import ui.common.CompanyManagerPanel;
 import ui.common.CompanyRegisterationPanel;
+import ui.distributor.DistributorManagerPanel;
 
 public abstract class UIManager {
     private final static MainFrame frame = new MainFrame();
@@ -21,7 +22,7 @@ public abstract class UIManager {
     private static CompanyManagerPanel companyManagerPanel;
     private static CompanyRegisterationPanel companyRegPanel;
     private static PharmacyStoreManagerPanel pharmacyStoreManagerPanel;
- 
+    private static DistributorManagerPanel distributorManagerPanel;
     
     public static void init() {
         frame.setLayout(new FlowLayout());
@@ -75,10 +76,13 @@ public abstract class UIManager {
         removeAndAddPanel(pharmacyStoreManagerPanel);  
           
       }
-    
-     
-    
-    
+      
+    public static void AddDistributorManagerPanel(String username, int distributorId){
+      frame.setLayout(new FlowLayout());
+      frame.setVisible(true);
+      distributorManagerPanel = new DistributorManagerPanel(username, distributorId);
+      removeAndAddPanel(distributorManagerPanel);  
+    }
     
     private static void removeAndAddPanel(JPanel panel) {
         frame.getContentPane().removeAll();
