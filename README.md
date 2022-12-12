@@ -1,4 +1,4 @@
-                                                               **HEALTH CARE INVENTORY SERVICE**
+                                                            **HEALTH CARE INVENTORY SERVICE**
                                 
                                 
 TEAM:
