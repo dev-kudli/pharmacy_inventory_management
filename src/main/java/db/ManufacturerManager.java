@@ -161,4 +161,28 @@ public abstract class ManufacturerManager {
             throw new Exception(FILENAME + "->" + "fetchStock" + "->" + e);
         }
     }
+    
+    /**
+     * @param manufacturerId - ID of the Manufacturer
+     * @return ResultSet if operation succeeds
+     * @throws java.lang.Exception
+     */
+    public static ResultSet getYearlyReport(int manufacturerId, int year) throws Exception {
+        try {
+            String query = """
+                SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) AS total_items, po.distributor_id, c2.company_name as distributor_name, SUM(poi.cost_price*poi.quantity) AS total_price
+                FROM pharmacy_order po
+                JOIN company c ON c.company_id=po.pharmacy_id
+                LEFT OUTER JOIN company c2 ON c2.company_id=po.distributor_id
+                JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+                WHERE po.manufacturer_id=%s AND YEAR(order_date)=%s
+                GROUP BY po.order_id, po.order_date, po.order_status""";
+            query = String.format(query, manufacturerId, year);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            return rs;
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "fetchStock" + "->" + e);
+        }
+    }
 }

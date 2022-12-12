@@ -40,7 +40,7 @@ public abstract class UIManager {
     
     
     public static void AddCompanyLoginPanel(String companyType) 
-        {
+    {
         frame.setLayout(new FlowLayout());
         frame.setVisible(true);
         companyLoginPanel = new CompanyLoginPanel(companyType);

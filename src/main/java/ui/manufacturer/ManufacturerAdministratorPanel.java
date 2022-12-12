@@ -1783,7 +1783,7 @@ catch(Exception e)
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-UIManager.AddCompanyLoginPanel(CompanyTypes.MANUFACTURER);        // TODO add your handling code here:
+        UIManager.AddCompanyLoginPanel(CompanyTypes.MANUFACTURER);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
