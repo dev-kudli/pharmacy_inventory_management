@@ -15,7 +15,7 @@ JOIN master_drug_table md ON md.drug_id=mi.drug_id
 WHERE manufacturer_id=1;
 
 # Fetch Order Items for Manufacturer
-SELECT poi.item_id, md.drug_name, poi.quantity
+SELECT poi.item_id, md.drug_name, poi.quantity, poi.cost_price*poi.quantity AS unit_price
 FROM pharmacy_order po
 JOIN company c ON c.company_id=po.manufacturer_id
 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
@@ -26,6 +26,15 @@ WHERE po.order_id=2;
 SELECT company_id, company_name
 FROM company
 WHERE company_type="distributor";
+
+# View Yearly Orders
+SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) AS total_items, po.distributor_id, c2.company_name as distributor_name, SUM(poi.cost_price*poi.quantity) AS total_price
+FROM pharmacy_order po
+JOIN company c ON c.company_id=po.pharmacy_id
+LEFT OUTER JOIN company c2 ON c2.company_id=po.distributor_id
+JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+WHERE po.manufacturer_id=1 AND YEAR(order_date)=2021
+GROUP BY po.order_id, po.order_date, po.order_status;
 
 # -------------------------------#-------------------------------#
 
@@ -42,7 +51,7 @@ FROM pharmacy_order po
 JOIN company c ON c.company_id=po.manufacturer_id
 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
 JOIN master_drug_table md ON md.drug_id=poi.item_id
-WHERE po.pharmacy_id=1
+WHERE po.pharmacy_id=5
 GROUP BY po.order_id, po.order_date, po.order_status;
 
 # View Pharmacy Inventory
@@ -72,9 +81,9 @@ DELETE FROM pharmacy_store WHERE store_id=1;
 
 # DISTRIBUTOR
 # View All Shipments Of Distributor
-SELECT p.order_id, p.order_status, p.distributor_id, c1.company_name AS distributor_name, p.transporter_id, c2.company_name AS transporter_name, p.order_date
+SELECT p.order_id, p.order_status, p.manufacturer_id, c1.company_name AS manufacturer_name, p.transporter_id, c2.company_name AS transporter_name, p.order_date
 FROM pharmacy_order p
-LEFT OUTER JOIN company c1 ON p.distributor_id=c1.company_id
+LEFT OUTER JOIN company c1 ON p.manufacturer_id=c1.company_id
 LEFT OUTER JOIN company c2 ON p.transporter_id=c2.company_id
 WHERE c1.company_id=1;
 

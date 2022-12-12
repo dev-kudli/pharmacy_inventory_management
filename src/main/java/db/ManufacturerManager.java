@@ -126,7 +126,7 @@ public abstract class ManufacturerManager {
         try {
             //Build Query
             String query = """
-                SELECT poi.item_id, md.drug_name, poi.quantity
+                SELECT poi.item_id, md.drug_name, poi.quantity, poi.cost_price*poi.quantity AS unit_price
                 FROM pharmacy_order po
                 JOIN company c ON c.company_id=po.manufacturer_id
                 JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
@@ -149,11 +149,35 @@ public abstract class ManufacturerManager {
     public static ResultSet fetchStock(int manufacturerId) throws Exception {
         try {
             String query = """
-                SELECT mi.drug_id, mi.quantity, md.drug_name
+                SELECT mi.drug_id, mi.quantity, md.drug_name, selling_price 
                 FROM manufacturer_inventory mi
                 JOIN master_drug_table md ON md.drug_id=mi.drug_id
                 WHERE manufacturer_id=%s""";
             query = String.format(query, manufacturerId);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            return rs;
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "fetchStock" + "->" + e);
+        }
+    }
+    
+    /**
+     * @param manufacturerId - ID of the Manufacturer
+     * @return ResultSet if operation succeeds
+     * @throws java.lang.Exception
+     */
+    public static ResultSet getYearlyReport(int manufacturerId, int year) throws Exception {
+        try {
+            String query = """
+                SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) AS total_items, po.distributor_id, c2.company_name as distributor_name, SUM(poi.cost_price*poi.quantity) AS total_price
+                FROM pharmacy_order po
+                JOIN company c ON c.company_id=po.pharmacy_id
+                LEFT OUTER JOIN company c2 ON c2.company_id=po.distributor_id
+                JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+                WHERE po.manufacturer_id=%s AND YEAR(order_date)=%s
+                GROUP BY po.order_id, po.order_date, po.order_status""";
+            query = String.format(query, manufacturerId, year);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             return rs;

@@ -39,6 +39,7 @@ import java.time.LocalDateTime;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import ui.manager.UIManager;
 public class PharmacyAdministratorPanel extends javax.swing.JPanel {
     String username;
     int pharmacyId ;
@@ -226,7 +227,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         PharmacyAdminId = new javax.swing.JLabel();
         pharmacyLogo = new javax.swing.JLabel();
-        CompanyName = new javax.swing.JLabel();
+        jButton25 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 204, 153));
 
@@ -1747,8 +1748,12 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         PharmacyAdminId.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         PharmacyAdminId.setText("1001");
 
-        CompanyName.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        CompanyName.setText("CVS PHARMACY");
+        jButton25.setText("LOGIN PAGE");
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1765,12 +1770,10 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(pharmacyAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 918, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(CompanyName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addComponent(pharmacyLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 825, Short.MAX_VALUE)
+                .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pharmacyLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1778,16 +1781,15 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(pharmacyAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pharmacyAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(pharmacyLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CompanyName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PharmacyAdminId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PharmacyAdminId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1796,7 +1798,7 @@ public class PharmacyAdministratorPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1371, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2171,15 +2173,15 @@ purchaseOrderItemTable.setRowCount(0);
     }//GEN-LAST:event_jTextField42ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-MessageFormat header =  new MessageFormat("Order Report");
-try
-{
-        pharmacyOrderItemsTable.print(JTable.PrintMode.NORMAL,header,null);
-}
-catch(Exception e)
-{
-    JOptionPane.showMessageDialog(this, e);
-}
+//MessageFormat header =  new MessageFormat("Order Report");
+//try
+//{
+//        pharmacyOrderItemsTable.print(JTable.PrintMode.NORMAL,header,null);
+//}
+//catch(Exception e)
+//{
+//    JOptionPane.showMessageDialog(this, e);
+//}
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton22ActionPerformed
 
@@ -2231,55 +2233,55 @@ pharmOrderTable1.setRowCount(0);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void pharmacyOrderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pharmacyOrderTableMouseClicked
-Color globalColor = new Color(227, 66, 52);
-
-UiDesignFunctions.AlignTableContents(pharmacyOrderItemsTable);
-
-int selectedIndx = pharmacyOrderTable.getSelectedRow();
-DefaultTableModel PharmOrderTable= (DefaultTableModel)pharmacyOrderTable.getModel();
-DefaultTableModel PharmOrderItemTable  = (DefaultTableModel)pharmacyOrderItemsTable.getModel();
-PharmOrderItemTable.setRowCount(0);
-
-if(selectedIndx<0){
-JOptionPane.showMessageDialog(this,"Please Select an Order to Review");
-}
-int orderId = Integer.parseInt(PharmOrderTable.getValueAt(selectedIndx,0).toString());
-//String pharmacyName = PharmOrderTable.getValueAt(selectedIndx,3).toString();
-String orderStatus = PharmOrderTable.getValueAt(selectedIndx,6).toString();
-int quantity = Integer.parseInt(PharmOrderTable.getValueAt(selectedIndx,4).toString());
-Float price = Float.parseFloat(PharmOrderTable.getValueAt(selectedIndx,5).toString());
-
-Float netPrice = quantity*price;
-
-
-//QUERY PART
-try
-{
-        System.out.println("STARTING QUERY.....");
-        ResultSet rs = PharmacyManager.fetchAllOrderItems(orderId);
-        
-        while(rs.next()){
-        //int drugId = rs.getInt("item_id");
-        String drugName = rs.getString("drug_name");
-        int quantity = rs.getInt("quantity");
-        String costPrice = rs.getString("cost_price");
-
-        Object[] rowData = new Object[3];
-
-
-        rowData[0] = drugName;
-        rowData[1] = quantity;
-        rowData[2] = costPrice;
-
-        PharmOrderItemTable.addRow(rowData);
-        }
-
-}  
-catch(Exception e)
-{
-    System.out.println("INSIDE CATCH OF FETCH ALL ORDER ITEMS QUERY");
-    System.out.println(e);
-}// TODO add your handling code here:
+//Color globalColor = new Color(227, 66, 52);
+//
+//UiDesignFunctions.AlignTableContents(pharmacyOrderItemsTable);
+//
+//int selectedIndx = pharmacyOrderTable.getSelectedRow();
+//DefaultTableModel PharmOrderTable= (DefaultTableModel)pharmacyOrderTable.getModel();
+//DefaultTableModel PharmOrderItemTable  = (DefaultTableModel)pharmacyOrderItemsTable.getModel();
+//PharmOrderItemTable.setRowCount(0);
+//
+//if(selectedIndx<0){
+//JOptionPane.showMessageDialog(this,"Please Select an Order to Review");
+//}
+//int orderId = Integer.parseInt(PharmOrderTable.getValueAt(selectedIndx,0).toString());
+////String pharmacyName = PharmOrderTable.getValueAt(selectedIndx,3).toString();
+//String orderStatus = PharmOrderTable.getValueAt(selectedIndx,6).toString();
+//int quantity = Integer.parseInt(PharmOrderTable.getValueAt(selectedIndx,4).toString());
+//Float price = Float.parseFloat(PharmOrderTable.getValueAt(selectedIndx,5).toString());
+//
+//Float netPrice = quantity*price;
+//
+//
+////QUERY PART
+//try
+//{
+//        System.out.println("STARTING QUERY.....");
+//        ResultSet rs = PharmacyManager.fetchAllOrderItems(orderId);
+//        
+//        while(rs.next()){
+//        //int drugId = rs.getInt("item_id");
+//        String drugName = rs.getString("drug_name");
+//        int quantity = rs.getInt("quantity");
+//        String costPrice = rs.getString("cost_price");
+//
+//        Object[] rowData = new Object[3];
+//
+//
+//        rowData[0] = drugName;
+//        rowData[1] = quantity;
+//        rowData[2] = costPrice;
+//
+//        PharmOrderItemTable.addRow(rowData);
+//        }
+//
+//}  
+//catch(Exception e)
+//{
+//    System.out.println("INSIDE CATCH OF FETCH ALL ORDER ITEMS QUERY");
+//    System.out.println(e);
+//}// TODO add your handling code here:
 
         // TODO add your handling code here:
     }//GEN-LAST:event_pharmacyOrderTableMouseClicked
@@ -2782,9 +2784,12 @@ UiDesignFunctions.searchEmployeeDetails(keyword, manufacturerDrugTable);
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField33KeyReleased
 
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        UIManager.init();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton25ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CompanyName;
     private javax.swing.JPanel EditStock;
     private javax.swing.JPanel EditStore;
     private javax.swing.JLabel PharmacyAdminId;
@@ -2811,6 +2816,7 @@ UiDesignFunctions.searchEmployeeDetails(keyword, manufacturerDrugTable);
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

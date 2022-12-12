@@ -1124,7 +1124,9 @@
                           <Component id="jLabel2" min="-2" pref="135" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pharmacyAdminName" min="-2" pref="404" max="-2" attributes="0"/>
-                          <EmptySpace pref="707" max="32767" attributes="0"/>
+                          <EmptySpace pref="660" max="32767" attributes="0"/>
+                          <Component id="jButton18" min="-2" pref="134" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="pharmacyLogo" min="-2" pref="151" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
@@ -1137,6 +1139,7 @@
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="jLabel2" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                                   <Component id="pharmacyAdminName" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="jButton18" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1166,6 +1169,14 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="pharmacyLogo">
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton18">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="LOGIN PAGE"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton18ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

@@ -28,7 +28,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jTabbedPane1" min="-2" pref="1371" max="-2" attributes="0"/>
@@ -2427,14 +2427,10 @@
                           <Component id="pharmacyAdminName" min="-2" pref="169" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="918" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="CompanyName" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="pharmacyLogo" max="32767" attributes="0"/>
-                  </Group>
+                  <EmptySpace pref="825" max="32767" attributes="0"/>
+                  <Component id="jButton25" min="-2" pref="134" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="pharmacyLogo" min="-2" pref="113" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -2445,6 +2441,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                           <Component id="pharmacyAdminName" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jButton25" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -2452,12 +2449,9 @@
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="CompanyName" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
-                          <Component id="PharmacyAdminId" alignment="3" max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
+                      <Component id="PharmacyAdminId" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -2499,13 +2493,13 @@
         </Component>
         <Component class="javax.swing.JLabel" name="pharmacyLogo">
         </Component>
-        <Component class="javax.swing.JLabel" name="CompanyName">
+        <Component class="javax.swing.JButton" name="jButton25">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Helvetica Neue" size="13" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="CVS PHARMACY"/>
+            <Property name="text" type="java.lang.String" value="LOGIN PAGE"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton25ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
