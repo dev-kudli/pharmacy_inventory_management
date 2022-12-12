@@ -2173,15 +2173,15 @@ purchaseOrderItemTable.setRowCount(0);
     }//GEN-LAST:event_jTextField42ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-MessageFormat header =  new MessageFormat("Order Report");
-try
-{
-        pharmacyOrderItemsTable.print(JTable.PrintMode.NORMAL,header,null);
-}
-catch(Exception e)
-{
-    JOptionPane.showMessageDialog(this, e);
-}
+//MessageFormat header =  new MessageFormat("Order Report");
+//try
+//{
+//        pharmacyOrderItemsTable.print(JTable.PrintMode.NORMAL,header,null);
+//}
+//catch(Exception e)
+//{
+//    JOptionPane.showMessageDialog(this, e);
+//}
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton22ActionPerformed
 
@@ -2233,55 +2233,55 @@ pharmOrderTable1.setRowCount(0);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void pharmacyOrderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pharmacyOrderTableMouseClicked
-Color globalColor = new Color(227, 66, 52);
-
-UiDesignFunctions.AlignTableContents(pharmacyOrderItemsTable);
-
-int selectedIndx = pharmacyOrderTable.getSelectedRow();
-DefaultTableModel PharmOrderTable= (DefaultTableModel)pharmacyOrderTable.getModel();
-DefaultTableModel PharmOrderItemTable  = (DefaultTableModel)pharmacyOrderItemsTable.getModel();
-PharmOrderItemTable.setRowCount(0);
-
-if(selectedIndx<0){
-JOptionPane.showMessageDialog(this,"Please Select an Order to Review");
-}
-int orderId = Integer.parseInt(PharmOrderTable.getValueAt(selectedIndx,0).toString());
-//String pharmacyName = PharmOrderTable.getValueAt(selectedIndx,3).toString();
-String orderStatus = PharmOrderTable.getValueAt(selectedIndx,6).toString();
-int quantity = Integer.parseInt(PharmOrderTable.getValueAt(selectedIndx,4).toString());
-Float price = Float.parseFloat(PharmOrderTable.getValueAt(selectedIndx,5).toString());
-
-Float netPrice = quantity*price;
-
-
-//QUERY PART
-try
-{
-        System.out.println("STARTING QUERY.....");
-        ResultSet rs = PharmacyManager.fetchAllOrderItems(orderId);
-        
-        while(rs.next()){
-        //int drugId = rs.getInt("item_id");
-        String drugName = rs.getString("drug_name");
-        int quantity = rs.getInt("quantity");
-        String costPrice = rs.getString("cost_price");
-
-        Object[] rowData = new Object[3];
-
-
-        rowData[0] = drugName;
-        rowData[1] = quantity;
-        rowData[2] = costPrice;
-
-        PharmOrderItemTable.addRow(rowData);
-        }
-
-}  
-catch(Exception e)
-{
-    System.out.println("INSIDE CATCH OF FETCH ALL ORDER ITEMS QUERY");
-    System.out.println(e);
-}// TODO add your handling code here:
+//Color globalColor = new Color(227, 66, 52);
+//
+//UiDesignFunctions.AlignTableContents(pharmacyOrderItemsTable);
+//
+//int selectedIndx = pharmacyOrderTable.getSelectedRow();
+//DefaultTableModel PharmOrderTable= (DefaultTableModel)pharmacyOrderTable.getModel();
+//DefaultTableModel PharmOrderItemTable  = (DefaultTableModel)pharmacyOrderItemsTable.getModel();
+//PharmOrderItemTable.setRowCount(0);
+//
+//if(selectedIndx<0){
+//JOptionPane.showMessageDialog(this,"Please Select an Order to Review");
+//}
+//int orderId = Integer.parseInt(PharmOrderTable.getValueAt(selectedIndx,0).toString());
+////String pharmacyName = PharmOrderTable.getValueAt(selectedIndx,3).toString();
+//String orderStatus = PharmOrderTable.getValueAt(selectedIndx,6).toString();
+//int quantity = Integer.parseInt(PharmOrderTable.getValueAt(selectedIndx,4).toString());
+//Float price = Float.parseFloat(PharmOrderTable.getValueAt(selectedIndx,5).toString());
+//
+//Float netPrice = quantity*price;
+//
+//
+////QUERY PART
+//try
+//{
+//        System.out.println("STARTING QUERY.....");
+//        ResultSet rs = PharmacyManager.fetchAllOrderItems(orderId);
+//        
+//        while(rs.next()){
+//        //int drugId = rs.getInt("item_id");
+//        String drugName = rs.getString("drug_name");
+//        int quantity = rs.getInt("quantity");
+//        String costPrice = rs.getString("cost_price");
+//
+//        Object[] rowData = new Object[3];
+//
+//
+//        rowData[0] = drugName;
+//        rowData[1] = quantity;
+//        rowData[2] = costPrice;
+//
+//        PharmOrderItemTable.addRow(rowData);
+//        }
+//
+//}  
+//catch(Exception e)
+//{
+//    System.out.println("INSIDE CATCH OF FETCH ALL ORDER ITEMS QUERY");
+//    System.out.println(e);
+//}// TODO add your handling code here:
 
         // TODO add your handling code here:
     }//GEN-LAST:event_pharmacyOrderTableMouseClicked

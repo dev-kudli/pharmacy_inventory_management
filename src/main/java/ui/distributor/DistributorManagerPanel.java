@@ -889,8 +889,8 @@ public class DistributorManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFieldKeywordActionPerformed
 
     private void jTextFieldKeywordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldKeywordKeyReleased
-        String keyword = jTextFieldKeyword.getText();
-        searchEmployeeDetails( keyword);
+//        String keyword = jTextFieldKeyword.getText();
+//        searchEmployeeDetails( keyword);
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldKeywordKeyReleased
 
@@ -932,63 +932,63 @@ public class DistributorManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ManuOrderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManuOrderTableMouseClicked
-        Color globalColor = new Color(227, 66, 52);
-        jLabelStatus.setForeground(globalColor);
-        UiDesignFunctions.AlignTableContents(manufacturerOrderItemsTable);
-
-        int selectedIndx = ManuOrderTable.getSelectedRow();
-        DefaultTableModel ManufactOrderTable= (DefaultTableModel)ManuOrderTable.getModel();
-
-        DefaultTableModel ManufactOrderItmTable  = (DefaultTableModel)manufacturerOrderItemsTable.getModel();
-        ManufactOrderItmTable.setRowCount(0);
-
-        if(selectedIndx<0){
-            JOptionPane.showMessageDialog(this,"Please Select an Order to Review");
-        }
-        int orderId = Integer.parseInt(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
-        String pharmacyName = ManufactOrderTable.getValueAt(selectedIndx,2).toString();
-        String orderStatus = ManufactOrderTable.getValueAt(selectedIndx,4).toString();
-
-        jLabelOrderId.setText(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
-        jLabelCustomer.setText(pharmacyName);
-        jLabelStatus.setText(orderStatus);
-
-        //QUERY PART
-
-        //   SELECT poi.item_id, md.drug_name, poi.quantity
-        //                FROM pharmacy_order po
-        //                JOIN company c ON c.company_id=po.manufacturer_id
-        //                JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
-        //                JOIN master_drug_table md ON md.drug_id=poi.item_id
-        //                WHERE po.order_id=%s""";
-        try
-        {
-            System.out.println("STARTING QUERY.....");
-            ResultSet rs = ManufacturerManager.fetchAllOrderItems(orderId);
-
-            while(rs.next()){
-                int drugId = rs.getInt("item_id");
-                String drugName = rs.getString("drug_name");
-                int quantity = rs.getInt("quantity");
-                //float unitPrice = Float.valueOf(rs.getString(""));
-
-                Object[] rowData = new Object[5];
-
-                rowData[0] = orderId;
-                rowData[1] = drugId;
-                rowData[2] = drugName;
-                rowData[3] = quantity;
-                //rowData[4] = unitPrice;
-
-                ManufactOrderItmTable.addRow(rowData);
-            }
-
-        }
-        catch(Exception e)
-        {
-            System.out.println("INSIDE CATCH OF FETCH ALL ORDER ITEMS QUERY");
-            System.out.println(e);
-        }// TODO add your handling code here:
+//        Color globalColor = new Color(227, 66, 52);
+//        jLabelStatus.setForeground(globalColor);
+//        UiDesignFunctions.AlignTableContents(manufacturerOrderItemsTable);
+//
+//        int selectedIndx = ManuOrderTable.getSelectedRow();
+//        DefaultTableModel ManufactOrderTable= (DefaultTableModel)ManuOrderTable.getModel();
+//
+//        DefaultTableModel ManufactOrderItmTable  = (DefaultTableModel)manufacturerOrderItemsTable.getModel();
+//        ManufactOrderItmTable.setRowCount(0);
+//
+//        if(selectedIndx<0){
+//            JOptionPane.showMessageDialog(this,"Please Select an Order to Review");
+//        }
+//        int orderId = Integer.parseInt(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
+//        String pharmacyName = ManufactOrderTable.getValueAt(selectedIndx,2).toString();
+//        String orderStatus = ManufactOrderTable.getValueAt(selectedIndx,4).toString();
+//
+//        jLabelOrderId.setText(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
+//        jLabelCustomer.setText(pharmacyName);
+//        jLabelStatus.setText(orderStatus);
+//
+//        //QUERY PART
+//
+//        //   SELECT poi.item_id, md.drug_name, poi.quantity
+//        //                FROM pharmacy_order po
+//        //                JOIN company c ON c.company_id=po.manufacturer_id
+//        //                JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+//        //                JOIN master_drug_table md ON md.drug_id=poi.item_id
+//        //                WHERE po.order_id=%s""";
+//        try
+//        {
+//            System.out.println("STARTING QUERY.....");
+//            ResultSet rs = ManufacturerManager.fetchAllOrderItems(orderId);
+//
+//            while(rs.next()){
+//                int drugId = rs.getInt("item_id");
+//                String drugName = rs.getString("drug_name");
+//                int quantity = rs.getInt("quantity");
+//                //float unitPrice = Float.valueOf(rs.getString(""));
+//
+//                Object[] rowData = new Object[5];
+//
+//                rowData[0] = orderId;
+//                rowData[1] = drugId;
+//                rowData[2] = drugName;
+//                rowData[3] = quantity;
+//                //rowData[4] = unitPrice;
+//
+//                ManufactOrderItmTable.addRow(rowData);
+//            }
+//
+//        }
+//        catch(Exception e)
+//        {
+//            System.out.println("INSIDE CATCH OF FETCH ALL ORDER ITEMS QUERY");
+//            System.out.println(e);
+//        }// TODO add your handling code here:
     }//GEN-LAST:event_ManuOrderTableMouseClicked
 
     private void ManuOrderTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManuOrderTableMouseEntered
@@ -1140,37 +1140,37 @@ public class DistributorManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField32ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        UiDesignFunctions.AlignTableContents(manufacturerDrugTable1);
-        DefaultTableModel manuDrugTable= (DefaultTableModel)manufacturerDrugTable1.getModel();
-        manuDrugTable.setRowCount(0);
-
-        //QUERY TO VIEW STOCKS OF MANUFACTURE WITH MANUFACTURING_ID
-        try
-        {
-            ResultSet rs = ManufacturerManager.fetchStock(manufacturerId);
-
-            while(rs.next())
-            {
-                int drugId = rs.getInt("order_id");
-                String drugName = rs.getString("pharmacy_name");
-                int quantity = rs.getInt("quantity");
-                Float unitPrice = Float.parseFloat(rs.getString("unit_price"));
-
-                Object[] rowData = new Object[4];
-
-                rowData[0] = drugId;
-                rowData[1] = drugName;
-                rowData[2] = quantity;
-                rowData[3] = unitPrice;
-
-                manuDrugTable.addRow(rowData);
-
-            }
-        }
-
-        catch(Exception e){
-            System.out.print(e);
-        }
+//        UiDesignFunctions.AlignTableContents(manufacturerDrugTable1);
+//        DefaultTableModel manuDrugTable= (DefaultTableModel)manufacturerDrugTable1.getModel();
+//        manuDrugTable.setRowCount(0);
+//
+//        //QUERY TO VIEW STOCKS OF MANUFACTURE WITH MANUFACTURING_ID
+//        try
+//        {
+//            ResultSet rs = ManufacturerManager.fetchStock(manufacturerId);
+//
+//            while(rs.next())
+//            {
+//                int drugId = rs.getInt("order_id");
+//                String drugName = rs.getString("pharmacy_name");
+//                int quantity = rs.getInt("quantity");
+//                Float unitPrice = Float.parseFloat(rs.getString("unit_price"));
+//
+//                Object[] rowData = new Object[4];
+//
+//                rowData[0] = drugId;
+//                rowData[1] = drugName;
+//                rowData[2] = quantity;
+//                rowData[3] = unitPrice;
+//
+//                manuDrugTable.addRow(rowData);
+//
+//            }
+//        }
+//
+//        catch(Exception e){
+//            System.out.print(e);
+//        }
 
         //
         //        // TODO add your handling code here:
