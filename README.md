@@ -1,4 +1,4 @@
-                                                                    **HEALTH CARE INVENTORY SERVICE**
+                                                               **HEALTH CARE INVENTORY SERVICE**
                                 
                                 
 TEAM:
@@ -50,10 +50,13 @@ The Health care inventory management system will consist of the following main c
 
 
  
-
+OBJECT-MODEL DIAGRAM
 
 ![objectmodeldiagram](https://user-images.githubusercontent.com/113366324/206957575-4d312497-010c-491c-9b26-dc01c60670dd.jpg)
 
+
+
+CLASS-DIAGRAM
 
 ![Untitled Diagram](https://user-images.githubusercontent.com/113366324/206957596-377aba58-8a36-4d42-a592-1f69b54d5607.jpg)
 
