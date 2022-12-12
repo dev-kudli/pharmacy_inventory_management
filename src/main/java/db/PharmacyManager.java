@@ -23,12 +23,13 @@ public abstract class PharmacyManager {
             try {
                 //Query to insert Order
                 order.setOrderStatus("placed");
-                String queryToInsertOrder = "INSERT INTO pharmacy_order(order_date, manufacturer_id, pharmacy_id)"
-                                + "values (?, ?, ?)";
+                String queryToInsertOrder = "INSERT INTO pharmacy_order(order_date, manufacturer_id, pharmacy_id, order_status)"
+                                + "values (?, ?, ?, ?)";
                 PreparedStatement preparedStmt1 = con.prepareStatement(queryToInsertOrder);
                 preparedStmt1.setString (1, order.getPurchaseOrderDate().getFormattedDate());
                 preparedStmt1.setInt (2, order.getPharmacymanufactureId());
                 preparedStmt1.setInt (3, order.getPharmacyId());
+                preparedStmt1.setString (4, "PENDING");
                 preparedStmt1.execute();
             } catch (SQLException e) {
                 throw new Exception("Error inserting order: " + e);
@@ -228,6 +229,7 @@ public abstract class PharmacyManager {
     public static int deleteStore(int store_id) throws Exception {
         try {
             String queryToDeleteStore = "DELETE FROM pharmacy_store WHERE store_id=1";
+            queryToDeleteStore = String.format(queryToDeleteStore, store_id);
             Statement stmt = con.createStatement();
             return stmt.executeUpdate(queryToDeleteStore);
         } catch (SQLException e) {
@@ -268,6 +270,7 @@ public abstract class PharmacyManager {
                 SELECT person_name, person_gender, person_email, person_contact
                 FROM person
                 WHERE person_role="STORE_MANAGER" AND company_id=%s""";
+            queryToFetchStoreManagers = String.format(queryToFetchStoreManagers, pharmacyId);
             Statement stmt = con.createStatement();
             return stmt.executeQuery(queryToFetchStoreManagers);
         } catch (SQLException e) {
