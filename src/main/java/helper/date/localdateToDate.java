@@ -13,7 +13,7 @@ import java.time.LocalDate;
  */
 public abstract class localdateToDate {
     public static Date localToDate(LocalDate date) {
-        int month = date.getDayOfMonth();
+        int month = date.getMonthValue();
         int year = date.getYear();
         int day = date.getDayOfMonth();
         Date d = new Date(month, day, year);

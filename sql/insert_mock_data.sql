@@ -16,7 +16,7 @@ insert into person(username, person_name, password, person_role, company_id) val
 insert into person(username, person_name, password, person_role, company_id) values("dist2", "Varadmurty Mohod", "password", "DISTRIBUTOR_ADMIN", 4);
 insert into person(username, person_name, password, person_role, company_id) values("pharm1", "Sudarshan Kudli", "password", "PHARMACY_ADMIN", 5);
 insert into person(username, person_name, password, person_role, company_id) values("pharm2", "Sudarshan Kudli", "password", "PHARMACY_ADMIN", 6);
-insert into person(username, person_name, password, person_role, company_id) values("phstore1", "Shreya Jaiswal", "password", "PHARMACY_STORE_MANAGER", 5);
+insert into person(username, person_name, password, person_role, company_id) values("pharm1mg", "Shreya Jaiswal", "password", "PHARMACY_STORE_MANAGER", 5);
 insert into person(username, person_name, password, person_role, company_id) values("trans1", "Suraksha Nadig", "password", "TRANSPORT_ADMIN", 7);
 
 insert into manufacturer_inventory(manufacturer_id, drug_id, quantity, cost_price, selling_price) values(1, 1, 100, 3, 4);

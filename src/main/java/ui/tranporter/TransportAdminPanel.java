@@ -16,13 +16,16 @@ import javax.swing.table.DefaultTableModel;
  * @author skudli
  */
 public class TransportAdminPanel extends javax.swing.JPanel {
-    int transporterId = 0;
+    int transporterId;
+    int orderId;
 
     /**
      * Creates new form TransportAdminPanel
      */
-    public TransportAdminPanel() {
+    public TransportAdminPanel(String username, int transporterId) {
         initComponents();
+        this.transporterId = transporterId;
+        pharmacyAdminName.setText(username);
     }
 
     /**
@@ -48,7 +51,6 @@ public class TransportAdminPanel extends javax.swing.JPanel {
         jLabelStatus = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabelOrderId = new javax.swing.JLabel();
-        jButtondistributor = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         pharmacyAdminName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -98,17 +100,17 @@ public class TransportAdminPanel extends javax.swing.JPanel {
 
         ShipmentStatusTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "2022-10-09", "2", null, "CVA", "5", "pending"},
-                {"2", "2022-20-09", "1", null, "CVS", "10", "pending"},
-                {"3", "2022-12-09", "1", null, "CVS", "10", "pending"},
-                {null, null, null, null, null, null, null}
+                {"1", "2022-10-09", "2", null, "CVA", "pending"},
+                {"2", "2022-20-09", "1", null, "CVS", "pending"},
+                {"3", "2022-12-09", "1", null, "CVS", "pending"},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "SHIPMENT ID", "ORDER DATE", "DISTRIBUTOR ID", "PHARMACY ID", "PHARMACY NAME", "DELIVERY ADDRESS", "STATUS"
+                "SHIPMENT ID", "ORDER DATE", "DISTRIBUTOR ID", "PHARMACY ID", "PHARMACY NAME", "STATUS"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -147,13 +149,6 @@ public class TransportAdminPanel extends javax.swing.JPanel {
 
         jLabelOrderId.setText("XXX");
 
-        jButtondistributor.setText("PROCEED TO ASSIGN DISTRIBUTOR");
-        jButtondistributor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtondistributorActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout manageshipmetsLayout = new javax.swing.GroupLayout(manageshipmets);
         manageshipmets.setLayout(manageshipmetsLayout);
         manageshipmetsLayout.setHorizontalGroup(
@@ -161,60 +156,50 @@ public class TransportAdminPanel extends javax.swing.JPanel {
             .addGroup(manageshipmetsLayout.createSequentialGroup()
                 .addGroup(manageshipmetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(manageshipmetsLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtondistributor, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(manageshipmetsLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 969, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(manageshipmetsLayout.createSequentialGroup()
+                        .addGap(545, 545, 545)
                         .addGroup(manageshipmetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(manageshipmetsLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(manageshipmetsLayout.createSequentialGroup()
-                                .addGap(545, 545, 545)
-                                .addGroup(manageshipmetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(manageshipmetsLayout.createSequentialGroup()
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabelOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(manageshipmetsLayout.createSequentialGroup()
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(manageshipmetsLayout.createSequentialGroup()
-                                .addGap(512, 512, 512)
-                                .addComponent(jButtonApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(manageshipmetsLayout.createSequentialGroup()
-                                .addGap(149, 149, 149)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 969, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 43, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(manageshipmetsLayout.createSequentialGroup()
+                        .addGap(517, 517, 517)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(manageshipmetsLayout.createSequentialGroup()
+                        .addGap(494, 494, 494)
+                        .addComponent(jButtonApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         manageshipmetsLayout.setVerticalGroup(
             manageshipmetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageshipmetsLayout.createSequentialGroup()
-                .addGroup(manageshipmetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(manageshipmetsLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(manageshipmetsLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(manageshipmetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(manageshipmetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(229, 229, 229)
-                .addComponent(jButtondistributor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("MANAGE SHIPMENTS", manageshipmets);
@@ -342,29 +327,31 @@ public class TransportAdminPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtondistributorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtondistributorActionPerformed
-        jTabbedPane1.setSelectedIndex(2);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtondistributorActionPerformed
-
     private void jButtonApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApproveActionPerformed
-//        int response = JOptionPane.showConfirmDialog(null, "Approve the order request?", "Approve the order request?", JOptionPane.YES_NO_OPTION);
-//        if(response == 0)
-//        {
-//            Color globalColor = new Color(129, 211, 129);
-//
-//            //QUERY EXECUTE IN THE BACKEND
-//            TransportManager.confirmShipmentStatus(shipmentId);
-//            System.out.println("\norder ORDER APPROVAL COMPLETED");
-//            jLabelStatus.setForeground(globalColor);
-//            jLabelStatus.setText("APPROVED");
-//
-//            DefaultTableModel ManufactOrderTable= (DefaultTableModel)ShipmentStatusTable.getModel();
-//            int selectedIndx = ShipmentStatusTable.getSelectedRow();
-//            ManufactOrderTable.removeRow(selectedIndx);
-//            jButtondistributor.setVisible(true);
-//
-//        }
+        int response = JOptionPane.showConfirmDialog(null, "Approve the shipment request?", "Approve the shipment request?", JOptionPane.YES_NO_OPTION);
+        if(response == 0)
+        {
+            Color globalColor = new Color(129, 211, 129);
+            //QUERY EXECUTE IN THE BACKEND
+            try
+            {
+                int shipId = Integer.parseInt(jLabelOrderId.getText());
+                TransportManager.confirmShipmentStatus(shipId);
+                System.out.println("\norder SHIPMENT APPROVAL COMPLETED");
+                jLabelStatus.setForeground(globalColor);
+                jLabelStatus.setText("DELIVERED");
+
+                DefaultTableModel ManufactOrderTable= (DefaultTableModel)ShipmentStatusTable.getModel();
+                int selectedIndx = ShipmentStatusTable.getSelectedRow();
+                ManufactOrderTable.setValueAt("DELIVERED", selectedIndx, 5);
+   
+
+            }
+            catch(Exception e)
+            {
+                System.out.println(e);
+            }
+        }
 //        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonApproveActionPerformed
 
@@ -377,55 +364,59 @@ public class TransportAdminPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ShipmentStatusTableMouseEntered
 
     private void ShipmentStatusTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShipmentStatusTableMouseClicked
-        // get shipment id
-//        
-//        Color globalColor = new Color(227, 66, 52);
-//        jLabelStatus.setForeground(globalColor);
-//        UiDesignFunctions.AlignTableContents(shipmentStatusTable);
-//        int selectedIndx = ShipmentStatusTable.getSelectedRow();
-//        DefaultTableModel ManufactOrderTable= (DefaultTableModel)ShipmentStatusTable.getModel();
-//        DefaultTableModel ManufactOrderItmTable  = (DefaultTableModel)manufacturerOrderItemsTable.getModel();
-//        ManufactOrderItmTable.setRowCount(0);
-//
-//        if(selectedIndx<0){
-//            JOptionPane.showMessageDialog(this,"Please Select an Order to Review");
-//        }
-//        int orderId = Integer.parseInt(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
-//        String pharmacyName = ManufactOrderTable.getValueAt(selectedIndx,3).toString();
-//        String orderStatus = ManufactOrderTable.getValueAt(selectedIndx,6).toString();
-//        jLabelOrderId.setText(ManufactOrderTable.getValueAt(selectedIndx,0).toString());
-//        jLabelCustomer.setText(pharmacyName);
-//        jLabelStatus.setText(orderStatus);
+try { 
+        Color globalColor = new Color(227, 66, 52);
+        jLabelStatus.setForeground(globalColor);
+        //UiDesignFunctions.AlignTableContents(shipmentStatusTable);
+        int selectedIndx = ShipmentStatusTable.getSelectedRow();
+        DefaultTableModel shipmentTable= (DefaultTableModel)ShipmentStatusTable.getModel();
+        //DefaultTableModel ManufactOrderItmTable  = (DefaultTableModel)manufacturerOrderItemsTable.getModel();
+        //ManufactOrderItmTable.setRowCount(0);
+
+        if(selectedIndx<0){
+            JOptionPane.showMessageDialog(this,"Please Select a Shipment to Approve");
+        }
+        int orderId = Integer.parseInt(shipmentTable.getValueAt(selectedIndx,0).toString());
+        jLabelOrderId.setText(shipmentTable.getValueAt(selectedIndx,0).toString());
+        
+
+        String shipmentStatus = shipmentTable.getValueAt(selectedIndx,5).toString();
+        
+        jLabelStatus.setText(shipmentStatus);
+} catch(Exception e) {
+    System.out.println(e);
+}
+
     }//GEN-LAST:event_ShipmentStatusTableMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    try
+        {
         UiDesignFunctions.AlignTableContents(ShipmentStatusTable);
         DefaultTableModel manuOrderTable= (DefaultTableModel)ShipmentStatusTable.getModel();
         manuOrderTable.setRowCount(0);
 
-        try
-        {
+    
+            System.out.println("frontend transported Id: "+transporterId);
             ResultSet rs = TransportManager.fetchAllShipments(transporterId);
 
             while(rs.next())
             {
-                int shipmentId = rs.getInt("shipment_id");
+                int shipmentId = rs.getInt("order_id");
                 String orderDate = rs.getString("order_date");
                 int pharmacyId = rs.getInt("pharmacy_id");
                 String pharmacyName = rs.getString("pharmacy_name");
                 String distributorName = rs.getString("distributor_name");
-//                String deliveryAddress = rs.getString("pharmacy_address");
-                String shipmentStatus = rs.getString("shipment_status");
+                String shipmentStatus = rs.getString("order_status");
 
-                Object[] rowData = new Object[7];
+                Object[] rowData = new Object[6];
 
                 rowData[0] = shipmentId;
                 rowData[1] = orderDate;
                 rowData[2] = pharmacyId;
                 rowData[3] = pharmacyName;
                 rowData[4] = distributorName;
-//                rowData[5] = deliveryAddress;
-                rowData[6] = shipmentStatus;
+                rowData[5] = shipmentStatus;
                 manuOrderTable.addRow(rowData);
 
             }
@@ -455,7 +446,6 @@ public class TransportAdminPanel extends javax.swing.JPanel {
     private javax.swing.JTable ShipmentStatusTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonApprove;
-    private javax.swing.JButton jButtondistributor;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

@@ -61,8 +61,8 @@ public abstract class Validation {
     
     
     public static boolean IsValidateUsername(String username){
-      //int i = 1;
-      if(username.equals("")||username.length()<=3){
+      int i = 1;
+      if(username.equals("")||username.length()<4){
           return false;
       }
       
@@ -70,21 +70,9 @@ public abstract class Validation {
   }
     public static boolean IsValidPassword(String password) {
 
-        if (password.length() < 8) return false;
-
-        int charCount = 0;
-        int numCount = 0;
-        for (int i = 0; i < password.length(); i++) {
-
-            char ch = password.charAt(i);
-
-            if (is_Numeric(ch)) numCount++;
-            else if (is_Letter(ch)) charCount++;
-            else return false;
-        }
-
-
-        return (charCount >= 2 && numCount >= 2);
+        boolean isValid = true;
+        if (password.length() < 8) isValid = false;
+        return isValid;
     }
 
     public static boolean is_Letter(char ch) {

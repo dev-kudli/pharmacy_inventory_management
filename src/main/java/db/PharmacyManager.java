@@ -162,6 +162,7 @@ public abstract class PharmacyManager {
      * @throws java.lang.Exception
      */
     public static boolean updateStockAndQuantity(PharmacyPurchaseOrder order) throws Exception {
+        System.out.println("Updating pharmacy stock: "+order.getOrderId());
         boolean isUpdated = false;
         try {
             for (PharmacyPurchaseOrderItem item : order.getOrderItems()) {
@@ -173,7 +174,18 @@ public abstract class PharmacyManager {
                 
                 //If not, add the item to inventory
                 String queryToUpdateOrder;
-                if(!rs.next()) {
+                if(rs.next()) {
+                    queryToUpdateOrder = """
+                        UPDATE pharmacy_inventory
+                        SET quantity=quantity+%s
+                        WHERE drug_id=%s AND pharmacy_id=%s""";
+                    queryToUpdateOrder = String.format(queryToUpdateOrder, item.getQuantity(), item.getDrug().getDrugId(), order.getPharmacyId());
+                    PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
+                    preparedStmt.execute();
+                    
+                }
+                //Else, update the quantity of item
+                else {
                     queryToUpdateOrder = """
                         INSERT into pharmacy_inventory(pharmacy_id, drug_id, quantity)
                         VALUES (?, ?, ?)""";
@@ -181,16 +193,6 @@ public abstract class PharmacyManager {
                     preparedStmt.setInt (1, order.getPharmacyId());
                     preparedStmt.setInt (2, item.getDrug().getDrugId());
                     preparedStmt.setInt (3, item.getQuantity());
-                    preparedStmt.execute();
-                }
-                //Else, update the quantity of item
-                else {
-                    queryToUpdateOrder = """
-                        UPDATE pharmacy_inventory
-                        SET quantity=quantity+%s
-                        WHERE drug_id=%s AND pharmacy_id=%s""";
-                    queryToUpdateOrder = String.format(queryToUpdateOrder, item.getQuantity(), item.getDrug().getDrugId(), order.getPharmacyId());
-                    PreparedStatement preparedStmt = con.prepareStatement(queryToUpdateOrder);
                     preparedStmt.execute();
                 }
             }
@@ -269,7 +271,7 @@ public abstract class PharmacyManager {
             String queryToFetchStoreManagers = """
                 SELECT person_name, person_gender, person_email, person_contact
                 FROM person
-                WHERE person_role="STORE_MANAGER" AND company_id=%s""";
+                WHERE person_role="PHARMACY_STORE_MANAGER" AND company_id=%s""";
             queryToFetchStoreManagers = String.format(queryToFetchStoreManagers, pharmacyId);
             Statement stmt = con.createStatement();
             return stmt.executeQuery(queryToFetchStoreManagers);

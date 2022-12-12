@@ -1,13 +1,12 @@
 package db;
 
+import email.Email;
 import data.model.common.Company;
-import helper.constant.CompanyTypes;
 import helper.validation.Validation;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
 
 public class CompanyManager {
     public static java.sql.Connection con = Connection.getConnection();   
@@ -37,6 +36,7 @@ public class CompanyManager {
      */
     
     public static boolean createCompany(Company company) throws Exception {
+        System.out.println("backend"+ company.getRegisteredDate().getFormattedDate());
         boolean isCreated = true;
         if (!Validation.isValidString(company.getCompanyName())) throw new Error("Invalid Company Name");
         try {
@@ -47,6 +47,7 @@ public class CompanyManager {
             preparedStmt1.setString (2, company.getCompanyName());
             preparedStmt1.setString (3, company.getCompanyType());
             preparedStmt1.execute();
+            Email.sendMail();
             return isCreated;
         } catch (SQLException e) {
             throw e;

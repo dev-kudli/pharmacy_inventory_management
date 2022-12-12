@@ -45,6 +45,67 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
         
                 
     }
+    
+    public boolean isInputsValid() {
+        boolean isValid = true;
+        if (!Validation.isValidString(jTextField1.getText())) {
+            System.out.println("invalid company name");
+            isValid = false;
+        }
+        if (!Validation.isValidString(jTextFieldComContact.getText())) {
+            System.out.println("invalid com contact");
+            isValid = false;
+        }
+        if (!Validation.isValidString(jTextFieldComEmail.getText())) {
+            System.out.println("invlid com email");
+            isValid = false;
+        }
+        if (!Validation.isValidString(jTextField4.getText())) {
+            System.out.println("invalid email");
+            isValid = false;
+        }
+        if (!Validation.isValidString(jTextField5.getText())) {
+            System.out.println("invalid zip");
+            isValid = false;
+        }
+        if (!Validation.isValidString(jTextField6.getText())) {
+            System.out.println("invalid email 3");
+            isValid = false;
+        }
+        if (!Validation.isValidString(jTextFieldName.getText())) {
+            System.out.println("invalid name");
+            isValid = false;
+        }
+        if (!Validation.isValidString(jTextFieldContact.getText())) {
+            System.out.println("invalid contact");
+            isValid = false;
+        }
+        if (!Validation.isValidString(jTextFieldEmail.getText())) {
+            System.out.println("invalid email");
+            isValid = false;
+        }
+        if (!Validation.isValidString(jTextFieldAddress.getText())) {
+            System.out.println("invalid address");
+            isValid = false;
+        }
+        if (!Validation.isValidString(jTextFieldZip.getText())) {
+            System.out.println("invalid zip");
+            isValid = false;
+        }
+        if (!Validation.isValidString(jTextFieldCity.getText())) {
+            System.out.println("invalid city");
+            isValid = false;
+        }
+        if (!Validation.IsValidateUsername(jTextFieldUsername.getText())) {
+            System.out.println("invalid username");
+            isValid = false;
+        }
+        if (!Validation.IsValidPassword(jTextFieldPassword.getText())) {
+            System.out.println("invalid password");
+            isValid = false;
+        }
+        return isValid;
+    }
     /**
      * Creates new form CompanyRegisterationPanel
      */
@@ -271,7 +332,7 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MANUFACTURER", "DISTRIBUTER", "PHARMACY", "TRANSPORTER", " ", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MANUFACTURER", "DISTRIBUTOR", "PHARMACY", "TRANSPORTER", " ", " " }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -642,7 +703,11 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
  //Company Details
-
+try
+{ 
+    if (!isInputsValid()) {
+        throw new Exception("Invalid Details");
+    }
     String companyName =  jTextField1.getText();
     if(Validation.isValidString(userType)==false)
     {
@@ -694,8 +759,8 @@ public class CompanyRegisterationPanel extends javax.swing.JPanel {
     contact.setLocation(loc);
     person.setLocation(loc);
     System.out.println(zip);
-try
-{   CompanyManager.createCompany(company);
+
+    CompanyManager.createCompany(company);
     int n = CompanyManager.getCompanyId();
     System.out.println("n--->"+n);
     PersonManager.createUser(person,n);

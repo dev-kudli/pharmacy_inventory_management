@@ -37,8 +37,8 @@ public abstract class PersonManager {
             String queryToVerifyUser = """
                 SELECT *
                 FROM person
-                WHERE username=\"%s\" AND person_role=\"%s\"""";
-            queryToVerifyUser = String.format(queryToVerifyUser, username, role);
+                WHERE username=\"%s\" AND person_role=\"%s\" AND password=\"%s\"""";
+            queryToVerifyUser = String.format(queryToVerifyUser, username, role, password);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(queryToVerifyUser);
             return rs;

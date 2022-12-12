@@ -8,6 +8,7 @@ import com.mysql.cj.protocol.Resultset;
 import db.PersonManager;
 import helper.constant.CompanyTypes;
 import helper.constant.UserRole;
+import helper.validation.Validation;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import ui.manager.UIManager;
@@ -18,22 +19,11 @@ import ui.manager.UIManager;
  */
 public class CompanyLoginPanel extends javax.swing.JPanel {
 String userType = "";
-//String adminRole
 
     /**
      * Creates new form CompanyLoginPanel
      */
-    public CompanyLoginPanel(String userType) {
-//        
-//    public static final String PHARMACY_ADMIN = "PHARMACY_ADMIN";
-//    public static final String PHARMACY_STORE_MANAGER = "STORE_ADMIN";
-//    public static final String CUSTOMER = "CUSTOMER";
-//    public static final String MANUFACTURE_ADMIN = "MANUFACTURE_ADMIN";
-//    public static final String DISTRIBUTOR_ADMIN = "DISTRIBUTOR_ADMIN";
-//    public static final String DISTRIBUTOR_TRANSPORT_MANAGER = "DISTRIBUTOR_TRANSPORT_ADMIN";
-//    public static final String MANUFACTURE_PRODUCT_MANAGER = "MAN_PRODUCT_ADMIN"
-        
-        
+    public CompanyLoginPanel(String userType) {   
         initComponents();
         this.userType = userType;
         
@@ -56,6 +46,26 @@ String userType = "";
             jComboBoxLoginRole.addItem("DISTRIBUTOR_ADMIN");
             jComboBoxLoginRole.addItem("DISTRIBUTOR_TRANSPORT_ADMIN");
         }
+        else if(this.userType.equalsIgnoreCase(UserRole.TRANSPORT_ADMIN)||(this.userType.equalsIgnoreCase(CompanyTypes.TRANSPORTER)))
+        {
+            jComboBoxLoginRole.removeAllItems();
+            jComboBoxLoginRole.addItem("TRANSPORT_ADMIN");
+        }
+    }
+    
+    public boolean isInputsValid() {
+        System.out.println(jTextFieldUserName.getText());
+        System.out.println(jPasswordField1.getText());
+        boolean isValid = true;
+        if (!Validation.IsValidateUsername(jTextFieldUserName.getText())) {
+            System.out.println("invalid username");
+            isValid = false;
+        }
+        if (!Validation.IsValidPassword(jPasswordField1.getText())) {
+            System.out.println("invalid password");
+            isValid = false;
+        }
+        return isValid;
     }
 
     /**
@@ -223,19 +233,15 @@ String userType = "";
     }//GEN-LAST:event_jComboBoxLoginRoleActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//    public static final String PHARMACY_ADMIN = "PHARMACY_ADMIN";
-//    public static final String PHARMACY_STORE_MANAGER = "PHARMACY_STORE_MANAGER";
-//    public static final String CUSTOMER = "CUSTOMER";
-//    public static final String MANUFACTURE_ADMIN = "MANUFACTURE_ADMIN";
-//    public static final String DISTRIBUTOR_ADMIN = "DISTRIBUTOR_ADMIN";
-//    public static final String DISTRIBUTOR_TRANSPORT_MANAGER = "DISTRIBUTOR_TRANSPORT_ADMIN";
-//    public static final String MANUFACTURE_PRODUCT_MANAGER = "MAN_PRODUCT_ADMIN"
-
-String username = jTextFieldUserName.getText();
-String password = jPasswordField1.getText();
-//String loginRole = jComboBoxLoginRole.getSelectedItem().toString(); 
 
 try {
+    if (!isInputsValid()) {
+        throw new Exception("Invalid input");
+    }
+    String username = jTextFieldUserName.getText();
+    String password = jPasswordField1.getText();
+
+
     ResultSet rs = PersonManager.verifyUser(username, password,userType);
     if (rs.next()) {
         String verifiedUsername = rs.getString("username");
@@ -252,27 +258,12 @@ try {
             case UserRole.DISTRIBUTOR_ADMIN:
                 UIManager.AddDistributorManagerPanel(verifiedUsername, verifiedCompanyId);    
               break;
-            default:
+        case UserRole.TRANSPORT_ADMIN:
+                UIManager.AddTransporterPanel(verifiedUsername, verifiedCompanyId);    
+                break;
+                default:
               // code block
         }
-
-         {
-         }
-
-    //     else if(loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
-    //     {
-    //       UIManager.AddpharmacyAdminPanel();
-    //     }
-    //     else if(loginRole.equalsIgnoreCase("PHARMACY_ADMIN"))
-    //     {
-    //       UIManager.AddpharmacyAdminPanel();
-    //     }
-    //     else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_ADMIN))
-    //    {
-    //    }
-    //    else if(loginRole.equalsIgnoreCase(UserRole.PHARMACY_STORE_MANAGER)){
-    //        UIManager.AddpharmacyStorePanel();
-    //    }
     } else throw new Exception("No User Found");
 } catch(Exception e) {
  JOptionPane.showMessageDialog(this, e);

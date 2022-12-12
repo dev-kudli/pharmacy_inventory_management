@@ -12,6 +12,7 @@ import ui.manufacturer.ManufacturerAdministratorPanel;
 import ui.common.CompanyManagerPanel;
 import ui.common.CompanyRegisterationPanel;
 import ui.distributor.DistributorManagerPanel;
+import ui.tranporter.TransportAdminPanel;
 
 public abstract class UIManager {
     private final static MainFrame frame = new MainFrame();
@@ -23,12 +24,19 @@ public abstract class UIManager {
     private static CompanyRegisterationPanel companyRegPanel;
     private static PharmacyStoreManagerPanel pharmacyStoreManagerPanel;
     private static DistributorManagerPanel distributorManagerPanel;
+    private static TransportAdminPanel transportAdminanel;
     
     public static void init() {
         frame.setLayout(new FlowLayout());
         frame.setVisible(true);
         mainPagePanel = new MainPagePanel();
         removeAndAddPanel(mainPagePanel);
+    }
+    public static void AddTransporterPanel(String username, int transporterId) {
+        frame.setLayout(new FlowLayout());
+        frame.setVisible(true);
+        transportAdminanel = new TransportAdminPanel(username, transporterId);
+        removeAndAddPanel(transportAdminanel);
     }
     
     public static void AddpharmacyAdminPanel(String username, int pharmacyId) {

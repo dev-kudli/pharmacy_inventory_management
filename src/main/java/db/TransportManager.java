@@ -8,6 +8,7 @@ import java.sql.Statement;
 public abstract class TransportManager {
     public static java.sql.Connection con = Connection.getConnection();
     public static boolean confirmShipmentStatus(int orderId) throws Exception {
+        System.out.println("backend order id: "+orderId);
         boolean isShipped = false;
         try {
             String queryToUpdateStatus = """
@@ -28,12 +29,11 @@ public abstract class TransportManager {
     public static ResultSet fetchAllShipments(int transporterId) throws Exception {
         try {
             String queryToFetchShipments = """
-                SELECT s.shipment_id, p.order_date, p.pharmacy_id, c1.company_name AS pharmacy_name, c2.company_name AS distributor_name, s.shipment_status
-                FROM shipment s
-                JOIN pharmacy_order p ON p.order_id=s.order_id
-                JOIN company c1 ON p.pharmacy_id=c1.company_id
-                JOIN company c2 ON s.distributor_id=c1.company_id
-                WHERE c1.transporter_id=%s""";
+                SELECT po.order_id, po.order_date, po.pharmacy_id, po.distributor_id, c1.company_name AS pharmacy_name, po.order_status, c2.company_name as distributor_name
+                FROM pharmacy_order po
+                LEFT OUTER JOIN company c1 ON po.pharmacy_id=c1.company_id
+                LEFT OUTER JOIN company c2 ON po.distributor_id=c2.company_id
+                WHERE po.transporter_id=%s""";
             queryToFetchShipments = String.format(queryToFetchShipments, transporterId);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(queryToFetchShipments);

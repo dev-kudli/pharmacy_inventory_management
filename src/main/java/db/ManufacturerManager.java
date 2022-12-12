@@ -117,6 +117,28 @@ public abstract class ManufacturerManager {
         }
     }
     
+    //FETCHING ORDER SUMMARY
+        public static ResultSet fetchOrderSummary(int manufacturerId) throws Exception {
+        try {
+            //Build Query
+            String query = """
+                SELECT po.order_id, po.pharmacy_id, c.company_name AS pharmacy_name, po.order_date, po.order_status, COUNT(poi.item_id) AS total_items, po.distributor_id, c2.company_name as distributor_name, SUM(poi.cost_price*poi.quantity) AS total_price
+                FROM pharmacy_order po
+                JOIN company c ON c.company_id=po.pharmacy_id
+                LEFT OUTER JOIN company c2 ON c2.company_id=po.distributor_id
+                JOIN pharmacy_order_item poi ON poi.order_id = po.order_id
+                WHERE po.manufacturer_id=%s
+                AND po.order_status = "APPROVED"
+                GROUP BY po.order_id, po.order_date, po.order_status""";
+            query = String.format(query, manufacturerId);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            return rs;
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+    
     /**
      * @param orderId - Order ID
      * @return ResultSet if operation succeeds
@@ -149,7 +171,7 @@ public abstract class ManufacturerManager {
     public static ResultSet fetchStock(int manufacturerId) throws Exception {
         try {
             String query = """
-                SELECT mi.drug_id, mi.quantity, md.drug_name, selling_price 
+                SELECT mi.drug_id, mi.quantity, md.drug_name, selling_price, cost_price 
                 FROM manufacturer_inventory mi
                 JOIN master_drug_table md ON md.drug_id=mi.drug_id
                 WHERE manufacturer_id=%s""";
@@ -183,6 +205,67 @@ public abstract class ManufacturerManager {
             return rs;
         } catch (SQLException e) {
             throw new Exception(FILENAME + "->" + "fetchStock" + "->" + e);
+        }
+    }
+    
+        
+    /**
+     * @param manufacturerId - ID of the Manufacturer
+     * @return ResultSet if operation succeeds
+     * @throws java.lang.Exception
+     */
+    public static ResultSet getAllDrugs() throws Exception {
+        try {
+            String query = """
+                SELECT *
+                FROM master_drug_table""";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            return rs;
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "getAllDrugs" + "->" + e);
+        }
+    }
+    
+        /**
+     * @param manufacturerId - ID of the Manufacturer
+     * @return ResultSet if operation succeeds
+     * @throws java.lang.Exception
+     */
+    public static boolean updateStock(int manufacturerId, int drugId, int quantity, float cp, float sp) throws Exception {
+        boolean res = false;
+        try {
+            String query1 = """
+                SELECT * FROM manufacturer_inventory
+                WHERE drug_id=%s AND manufacturer_id=%s """;
+            query1 = String.format(query1, drugId, manufacturerId);
+            Statement stmt1 = con.createStatement();
+            ResultSet rs1 = stmt1.executeQuery(query1);
+            if (rs1.next()) {
+                String query2 = """
+                UPDATE manufacturer_inventory
+                SET quantity=quantity+%s
+                WHERE manufacturer_id=%s""";
+                query2 = String.format(query2, quantity, manufacturerId);
+                Statement stmt = con.createStatement();
+                stmt.executeUpdate(query2);
+                res = true;
+            } else {
+                String query3 = """
+                INSERT INTO manufacturer_inventory(manufacturer_id, drug_id, quantity, cost_price, selling_price)
+                VALUES(?, ?, ?, ?, ?) """;
+                PreparedStatement preparedStmt3 = con.prepareStatement(query3);
+                preparedStmt3.setInt (1, manufacturerId);
+                preparedStmt3.setInt (2, drugId);
+                preparedStmt3.setInt (3, quantity);
+                preparedStmt3.setFloat (4, cp);
+                preparedStmt3.setFloat (5, sp);
+                preparedStmt3.execute();
+                res = true;
+            }
+            return res;
+        } catch (SQLException e) {
+            throw new Exception(FILENAME + "->" + "updateStock" + "->" + e);
         }
     }
 }

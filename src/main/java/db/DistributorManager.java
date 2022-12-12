@@ -13,7 +13,7 @@ public abstract class DistributorManager {
                 FROM pharmacy_order p
                 LEFT OUTER JOIN company c1 ON p.manufacturer_id=c1.company_id
                 LEFT OUTER JOIN company c2 ON p.transporter_id=c2.company_id
-                WHERE c1.company_id=%s""";
+                WHERE p.distributor_id=%s""";
             query = String.format(query, distrubutorId);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
