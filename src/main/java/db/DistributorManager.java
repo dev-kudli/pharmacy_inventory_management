@@ -45,9 +45,10 @@ public abstract class DistributorManager {
     public static ResultSet getTransporterVehicles() throws Exception {
         try {            
             String queryToGetVehicles = """
-                SELECT tv.transporter_id, c.company_name AS transporter_name, tv.vehicle_count
-                FROM transport_vehicle tv
-                JOIN company c ON tv.transporter_id=c.company_id""";
+                SELECT c.company_id as transporter_id, c.company_name AS transporter_name, tv.vehicle_count
+                FROM company c
+                left outer join transport_vehicle tv on c.company_id=tv.transporter_id
+                where c.company_type=\"TRANSPORTER\"""";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(queryToGetVehicles);
             return rs;
