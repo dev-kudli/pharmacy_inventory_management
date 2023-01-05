@@ -1,17 +1,4 @@
-                                                        **HEALTH CARE INVENTORY SERVICE**
-                                
-                                
-TEAM:
-SHREYA JAISWAL - 002747677 ||
-ALANKRUTHA REDDY PURUMANDLA - 002770398 ||
-SUDARSHAN KUDLI - 002772991
-
-
-
-
-DESIGN - DOCUMENT
-
-
+# MEDICINE MANAGEMENT SERVICE                    
 PROJECT OVERVIEW 
 
  The project aims to develop a software system that will help Pharmacies manage their inventory of medications and other health care products , track the availability , expiry dates and prices of the products as well as generate reports and alerts for low stock levels. This system will also allow pharmacies to place an order with the manufacturer and allows the manufacturer to assign a distributor who delivers the order to the pharmacies with the help of the transportation department.
